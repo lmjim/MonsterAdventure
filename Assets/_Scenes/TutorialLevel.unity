@@ -3012,7 +3012,7 @@ PrefabInstance:
         type: 3}
       propertyPath: message
       value: Hi! I'm the blue slime. There's a scary green guy over there, he can't
-        move though! Use X to kill his ass!
+        move though! Use F to kill his ass!
       objectReference: {fileID: 0}
     - target: {fileID: 4116602417459448423, guid: 93fb8e8a7f46ca34caa77b500502c2f5,
         type: 3}
