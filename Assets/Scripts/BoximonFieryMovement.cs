@@ -55,6 +55,7 @@ public class BoximonFieryMovement : MonoBehaviour
 
         if (Input.GetKeyDown("f"))
         {
+            m_Animator.SetBool("Walk Forward", false); // switch back to idle state to be able to go to attack state
             //m_Animator.SetTrigger("Attack 01"); // Punch
             m_Animator.SetTrigger("Attack 02"); // Shove
         }
@@ -62,17 +63,17 @@ public class BoximonFieryMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        // Walking Functionaltiy
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
-        m_Movement.Set(horizontal, 0f, vertical);
-        m_Movement.Normalize();
-        bool hasHorizontalInput = !Mathf.Approximately(horizontal, 0f);
-        bool hasVerticalInput = !Mathf.Approximately(vertical, 0f);
-        bool walkForward = hasHorizontalInput || hasVerticalInput;
-        m_Animator.SetBool("Walk Forward", walkForward);
-        Vector3 desiredForward = Vector3.RotateTowards(transform.forward, m_Movement, turnSpeed * Time.deltaTime, 0f);
-        m_Rotation = Quaternion.LookRotation(desiredForward);
+            // Walking Functionaltiy
+            float horizontal = Input.GetAxis("Horizontal");
+            float vertical = Input.GetAxis("Vertical");
+            m_Movement.Set(horizontal, 0f, vertical);
+            m_Movement.Normalize();
+            bool hasHorizontalInput = !Mathf.Approximately(horizontal, 0f);
+            bool hasVerticalInput = !Mathf.Approximately(vertical, 0f);
+            bool walkForward = hasHorizontalInput || hasVerticalInput;
+            m_Animator.SetBool("Walk Forward", walkForward);
+            Vector3 desiredForward = Vector3.RotateTowards(transform.forward, m_Movement, turnSpeed * Time.deltaTime, 0f);
+            m_Rotation = Quaternion.LookRotation(desiredForward);
 
         // Lose Text if fall off stage
         if (transform.position.y < -1) // This threshold might change for other levels
@@ -92,6 +93,7 @@ public class BoximonFieryMovement : MonoBehaviour
         isGrounded = true;
         if(collision.gameObject.CompareTag("Spikes")) // Player runs into spikes
         {
+            m_Animator.SetBool("Walk Forward", false); // switch back to idle state to be able to go to die state
             m_Animator.SetTrigger("Die");
             loseText.text = "You died! Game over.";
         }
@@ -103,7 +105,7 @@ public class BoximonFieryMovement : MonoBehaviour
 
         if(collision.gameObject.CompareTag("Water"))
         {
-            m_Animator.SetBool("Walk Forward", false);
+            m_Animator.SetBool("Walk Forward", false); // switch back to idle state to be able to go to die state
             // The arrow keys trigger the animation, so the player needs to be stopped
             // TODO Before triggering death, forcefully stop the player from being able to move
             m_Animator.SetTrigger("Die");
@@ -128,13 +130,15 @@ public class BoximonFieryMovement : MonoBehaviour
         {
             if (isInvincble) return;
 
-            m_Animator.SetTrigger("Take Damage"); // A little laggy
+            m_Animator.SetBool("Walk Forward", false); // switch back to idle state to be able to go to damage state
+            m_Animator.SetTrigger("Take Damage"); // very short animation, could also transform position backwards a little bit
             health--;
             SetHealthText();
 
             // If no more health left, die
             if (health < 1)
             {
+                m_Animator.SetBool("Walk Forward", false); // switch back to idle state to be able to go to die state
                 m_Animator.SetTrigger("Die");
                 loseText.text = "You died! Game over.";
 
