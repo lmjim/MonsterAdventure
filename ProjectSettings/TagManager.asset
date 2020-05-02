@@ -12,6 +12,7 @@ TagManager:
   - Slime
   - Boximon Fist
   - Damage
+  - Boximon Bite
   layers:
   - Default
   - TransparentFX

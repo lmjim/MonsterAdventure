@@ -10,32 +10,40 @@ using UnityEngine.UI;
 
 public class FootmanGreenMovement : MonoBehaviour
 {
+    public float movementDistance = 2.0f;
     private int health;
     public Text healthText;
-    private bool beingAttacked;
+    //private bool beingAttacked;
     private bool dead;
 
+    public GameObject player;
+    private Animator playerAnimation;
+
     Animator m_Animator;
-    GameObject target;
+    //GameObject target;
     GameObject boximon_attack;
     GameObject sword;
-    //Rigidbody m_RigidBody;
+    Rigidbody m_RigidBody;
     //Vector3 m_Movement;
+    private Vector3 newPosition;
 
     // Start is called before the first frame update
     void Start()
     {
         m_Animator = GetComponent<Animator>();
-        //m_RigidBody = GetComponent<Rigidbody>();
+        m_RigidBody = GetComponent<Rigidbody>();
 
-        health = 2;
+        health = 50;
         SetHealthText();
 
-        target = GameObject.Find("Boximon Fiery"); 
+        //target = GameObject.Find("Boximon Fiery"); 
+        playerAnimation = player.GetComponent<Animator>();
         boximon_attack = GameObject.Find("Rig");
         sword = GameObject.Find("Sword");
 
-        beingAttacked = false;
+        newPosition = m_RigidBody.position;
+
+        //beingAttacked = false;
         dead = false;
     }
 
@@ -45,14 +53,19 @@ public class FootmanGreenMovement : MonoBehaviour
         // Rotate footman to look at boximon while not dead
         if (!dead)
         {
-            Vector3 targetPosition = new Vector3(target.transform.position.x, transform.position.y, target.transform.position.z);
+            Vector3 targetPosition = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
             transform.LookAt(targetPosition);
         }
 
-        if (Input.GetKeyDown("f")) // BUG: If you press f at start of game and go to footman will cause instant damage
+        /*if (Input.GetKeyDown("f")) // BUG: If you press f at start of game and go to footman will cause instant damage
         {
             beingAttacked = true;
-        }
+        }*/
+    }
+
+    void OnAnimatorMove()
+    {
+        m_RigidBody.MovePosition(newPosition);
     }
 
     void OnCollisionEnter(Collision collision)
@@ -72,10 +85,14 @@ public class FootmanGreenMovement : MonoBehaviour
     void OnTriggerStay(Collider other)
     {
 
-        if (other.gameObject.CompareTag("Boximon Fist") && beingAttacked ) // Footman in vicinity of boximon and boximon attacking
+        if (other.gameObject.CompareTag("Boximon Bite") && playerAnimation.GetCurrentAnimatorStateInfo(0).IsName("Attack 02") /*TODO beingAttacked*/ ) // Footman in vicinity of boximon and boximon attacking
         {
+            m_Animator.SetBool("Attack2", false);
             m_Animator.SetTrigger("Get Hit");
             //m_Animator.SetBool("Get Hit2", true);
+
+
+            newPosition = m_RigidBody.position - transform.forward * movementDistance * Time.deltaTime;
 
 
             //boximon_attack.GetComponent<CapsuleCollider>().isTrigger = false; // Attempt to make trigger happen more than once -- doesn't work
@@ -95,13 +112,13 @@ public class FootmanGreenMovement : MonoBehaviour
                 boximon_attack.GetComponent<CapsuleCollider>().enabled = false;
             }
         }
-        beingAttacked = false;
-        m_Animator.SetBool("Get Hit2", false);
+        //beingAttacked = false;
+        //m_Animator.SetBool("Get Hit2", false);
     }
 
     void OnTriggerExit(Collider other)
     {
-        beingAttacked = false;
+        //beingAttacked = false;
         // boximon_attack.GetComponent<CapsuleCollider>().isTrigger = true;
     }
 
