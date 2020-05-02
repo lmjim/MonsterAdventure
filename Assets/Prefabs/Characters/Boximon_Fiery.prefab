@@ -162,10 +162,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4400086553769390}
-  - component: {fileID: 104786771985058279}
   m_Layer: 0
   m_Name: RigRArmPalmGizmo
-  m_TagString: Boximon Fist
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -184,19 +183,6 @@ Transform:
   m_Father: {fileID: 4744222756475520}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &104786771985058279
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1102409969739656}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.4
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1211640389390910
 GameObject:
   m_ObjectHideFlags: 0
@@ -423,9 +409,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4585977435627606}
+  - component: {fileID: 5773851558841384222}
   m_Layer: 0
   m_Name: Rig
-  m_TagString: Untagged
+  m_TagString: Boximon Fist
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -444,6 +431,20 @@ Transform:
   m_Father: {fileID: 4744222756475520}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &5773851558841384222
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1317441375476990}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.20303425
+  m_Height: 0.6085957
+  m_Direction: 2
+  m_Center: {x: -0.5, y: 0.5, z: 0}
 --- !u!1 &1343965748183220
 GameObject:
   m_ObjectHideFlags: 0

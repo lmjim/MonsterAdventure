@@ -32,7 +32,7 @@ public class FootmanGreenMovement : MonoBehaviour
         SetHealthText();
 
         target = GameObject.Find("Boximon Fiery"); 
-        boximon_attack = GameObject.Find("RigRArmPalmGizmo");
+        boximon_attack = GameObject.Find("Rig");
         sword = GameObject.Find("Sword");
 
         beingAttacked = false;
