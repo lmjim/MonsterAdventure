@@ -9,16 +9,11 @@ public class Slime : MonoBehaviour
     public string message;
     public Text slimeText;
 
-    // Start is called before the first frame update
+    private Animator slimeAnimator;
+
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        slimeAnimator = GetComponent<Animator>();
     }
 
     public void ShowMessage()
@@ -29,5 +24,15 @@ public class Slime : MonoBehaviour
     public void RemoveMessage()
     {
         slimeText.text = "";
+    }
+
+    public void FinishLevel()
+    {
+        slimeAnimator.SetTrigger("Dance");
+    }
+
+    public void PlayerDied()
+    {
+        slimeAnimator.SetTrigger("SenseSomething");
     }
 }

@@ -4765,7 +4765,7 @@ GameObject:
   - component: {fileID: -5322939466024928697}
   m_Layer: 0
   m_Name: Portal High
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4810,6 +4810,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f52a46ba4bf84b044b5ebe9711c3b806, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  winText: {fileID: 0}
 --- !u!1 &1535530420354860888
 GameObject:
   m_ObjectHideFlags: 0

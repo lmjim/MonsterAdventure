@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1270113878594233048}
   m_Layer: 0
   m_Name: Button Platform Red Low
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

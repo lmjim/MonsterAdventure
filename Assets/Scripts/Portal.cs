@@ -10,9 +10,11 @@ using UnityEngine.UI;
 
 public class Portal : MonoBehaviour
 {
-    private ParticleSystem ps;
+    public GameObject player;
     public Text winText;
     
+    private ParticleSystem ps;   
+
     void Start()
     {
         ps = transform.GetChild(0).gameObject.transform.GetChild(0).GetComponent<ParticleSystem>();
@@ -27,7 +29,7 @@ public class Portal : MonoBehaviour
             {
                 //print("Level Complete! Stars collected: " + Star.starsCollected.ToString()); // TODO update this with end level
                 winText.text = "Level Complete! Stars collected: " + Star.starsCollected.ToString();
-
+                player.GetComponent<BoximonFieryMovement>().FinishLevel();
             }
         }
     }

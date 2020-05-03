@@ -4765,7 +4765,7 @@ GameObject:
   - component: {fileID: 5823813923925240602}
   m_Layer: 0
   m_Name: Portal Low
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4797,6 +4797,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f52a46ba4bf84b044b5ebe9711c3b806, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  winText: {fileID: 0}
 --- !u!65 &5823813923925240602
 BoxCollider:
   m_ObjectHideFlags: 0
