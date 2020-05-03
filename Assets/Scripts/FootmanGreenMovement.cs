@@ -10,9 +10,10 @@ using UnityEngine.UI;
 
 public class FootmanGreenMovement : MonoBehaviour
 {
-    public float movementDistance = 2.0f;
-    private int health;
-    public Text healthText;
+    public float m_Speed = 1.0f;
+    private float movementDistance = 30.0f;
+    //private int health;
+    //public Text healthText;
     //private bool beingAttacked;
     private bool dead;
 
@@ -24,6 +25,7 @@ public class FootmanGreenMovement : MonoBehaviour
     GameObject boximon_attack;
     GameObject sword;
     Rigidbody m_RigidBody;
+    CapsuleCollider m_Collider;
     //Vector3 m_Movement;
     private Vector3 newPosition;
 
@@ -32,9 +34,10 @@ public class FootmanGreenMovement : MonoBehaviour
     {
         m_Animator = GetComponent<Animator>();
         m_RigidBody = GetComponent<Rigidbody>();
+        m_Collider = GetComponent<CapsuleCollider>();
 
-        health = 50;
-        SetHealthText();
+        //health = 50;
+        //SetHealthText();
 
         //target = GameObject.Find("Boximon Fiery"); 
         playerAnimation = player.GetComponent<Animator>();
@@ -65,7 +68,10 @@ public class FootmanGreenMovement : MonoBehaviour
 
     void OnAnimatorMove()
     {
-        m_RigidBody.MovePosition(newPosition);
+        if(!dead)
+        {
+            m_RigidBody.MovePosition(newPosition);
+        }
     }
 
     void OnCollisionEnter(Collision collision)
@@ -82,6 +88,17 @@ public class FootmanGreenMovement : MonoBehaviour
         m_Animator.SetBool("Attack2", false);
     }
 
+    void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.CompareTag("Stage Cliff"))
+        {
+            m_Animator.SetTrigger("Die");
+            dead = true;
+            m_Collider.enabled = false;
+            sword.GetComponent<CapsuleCollider>().enabled = false;
+        }
+    }
+
     void OnTriggerStay(Collider other)
     {
 
@@ -96,7 +113,7 @@ public class FootmanGreenMovement : MonoBehaviour
 
 
             //boximon_attack.GetComponent<CapsuleCollider>().isTrigger = false; // Attempt to make trigger happen more than once -- doesn't work
-            health--;
+            /*health--;
             SetHealthText();
             
             if (health < 1)
@@ -110,7 +127,7 @@ public class FootmanGreenMovement : MonoBehaviour
                 // Disable colldiers after footman is dead
                 sword.GetComponent<CapsuleCollider>().enabled = false; // Don't want sword to cause damage after footman is dead
                 boximon_attack.GetComponent<CapsuleCollider>().enabled = false;
-            }
+            }*/
         }
         //beingAttacked = false;
         //m_Animator.SetBool("Get Hit2", false);
@@ -122,8 +139,8 @@ public class FootmanGreenMovement : MonoBehaviour
         // boximon_attack.GetComponent<CapsuleCollider>().isTrigger = true;
     }
 
-    public void SetHealthText()
+    /*public void SetHealthText()
     {
         healthText.text = "Enemy Health: " + health.ToString();
-    }
+    }*/
 }
