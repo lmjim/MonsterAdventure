@@ -73,14 +73,11 @@ public class FootmanGreenMovement : MonoBehaviour
         }
         else // if the footman has died, he has fallen off the stage
         {
-            if (transform.position.y < -5)
-                {
-                    Destroy(gameObject); // don't let the footman fall forever, remove him from the scene
-                }
+            Destroy(gameObject, 5); // don't let the footman fall forever, remove him from the scene
         }
     }
 
-    void OnAnimatorMove()
+    void FixedUpdate()
     {
         if(!dead)
         {
@@ -110,9 +107,20 @@ public class FootmanGreenMovement : MonoBehaviour
         {
             footmanAnimator.SetBool("Attack", false);
             footmanAnimator.SetTrigger("Die");
+            footmanRigidbody.drag = 5; // decrease falling speed
             dead = true;
             footmanCollider.enabled = false; // allow to fall easily
             swordCollider.enabled = false; // make sure sword can't do damage as he falls
+        }
+
+        if(other.gameObject.CompareTag("Water"))
+        {
+            footmanAnimator.SetBool("Attack", false);
+            footmanAnimator.SetTrigger("Die");
+            footmanRigidbody.drag = 10; // decrease drowning speed
+            dead = true;
+            footmanCollider.enabled = false; // allow to drown
+            swordCollider.enabled = false; // make sure sword can't do damage as he dies
         }
     }
 
