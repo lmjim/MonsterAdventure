@@ -10,67 +10,62 @@ using UnityEngine.UI;
 
 public class FootmanGreenMovement : MonoBehaviour
 {
-    public float m_Speed = 1.0f;
-    private float movementDistance = 30.0f;
-    //private int health;
-    //public Text healthText;
-    //private bool beingAttacked;
-    private bool dead;
-
     public GameObject player;
     private Animator playerAnimation;
 
-    Animator m_Animator;
-    //GameObject target;
-    GameObject boximon_attack;
-    GameObject sword;
-    Rigidbody m_RigidBody;
-    CapsuleCollider m_Collider;
-    //Vector3 m_Movement;
+    private Rigidbody footmanRigidbody;
+    private Animator footmanAnimator;
+    private CapsuleCollider footmanCollider;
+    private CapsuleCollider swordCollider;
     private Vector3 newPosition;
 
-    // Start is called before the first frame update
+    private float movementDistance = 30.0f;
+    private float attackDistance = 3.5f;
+    private float footmanViewAngle = 80.0f;
+    private bool dead = false;
+
     void Start()
     {
-        m_Animator = GetComponent<Animator>();
-        m_RigidBody = GetComponent<Rigidbody>();
-        m_Collider = GetComponent<CapsuleCollider>();
+        footmanRigidbody = GetComponent<Rigidbody>();
+        footmanAnimator = GetComponent<Animator>();
+        footmanCollider = GetComponent<CapsuleCollider>();
+        swordCollider = transform.GetChild(1).GetChild(2).transform.GetComponent<CapsuleCollider>(); // Sword is a child of a child of the footman
+        newPosition = footmanRigidbody.position;
 
-        //health = 50;
-        //SetHealthText();
-
-        //target = GameObject.Find("Boximon Fiery"); 
         playerAnimation = player.GetComponent<Animator>();
-        boximon_attack = GameObject.Find("Rig");
-        sword = GameObject.Find("Sword");
-
-        newPosition = m_RigidBody.position;
-
-        //beingAttacked = false;
-        dead = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        // Rotate footman to look at boximon while not dead
+        // Rotate footman to look at boximon during battle when not dead
         if (!dead)
         {
-            Vector3 targetPosition = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
-            transform.LookAt(targetPosition);
+            Vector3 playerPosition = player.transform.position;
+            float dist = Vector3.Distance(transform.position, playerPosition);
+            if (dist < attackDistance)
+            {
+                Vector3 directionToTarget = transform.position - playerPosition;
+                float angle = Vector3.Angle(-transform.forward, directionToTarget);
+                if(Mathf.Abs(angle) < footmanViewAngle)
+                {
+                    footmanAnimator.SetBool("Battle", true); // have the footman look like he is ready to attack
+                    Vector3 lookTowards = playerPosition;
+                    lookTowards.y = transform.position.y;
+                    transform.LookAt(lookTowards); // have the footman face the player during battle
+                }
+            }
+            else
+            {
+                footmanAnimator.SetBool("Battle", false); // if the player is not close enough, the footman will not be ready to attack
+            }
         }
-
-        /*if (Input.GetKeyDown("f")) // BUG: If you press f at start of game and go to footman will cause instant damage
-        {
-            beingAttacked = true;
-        }*/
     }
 
     void OnAnimatorMove()
     {
         if(!dead)
         {
-            m_RigidBody.MovePosition(newPosition);
+            footmanRigidbody.MovePosition(newPosition); // newPosition gets set when the footman is knocked backward
         }
     }
 
@@ -78,69 +73,40 @@ public class FootmanGreenMovement : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            //m_Animator.SetTrigger("Attack"); // Continuously swings sword
-            m_Animator.SetBool("Attack2", true); // Swings once
+            footmanAnimator.SetBool("Attack", true); // Swing sword
         }
     }
 
     void OnCollisionExit(Collision collision)
     {
-        m_Animator.SetBool("Attack2", false);
+        footmanAnimator.SetBool("Attack", false);
     }
 
     void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.CompareTag("Stage Cliff"))
         {
-            m_Animator.SetTrigger("Die");
-            dead = true;
-            m_Collider.enabled = false;
-            sword.GetComponent<CapsuleCollider>().enabled = false;
+            footmanAnimator.SetTrigger("Die");
+            dead = true; // mark footman as dead so certain things stop running 
+            /* TODO 
+            after player watches footman fall, Unity should stop calculating his position 
+            right now he falls forever, let's figure out how to stop that
+            basically we need to "uncheck" the footman so he is no longer part of the screen
+             */
+            footmanCollider.enabled = false; // allow to fall easily
+            swordCollider.enabled = false; // make sure sword can't do damage as he falls
         }
     }
 
     void OnTriggerStay(Collider other)
     {
 
-        if (other.gameObject.CompareTag("Boximon Bite") && playerAnimation.GetCurrentAnimatorStateInfo(0).IsName("Attack 02") /*TODO beingAttacked*/ ) // Footman in vicinity of boximon and boximon attacking
+        if (other.gameObject.CompareTag("Boximon Bite") && playerAnimation.GetCurrentAnimatorStateInfo(0).IsName("Attack 02")) // Footman in vicinity of boximon and boximon attacking
         {
-            m_Animator.SetBool("Attack2", false);
-            m_Animator.SetTrigger("Get Hit");
-            //m_Animator.SetBool("Get Hit2", true);
+            footmanAnimator.SetBool("Attack", false); // stop attacking so damage can be taken
+            footmanAnimator.SetTrigger("Take Damage"); // play the "knock back" animation
 
-
-            newPosition = m_RigidBody.position - transform.forward * movementDistance * Time.deltaTime;
-
-
-            //boximon_attack.GetComponent<CapsuleCollider>().isTrigger = false; // Attempt to make trigger happen more than once -- doesn't work
-            /*health--;
-            SetHealthText();
-            
-            if (health < 1)
-            {
-                m_Animator.SetTrigger("Die");
-                health = 0;
-                SetHealthText();
-
-                dead = true;
-
-                // Disable colldiers after footman is dead
-                sword.GetComponent<CapsuleCollider>().enabled = false; // Don't want sword to cause damage after footman is dead
-                boximon_attack.GetComponent<CapsuleCollider>().enabled = false;
-            }*/
+            newPosition = footmanRigidbody.position - transform.forward * movementDistance * Time.deltaTime; // this sets the spot the footman should be knocked back to
         }
-        //beingAttacked = false;
-        //m_Animator.SetBool("Get Hit2", false);
     }
-
-    void OnTriggerExit(Collider other)
-    {
-        //beingAttacked = false;
-        // boximon_attack.GetComponent<CapsuleCollider>().isTrigger = true;
-    }
-
-    /*public void SetHealthText()
-    {
-        healthText.text = "Enemy Health: " + health.ToString();
-    }*/
 }
