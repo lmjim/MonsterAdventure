@@ -4018,6 +4018,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 651961810}
   m_CullTransparentMesh: 0
+--- !u!1 &656041280
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 656041281}
+  - component: {fileID: 656041282}
+  m_Layer: 0
+  m_Name: Front
+  m_TagString: Stage Cliff
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &656041281
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 656041280}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.5803869, y: 0.37048733, z: -4.592664}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 786268594}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &656041282
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 656041280}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 13, y: 5, z: 1}
+  m_Center: {x: 2, y: 2, z: -2}
 --- !u!1001 &696943331
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4662,7 +4706,42 @@ Transform:
   m_Children:
   - {fileID: 1408676812}
   - {fileID: 433037370}
+  - {fileID: 786268594}
   m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &786268593
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 786268594}
+  m_Layer: 0
+  m_Name: Stage Cliff
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &786268594
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 786268593}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.5803869, y: -0.37048733, z: 4.592664}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 801770667}
+  - {fileID: 2006145852}
+  - {fileID: 1966623722}
+  - {fileID: 656041281}
+  m_Father: {fileID: 785829426}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &787538993
@@ -4751,7 +4830,7 @@ GameObject:
   - component: {fileID: 801770667}
   - component: {fileID: 801770666}
   m_Layer: 0
-  m_Name: Stage Cliff
+  m_Name: Back
   m_TagString: Stage Cliff
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4768,7 +4847,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 11, y: 5, z: 1}
+  m_Size: {x: 13, y: 5, z: 1}
   m_Center: {x: 2, y: 2, z: 8}
 --- !u!4 &801770667
 Transform:
@@ -4777,12 +4856,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 801770665}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.5803869, y: 0.37048733, z: -4.592664}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_Father: {fileID: 786268594}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &813648856
 GameObject:
@@ -7662,7 +7741,7 @@ PrefabInstance:
     - target: {fileID: 8989639793415061850, guid: d21a04d7970c925479d8ce4b73e71901,
         type: 3}
       propertyPath: movementSpeed
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8989639793415061850, guid: d21a04d7970c925479d8ce4b73e71901,
         type: 3}
@@ -7673,6 +7752,11 @@ PrefabInstance:
         type: 3}
       propertyPath: invincibilityDurationSeconds
       value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8989639793415061850, guid: d21a04d7970c925479d8ce4b73e71901,
+        type: 3}
+      propertyPath: health
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4744222756475520, guid: d21a04d7970c925479d8ce4b73e71901, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7821,7 +7905,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1500852531
 PrefabInstance:
@@ -7919,6 +8003,11 @@ PrefabInstance:
         type: 3}
       propertyPath: footmanViewAngle
       value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 7435173253795876166, guid: 007d93b430167464989fc12235843989,
+        type: 3}
+      propertyPath: swingDistance
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 109968, guid: 007d93b430167464989fc12235843989, type: 3}
       propertyPath: m_Name
@@ -8909,7 +8998,7 @@ RectTransform:
   - {fileID: 822561952}
   - {fileID: 1023465650}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -9473,6 +9562,50 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1957829883}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1966623721
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1966623722}
+  - component: {fileID: 1966623723}
+  m_Layer: 0
+  m_Name: Right
+  m_TagString: Stage Cliff
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1966623722
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1966623721}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.5803869, y: 0.37048733, z: -4.592664}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 786268594}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1966623723
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1966623721}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 5, z: 9}
+  m_Center: {x: 9, y: 2, z: 3}
 --- !u!1001 &1972495956
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9836,6 +9969,50 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2003325974}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2006145851
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2006145852}
+  - component: {fileID: 2006145853}
+  m_Layer: 0
+  m_Name: Left
+  m_TagString: Stage Cliff
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2006145852
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2006145851}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.5803869, y: 0.37048733, z: -4.592664}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 786268594}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2006145853
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2006145851}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 5, z: 9}
+  m_Center: {x: -5, y: 2, z: 3}
 --- !u!1001 &2020566634
 PrefabInstance:
   m_ObjectHideFlags: 0

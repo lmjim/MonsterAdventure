@@ -21,7 +21,7 @@ public class FootmanGreenMovement : MonoBehaviour
 
     private float movementDistance = 30.0f;
     private float attackDistance = 3.5f;
-    private float footmanViewAngle = 80.0f;
+    //private float footmanViewAngle = 80.0f;
     private bool dead = false;
 
     void Start()
@@ -29,8 +29,8 @@ public class FootmanGreenMovement : MonoBehaviour
         footmanRigidbody = GetComponent<Rigidbody>();
         footmanAnimator = GetComponent<Animator>();
         footmanCollider = GetComponent<CapsuleCollider>();
-        swordCollider = transform.GetChild(1).GetChild(2).transform.GetComponent<CapsuleCollider>(); // Sword is a child of a child of the footman
-        newPosition = footmanRigidbody.position;
+        swordCollider = transform.GetChild(1).GetChild(2).transform.GetComponent<CapsuleCollider>(); // sword is a child of a child of the footman
+        newPosition = transform.position;
 
         playerAnimation = player.GetComponent<Animator>();
     }
@@ -44,20 +44,39 @@ public class FootmanGreenMovement : MonoBehaviour
             float dist = Vector3.Distance(transform.position, playerPosition);
             if (dist < attackDistance)
             {
-                Vector3 directionToTarget = transform.position - playerPosition;
-                float angle = Vector3.Angle(-transform.forward, directionToTarget);
-                if(Mathf.Abs(angle) < footmanViewAngle)
-                {
+                //Vector3 directionToTarget = transform.position - playerPosition;
+                //float angle = Vector3.Angle(-transform.forward, directionToTarget);
+                //if(Mathf.Abs(angle) < footmanViewAngle) // this lets you perform sneak attacks, but when the footman is hit from behind, his position glitches
+                //{
                     footmanAnimator.SetBool("Battle", true); // have the footman look like he is ready to attack
                     Vector3 lookTowards = playerPosition;
                     lookTowards.y = transform.position.y;
                     transform.LookAt(lookTowards); // have the footman face the player during battle
-                }
+                //}
             }
             else
             {
                 footmanAnimator.SetBool("Battle", false); // if the player is not close enough, the footman will not be ready to attack
             }
+
+            /*
+            THIS MAKES THE FOOTMAN MUCH HARDER TO DEFEAT
+            maybe use this on a higher level footman
+            if (dist < 2)
+            {
+                footmanAnimator.SetBool("Attack", true); // swing sword
+            }
+            else
+            {
+                footmanAnimator.SetBool("Attack", false); // don't swing sword
+            }*/
+        }
+        else // if the footman has died, he has fallen off the stage
+        {
+            if (transform.position.y < -5)
+                {
+                    Destroy(gameObject); // don't let the footman fall forever, remove him from the scene
+                }
         }
     }
 
@@ -73,26 +92,25 @@ public class FootmanGreenMovement : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            footmanAnimator.SetBool("Attack", true); // Swing sword
+            footmanAnimator.SetBool("Attack", true); // swing sword
         }
     }
 
     void OnCollisionExit(Collision collision)
     {
-        footmanAnimator.SetBool("Attack", false);
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            footmanAnimator.SetBool("Attack", false); // stop swinging sword
+        }
     }
 
     void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.CompareTag("Stage Cliff"))
         {
+            footmanAnimator.SetBool("Attack", false);
             footmanAnimator.SetTrigger("Die");
-            dead = true; // mark footman as dead so certain things stop running 
-            /* TODO 
-            after player watches footman fall, Unity should stop calculating his position 
-            right now he falls forever, let's figure out how to stop that
-            basically we need to "uncheck" the footman so he is no longer part of the screen
-             */
+            dead = true;
             footmanCollider.enabled = false; // allow to fall easily
             swordCollider.enabled = false; // make sure sword can't do damage as he falls
         }
@@ -101,12 +119,12 @@ public class FootmanGreenMovement : MonoBehaviour
     void OnTriggerStay(Collider other)
     {
 
-        if (other.gameObject.CompareTag("Boximon Bite") && playerAnimation.GetCurrentAnimatorStateInfo(0).IsName("Attack 02")) // Footman in vicinity of boximon and boximon attacking
+        if (other.gameObject.CompareTag("Boximon Bite") && playerAnimation.GetCurrentAnimatorStateInfo(0).IsName("Attack 02")) // footman is in the vicinity of boximon and boximon attacking
         {
             footmanAnimator.SetBool("Attack", false); // stop attacking so damage can be taken
             footmanAnimator.SetTrigger("Take Damage"); // play the "knock back" animation
 
-            newPosition = footmanRigidbody.position - transform.forward * movementDistance * Time.deltaTime; // this sets the spot the footman should be knocked back to
+            newPosition = transform.position - transform.forward * movementDistance * Time.deltaTime; // this sets the spot the footman should be knocked back to
         }
     }
 }

@@ -255,6 +255,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  swingDistance: 1
 --- !u!1 &112538
 GameObject:
   m_ObjectHideFlags: 0
