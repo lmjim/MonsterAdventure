@@ -11,6 +11,8 @@ using UnityEngine.UI;
 
 public class BoximonFieryMovement : MonoBehaviour
 {
+    public static bool levelOver = false;
+    
     public Text healthText;
     public Text loseText;
     public int health = 6; // leave this public, it could change based on the level
@@ -27,7 +29,6 @@ public class BoximonFieryMovement : MonoBehaviour
     private bool isGrounded = true;
     private bool isInvincible = false;
     private float invincibilityDurationSeconds = 0.5f;
-    private bool levelOver = false;
 
     void Start()
     {
@@ -103,12 +104,6 @@ public class BoximonFieryMovement : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Slime")) // Player goes near a slime
-        {
-            Slime theSlime = other.gameObject.GetComponent<Slime>();
-            theSlime.ShowMessage();
-        }
-
         if (other.gameObject.CompareTag("Damage")) // Player is hit by the sword
         {
             if (isInvincible) return;
@@ -135,15 +130,6 @@ public class BoximonFieryMovement : MonoBehaviour
         if (other.gameObject.CompareTag("Platform"))
         {
             isGrounded = true; // the buttons and portal should count as ground too
-        }
-    }
-
-    void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.CompareTag("Slime")) // Player leaves a slime
-        {
-            Slime theSlime = other.gameObject.GetComponent<Slime>();
-            theSlime.RemoveMessage();
         }
     }
 

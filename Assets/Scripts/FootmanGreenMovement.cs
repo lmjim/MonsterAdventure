@@ -75,6 +75,11 @@ public class FootmanGreenMovement : MonoBehaviour
         {
             Destroy(gameObject, 5); // don't let the footman fall forever, remove him from the scene
         }
+
+        if (BoximonFieryMovement.levelOver)
+        {
+            footmanAnimator.SetBool("Attack", false); // stop swinging sword
+        }
     }
 
     void FixedUpdate()

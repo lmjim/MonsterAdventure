@@ -16,14 +16,22 @@ public class Slime : MonoBehaviour
         slimeAnimator = GetComponent<Animator>();
     }
 
-    public void ShowMessage()
+    void OnTriggerEnter(Collider other)
     {
-        slimeText.text = message;
+        if (other.gameObject.CompareTag("Player"))
+        {
+            slimeText.text = message;
+            slimeAnimator.SetBool("Talking", true);
+        }
     }
 
-    public void RemoveMessage()
+    void OnTriggerExit(Collider other)
     {
-        slimeText.text = "";
+        if (other.gameObject.CompareTag("Player"))
+        {
+            slimeText.text = "";
+            slimeAnimator.SetBool("Talking", false);
+        }
     }
 
     public void FinishLevel()
