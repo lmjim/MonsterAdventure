@@ -133,6 +133,7 @@ GameObject:
   - component: {fileID: 95782878299265946}
   - component: {fileID: 6839978930791059544}
   - component: {fileID: 2291174819422329041}
+  - component: {fileID: 7727057504035930988}
   m_Layer: 0
   m_Name: Boximon_Cyclopes
   m_TagString: Player
@@ -178,7 +179,7 @@ Animator:
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: ab49f3cef633f1d4c84f8c46ec6c0b74, type: 3}
   m_Controller: {fileID: 9100000, guid: cad4cd74f41924a4bbcbe916d2f9cb9b, type: 2}
-  m_CullingMode: 1
+  m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
@@ -216,6 +217,22 @@ CapsuleCollider:
   m_Height: 1.2
   m_Direction: 1
   m_Center: {x: 0, y: 0.6, z: 0}
+--- !u!114 &7727057504035930988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1111084942782338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d0eeff3aaede064eb94c6d5f10eab74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthText: {fileID: 0}
+  loseText: {fileID: 0}
+  health: 5
+  movementSpeed: 6
 --- !u!1 &1159647506406770
 GameObject:
   m_ObjectHideFlags: 0
@@ -974,7 +991,7 @@ GameObject:
   - component: {fileID: 1527186785992524875}
   m_Layer: 0
   m_Name: Rig
-  m_TagString: Untagged
+  m_TagString: Boximon Bite
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

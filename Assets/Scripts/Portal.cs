@@ -10,13 +10,16 @@ using UnityEngine.UI;
 
 public class Portal : MonoBehaviour
 {
-    public GameObject player;
+    public GameObject players;
     public Text winText;
     
+    private GameObject player;
     private ParticleSystem ps;   
 
     void Start()
     {
+        player = PlayerSwitch.DefinePlayer(players);
+
         ps = transform.GetChild(0).gameObject.transform.GetChild(0).GetComponent<ParticleSystem>();
         winText.text = "";
     }
@@ -28,7 +31,7 @@ public class Portal : MonoBehaviour
             if(ps.isEmitting)
             {
                 winText.text = "Level Complete!\nStars collected: " + LevelTracker.starsCollected.ToString() + "\nEnemies Defeated: " + LevelTracker.enemiesDefeated.ToString() + "\nPress Enter to return home";
-                player.GetComponent<BoximonFieryMovement>().FinishLevel();
+                player.GetComponent<PlayerController>().FinishLevel();
             }
         }
     }

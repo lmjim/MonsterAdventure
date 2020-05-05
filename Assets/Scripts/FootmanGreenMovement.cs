@@ -10,7 +10,8 @@ using UnityEngine.UI;
 
 public class FootmanGreenMovement : MonoBehaviour
 {
-    public GameObject player;
+    public GameObject players;
+    private GameObject player;
     private Animator playerAnimation;
 
     private Rigidbody footmanRigidbody;
@@ -26,6 +27,8 @@ public class FootmanGreenMovement : MonoBehaviour
 
     void Start()
     {
+        player = PlayerSwitch.DefinePlayer(players);
+        
         footmanRigidbody = GetComponent<Rigidbody>();
         footmanAnimator = GetComponent<Animator>();
         footmanCollider = GetComponent<CapsuleCollider>();

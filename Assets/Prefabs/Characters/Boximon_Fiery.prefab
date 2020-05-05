@@ -1077,7 +1077,7 @@ GameObject:
   - component: {fileID: 95206688057043068}
   - component: {fileID: 2034923012128762230}
   - component: {fileID: 9195971507251737618}
-  - component: {fileID: 8989639793415061850}
+  - component: {fileID: 5139463808777939581}
   m_Layer: 0
   m_Name: Boximon_Fiery
   m_TagString: Player
@@ -1161,7 +1161,7 @@ CapsuleCollider:
   m_Height: 1.2
   m_Direction: 1
   m_Center: {x: 0, y: 0.6, z: 0}
---- !u!114 &8989639793415061850
+--- !u!114 &5139463808777939581
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1170,12 +1170,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1975194375736644}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a4bb9b149cdc413984f15f1a59bd74b, type: 3}
+  m_Script: {fileID: 11500000, guid: 2d0eeff3aaede064eb94c6d5f10eab74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
   healthText: {fileID: 0}
   loseText: {fileID: 0}
+  health: 5
+  movementSpeed: 6
 --- !u!1 &1992369794795074
 GameObject:
   m_ObjectHideFlags: 0
