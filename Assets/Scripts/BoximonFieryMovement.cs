@@ -10,9 +10,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class BoximonFieryMovement : MonoBehaviour
-{
-    public static bool levelOver = false;
-    
+{   
     public Text healthText;
     public Text loseText;
     public int health = 6; // leave this public, it could change based on the level
@@ -44,7 +42,7 @@ public class BoximonFieryMovement : MonoBehaviour
 
     void Update()
     {
-        if(!levelOver)
+        if(!LevelTracker.levelOver)
         {
             if (Input.GetKeyDown("space") && isGrounded)
             {
@@ -62,7 +60,7 @@ public class BoximonFieryMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(!levelOver)
+        if(!LevelTracker.levelOver)
         {
             // Walking Functionality
             float horizontal = Input.GetAxis("Horizontal");
@@ -149,24 +147,26 @@ public class BoximonFieryMovement : MonoBehaviour
     public void FinishLevel() // this is called by the portal
     {
         playerAnimator.SetBool("Walk Forward", false); // stop the player from moving
-        levelOver = true;
 
         foreach (GameObject slime in slimes)
         {
             slime.GetComponent<Slime>().FinishLevel();
         }
+
+        LevelTracker.EndLevel(true);
     }
 
     void Die()
     {
         playerAnimator.SetBool("Walk Forward", false); // switch back to idle state to be able to go to die state
         playerAnimator.SetTrigger("Die");
-        loseText.text = "You died! Game over.";
-        levelOver = true;
+        loseText.text = "You died! Game over.\nPress Enter to return home.";
 
         foreach (GameObject slime in slimes)
         {
             slime.GetComponent<Slime>().PlayerDied();
         }
+
+        LevelTracker.EndLevel(false);
     }
 }

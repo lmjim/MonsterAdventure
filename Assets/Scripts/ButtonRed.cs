@@ -41,7 +41,7 @@ public class ButtonRed : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        if(other.gameObject.CompareTag("Player")) // when the player steps on the button
+        if(other.gameObject.CompareTag("Player")) // when the player steps off the button
         {
             this.transform.GetChild(0).transform.position += Vector3.up * 2 * Time.deltaTime; // unpush the button
         }

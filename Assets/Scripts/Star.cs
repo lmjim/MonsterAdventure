@@ -9,8 +9,6 @@ using UnityEngine;
 
 public class Star : MonoBehaviour
 {
-    public static int starsCollected = 0; // this is a "global" variable so other scripts can access it
-    
     private ParticleSystem ps;
     private bool collected = false;
 
@@ -26,7 +24,7 @@ public class Star : MonoBehaviour
             if(!collected & ps.isEmitting) // if the star hasn't already been collected and is visible
             {
                 ps.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear); // collect the star
-                starsCollected++; // keep track of the number of stars collected
+                LevelTracker.starsCollected++; // keep track of the number of stars collected
                 collected = true; // can't collect it again
             }
         }

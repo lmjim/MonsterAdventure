@@ -27,7 +27,7 @@ public class Portal : MonoBehaviour
         {
             if(ps.isEmitting)
             {
-                winText.text = "Level Complete! Stars collected: " + Star.starsCollected.ToString();
+                winText.text = "Level Complete!\nStars collected: " + LevelTracker.starsCollected.ToString() + "\nEnemies Defeated: " + LevelTracker.enemiesDefeated.ToString() + "\nPress Enter to return home";
                 player.GetComponent<BoximonFieryMovement>().FinishLevel();
             }
         }

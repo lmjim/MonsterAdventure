@@ -76,7 +76,7 @@ public class FootmanGreenMovement : MonoBehaviour
             Destroy(gameObject, 5); // don't let the footman fall forever, remove him from the scene
         }
 
-        if (BoximonFieryMovement.levelOver)
+        if (LevelTracker.levelOver)
         {
             footmanAnimator.SetBool("Attack", false); // stop swinging sword
         }
@@ -116,6 +116,7 @@ public class FootmanGreenMovement : MonoBehaviour
             dead = true;
             footmanCollider.enabled = false; // allow to fall easily
             swordCollider.enabled = false; // make sure sword can't do damage as he falls
+            LevelTracker.enemiesDefeated++;
         }
 
         if(other.gameObject.CompareTag("Water"))
@@ -126,6 +127,7 @@ public class FootmanGreenMovement : MonoBehaviour
             dead = true;
             footmanCollider.enabled = false; // allow to drown
             swordCollider.enabled = false; // make sure sword can't do damage as he dies
+            LevelTracker.enemiesDefeated++;
         }
     }
 

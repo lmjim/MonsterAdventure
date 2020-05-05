@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Slime : MonoBehaviour
 {
 
-    public string message;
+    public string message = "";
     public Text slimeText;
 
     private Animator slimeAnimator;
@@ -21,7 +21,7 @@ public class Slime : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             slimeText.text = message;
-            slimeAnimator.SetBool("Talking", true);
+            StartTalking();
         }
     }
 
@@ -30,8 +30,18 @@ public class Slime : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             slimeText.text = "";
-            slimeAnimator.SetBool("Talking", false);
+            StopTalking();
         }
+    }
+
+    public void StartTalking()
+    {
+        slimeAnimator.SetBool("Talking", true);
+    }
+
+    public void StopTalking()
+    {
+        slimeAnimator.SetBool("Talking", false);
     }
 
     public void FinishLevel()
