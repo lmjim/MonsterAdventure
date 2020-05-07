@@ -28,6 +28,12 @@ public class PlayerController : MonoBehaviour
     private bool isInvincible = false;
     private float invincibilityDurationSeconds = 0.5f;
 
+    public bool canSprint = false;
+    private bool isSprinting = false;
+    public bool canDoubleJump = false;
+    public bool canWallJump = false;
+
+
     void Start()
     {
         playerAnimator = GetComponent<Animator>();
@@ -53,7 +59,16 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKeyDown("f"))
             {
                 playerAnimator.SetBool("Walk Forward", false); // switch back to idle state to be able to go to attack state
+                playerAnimator.SetBool("Run Forward", false);
                 playerAnimator.SetTrigger("Attack 02"); // Bite
+            }
+
+            if (Input.GetKeyDown("left shift")) // toggle sprint
+            {
+                if (canSprint)
+                {
+                    isSprinting = !isSprinting;
+                }
             }
         }
     }
@@ -69,8 +84,19 @@ public class PlayerController : MonoBehaviour
             playerMovement.Normalize();
             bool hasHorizontalInput = !Mathf.Approximately(horizontal, 0f);
             bool hasVerticalInput = !Mathf.Approximately(vertical, 0f);
-            bool walkForward = hasHorizontalInput || hasVerticalInput;
-            playerAnimator.SetBool("Walk Forward", walkForward);
+            bool hasInput = hasHorizontalInput || hasVerticalInput;
+
+            if (isSprinting)
+            {
+                playerAnimator.SetBool("Walk Forward", false);
+                playerAnimator.SetBool("Run Forward", true && hasInput);
+            }
+            else
+            {
+                playerAnimator.SetBool("Run Forward", false);
+                playerAnimator.SetBool("Walk Forward", hasInput);
+            }
+            
             Vector3 desiredForward = Vector3.RotateTowards(transform.forward, playerMovement, turnSpeed * Time.deltaTime, 0f);
             playerRotation = Quaternion.LookRotation(desiredForward);
         }
@@ -83,7 +109,17 @@ public class PlayerController : MonoBehaviour
 
     void OnAnimatorMove()
     {
-        playerRB.MovePosition(playerRB.position + playerMovement * playerAnimator.deltaPosition.magnitude * movementSpeed);
+        // This is really hacky but something about our movement sort of combining with animations made running way too fast, this helps that for now at least
+        // We could adjust the speed with this in the future if we can fix the bug where when sprinting you can end your sprint to get a sudden huge burst before the animation changes
+        if (isSprinting)
+        {
+            playerRB.MovePosition(playerRB.position + playerMovement * playerAnimator.deltaPosition.magnitude * (movementSpeed * .25f));
+        }
+        else
+        {
+            playerRB.MovePosition(playerRB.position + playerMovement * playerAnimator.deltaPosition.magnitude * movementSpeed);
+        }
+
         playerRB.MoveRotation(playerRotation);
     }
 
@@ -107,6 +143,7 @@ public class PlayerController : MonoBehaviour
             if (isInvincible) return;
 
             playerAnimator.SetBool("Walk Forward", false); // switch back to idle state to be able to go to damage state
+            playerAnimator.SetBool("Run Forward", false);
             playerAnimator.SetTrigger("Take Damage"); // very short animation, could also transform position backwards a little bit
             health--;
             SetHealthText();
@@ -147,6 +184,7 @@ public class PlayerController : MonoBehaviour
     public void FinishLevel() // this is called by the portal
     {
         playerAnimator.SetBool("Walk Forward", false); // stop the player from moving
+        playerAnimator.SetBool("Run Forward", false);
 
         foreach (GameObject slime in slimes)
         {
@@ -159,6 +197,8 @@ public class PlayerController : MonoBehaviour
     void Die()
     {
         playerAnimator.SetBool("Walk Forward", false); // switch back to idle state to be able to go to die state
+        playerAnimator.SetBool("Run Forward", false);
+
         playerAnimator.SetTrigger("Die");
         loseText.text = "You died! Game over.\nPress Enter to return home.";
 

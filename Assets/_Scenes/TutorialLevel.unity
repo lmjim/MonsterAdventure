@@ -4091,7 +4091,7 @@ PrefabInstance:
         type: 3}
       propertyPath: message
       value: Hi! I'm the blue slime. There's a scary green guy over there, he can't
-        move though! Use F to kill his ass!
+        move though. Hit F to do a shove attack and try to push him off the edge!
       objectReference: {fileID: 0}
     - target: {fileID: 3081277720127655528, guid: 93fb8e8a7f46ca34caa77b500502c2f5,
         type: 3}
@@ -8052,29 +8052,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 369991689}
     m_Modifications:
-    - target: {fileID: 5139463808777939581, guid: d21a04d7970c925479d8ce4b73e71901,
-        type: 3}
-      propertyPath: healthText
-      value: 
-      objectReference: {fileID: 2125863894}
-    - target: {fileID: 5139463808777939581, guid: d21a04d7970c925479d8ce4b73e71901,
-        type: 3}
-      propertyPath: loseText
-      value: 
-      objectReference: {fileID: 822561953}
-    - target: {fileID: 5139463808777939581, guid: d21a04d7970c925479d8ce4b73e71901,
-        type: 3}
-      propertyPath: health
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1975194375736644, guid: d21a04d7970c925479d8ce4b73e71901, type: 3}
-      propertyPath: m_Name
-      value: Boximon Fiery
-      objectReference: {fileID: 0}
-    - target: {fileID: 1975194375736644, guid: d21a04d7970c925479d8ce4b73e71901, type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: healthText
       value: 
@@ -8106,6 +8083,29 @@ PrefabInstance:
     - target: {fileID: 0}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1975194375736644, guid: d21a04d7970c925479d8ce4b73e71901, type: 3}
+      propertyPath: m_Name
+      value: Boximon Fiery
+      objectReference: {fileID: 0}
+    - target: {fileID: 1975194375736644, guid: d21a04d7970c925479d8ce4b73e71901, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 5139463808777939581, guid: d21a04d7970c925479d8ce4b73e71901,
+        type: 3}
+      propertyPath: healthText
+      value: 
+      objectReference: {fileID: 2125863894}
+    - target: {fileID: 5139463808777939581, guid: d21a04d7970c925479d8ce4b73e71901,
+        type: 3}
+      propertyPath: loseText
+      value: 
+      objectReference: {fileID: 822561953}
+    - target: {fileID: 5139463808777939581, guid: d21a04d7970c925479d8ce4b73e71901,
+        type: 3}
+      propertyPath: health
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4744222756475520, guid: d21a04d7970c925479d8ce4b73e71901, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8269,6 +8269,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 369991689}
     m_Modifications:
+    - target: {fileID: 1111084942782338, guid: c8b969c0c1b00b2489a4052a944483c1, type: 3}
+      propertyPath: m_Name
+      value: Boximon_Cyclopes
+      objectReference: {fileID: 0}
+    - target: {fileID: 1111084942782338, guid: c8b969c0c1b00b2489a4052a944483c1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7727057504035930988, guid: c8b969c0c1b00b2489a4052a944483c1,
         type: 3}
       propertyPath: healthText
@@ -8283,14 +8291,6 @@ PrefabInstance:
         type: 3}
       propertyPath: health
       value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1111084942782338, guid: c8b969c0c1b00b2489a4052a944483c1, type: 3}
-      propertyPath: m_Name
-      value: Boximon_Cyclopes
-      objectReference: {fileID: 0}
-    - target: {fileID: 1111084942782338, guid: c8b969c0c1b00b2489a4052a944483c1, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4274285055804658, guid: c8b969c0c1b00b2489a4052a944483c1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -11063,7 +11063,7 @@ PrefabInstance:
       propertyPath: message
       value: Howdy! I'm the yellow slime. Did you know you can use the arrow keys
         or wasd to move around. Careful of the spikes and water though! Why don't
-        you go see what the purple slime has to say!
+        you go see what the other slimes have to say!
       objectReference: {fileID: 0}
     - target: {fileID: -317921997948733483, guid: bd37bf8bc9c996b4cb79d9948915b0f8,
         type: 3}
