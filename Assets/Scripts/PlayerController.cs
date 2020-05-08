@@ -113,10 +113,12 @@ public class PlayerController : MonoBehaviour
         // We could adjust the speed with this in the future if we can fix the bug where when sprinting you can end your sprint to get a sudden huge burst before the animation changes
         if (isSprinting)
         {
+            playerAnimator.SetBool("Walk Forward", false);
             playerRB.MovePosition(playerRB.position + playerMovement * playerAnimator.deltaPosition.magnitude * (movementSpeed * .25f));
         }
         else
         {
+            playerAnimator.SetBool("Run Forward", false);
             playerRB.MovePosition(playerRB.position + playerMovement * playerAnimator.deltaPosition.magnitude * movementSpeed);
         }
 
@@ -166,6 +168,35 @@ public class PlayerController : MonoBehaviour
         {
             isGrounded = true; // the buttons and portal should count as ground too
         }
+
+        if (other.gameObject.CompareTag("Iceball"))
+        {
+            if (isInvincible) return;
+
+            playerAnimator.SetBool("Walk Forward", false); // switch back to idle state to be able to go to damage state
+            playerAnimator.SetBool("Run Forward", false);
+            playerAnimator.SetTrigger("Take Damage"); // very short animation, could also transform position backwards a little bit
+            health -= 3; // Iceballs do more damage that the sword
+            SetHealthText();
+
+            // If no more health left, die
+            if (health < 1)
+            {
+                Die();
+
+                // Getting rid of negative numbers
+                health = 0;
+                SetHealthText();
+            }
+
+            // iFrame to maintain lives
+            StartCoroutine(BecomeTemporarilyInvincible());
+
+            // TODO: Slow the player, if we decide to do that!
+
+            // TODO: Add an icy particle the player when hit!
+        }
+
     }
 
     // Makes boximon invinsible for a little so it doesn't lose hella health
