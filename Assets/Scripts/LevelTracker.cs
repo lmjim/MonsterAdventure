@@ -35,6 +35,8 @@ public class LevelTracker : MonoBehaviour
     public static int starsCollected = 0;
     public static int enemiesDefeated = 0;
 
+    private static bool success = false;
+
     void Awake ()   
     {
         if (Instance == null)
@@ -52,12 +54,42 @@ public class LevelTracker : MonoBehaviour
     {
         if(levelOver)
         {
-            if (Input.GetKeyDown(KeyCode.Return))
+            if (Input.GetKeyDown(KeyCode.Escape))
             {
                 SceneManager.LoadScene("Home", LoadSceneMode.Single);
-                starsCollected = 0;
-                enemiesDefeated = 0;
-                levelOver = false;
+                ResetVariables();
+            }
+            if (Input.GetKeyDown(KeyCode.Backspace))
+            {
+                string level = SceneManager.GetActiveScene().name;
+                SceneManager.LoadScene(level, LoadSceneMode.Single);
+                ResetVariables();
+            }
+            if (success)
+            {
+                if (Input.GetKeyDown(KeyCode.Return))
+                {
+                    string level = SceneManager.GetActiveScene().name;
+                    switch (level)
+                    {
+                        case "TutorialLevel":
+                            SceneManager.LoadScene("Level1", LoadSceneMode.Single);
+                            break;
+                        case "Level1":
+                            SceneManager.LoadScene("Level2", LoadSceneMode.Single);
+                            break;
+                        case "Level2":
+                            SceneManager.LoadScene("Level3", LoadSceneMode.Single);
+                            break;
+                        case "Level3":
+                            SceneManager.LoadScene("BossLevel", LoadSceneMode.Single);
+                            break;
+                        case "BossLevel":
+                            SceneManager.LoadScene("Home", LoadSceneMode.Single);
+                            break;
+                    }
+                    ResetVariables();
+                }
             }
         }
     }
@@ -67,6 +99,7 @@ public class LevelTracker : MonoBehaviour
         levelOver = true;
         if(alive)
         {
+            success = true;
             string level = SceneManager.GetActiveScene().name;
             switch (level)
             {
@@ -95,5 +128,13 @@ public class LevelTracker : MonoBehaviour
                     break;
             }
         }
+    }
+
+    void ResetVariables()
+    {
+        starsCollected = 0;
+        enemiesDefeated = 0;
+        levelOver = false;
+        success = false;
     }
 }

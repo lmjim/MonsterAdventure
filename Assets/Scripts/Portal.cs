@@ -30,7 +30,9 @@ public class Portal : MonoBehaviour
         {
             if(ps.isEmitting)
             {
-                winText.text = "Level Complete!\nStars collected: " + LevelTracker.starsCollected.ToString() + "\nEnemies Defeated: " + LevelTracker.enemiesDefeated.ToString() + "\nPress Enter to return home";
+                winText.text = "Level Complete!\nStars collected: " + LevelTracker.starsCollected.ToString() + 
+                                "\nEnemies Defeated: " + LevelTracker.enemiesDefeated.ToString() + 
+                                "\nPress ENTER to continue\nPress BACKSPACE replay level\nPress ESC to return home";
                 player.GetComponent<PlayerController>().FinishLevel();
             }
         }
