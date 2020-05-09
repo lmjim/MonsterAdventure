@@ -309,7 +309,7 @@ PrefabInstance:
     - target: {fileID: 1869242720815255946, guid: efc46b5be305dc44f8564f68374167ba,
         type: 3}
       propertyPath: totalEnemies
-      value: 20
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: efc46b5be305dc44f8564f68374167ba, type: 3}
@@ -887,12 +887,12 @@ PrefabInstance:
     - target: {fileID: 1869242720815255946, guid: efc46b5be305dc44f8564f68374167ba,
         type: 3}
       propertyPath: totalStars
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1869242720815255946, guid: efc46b5be305dc44f8564f68374167ba,
         type: 3}
       propertyPath: totalEnemies
-      value: 10
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1869242720815255946, guid: efc46b5be305dc44f8564f68374167ba,
         type: 3}
@@ -2833,12 +2833,12 @@ PrefabInstance:
     - target: {fileID: 1869242720815255946, guid: efc46b5be305dc44f8564f68374167ba,
         type: 3}
       propertyPath: totalStars
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1869242720815255946, guid: efc46b5be305dc44f8564f68374167ba,
         type: 3}
       propertyPath: totalEnemies
-      value: 15
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1869242720815255946, guid: efc46b5be305dc44f8564f68374167ba,
         type: 3}
@@ -5725,7 +5725,7 @@ PrefabInstance:
     - target: {fileID: 1869242720815255946, guid: efc46b5be305dc44f8564f68374167ba,
         type: 3}
       propertyPath: totalEnemies
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1869242720815255946, guid: efc46b5be305dc44f8564f68374167ba,
         type: 3}
