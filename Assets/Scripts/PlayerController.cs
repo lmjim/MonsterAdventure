@@ -2,6 +2,7 @@
  * References:
  * Jump: https://answers.unity.com/questions/1020197/can-someone-help-me-make-a-simple-jump-script.html
  * iFrame: https://aleksandrhovhannisyan.github.io/blog/dev/invulnerability-frames-in-unity/
+ * Double Jump: https://www.youtube.com/watch?v=OqTwWIoR75Y
 */
 
 using System.Collections;
@@ -27,6 +28,9 @@ public class PlayerController : MonoBehaviour
     private bool isGrounded = true;
     private bool isInvincible = false;
     private float invincibilityDurationSeconds = 0.5f;
+    private int maxJumps = 2;
+    private int jumps = 0;
+    //float jumpforce = 5f;
 
     public bool canSprint = false;
     private bool isSprinting = false;
@@ -50,10 +54,28 @@ public class PlayerController : MonoBehaviour
     {
         if(!LevelTracker.levelOver)
         {
-            if (Input.GetKeyDown("space") && isGrounded)
+            //if (Input.GetKeyDown("space") && isGrounded)
+            //{ 
+            //    playerRB.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            //    isGrounded = false;
+            //}
+
+            if (!canDoubleJump)
             {
-                playerRB.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-                isGrounded = false;
+                if (Input.GetKeyDown("space") && isGrounded)
+                {
+                    playerRB.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+                    isGrounded = false;
+                }
+            }
+            else
+            {
+                if (Input.GetKeyDown("space") && (isGrounded || maxJumps > jumps))
+                {
+                    playerRB.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+                    isGrounded = false;
+                    jumps++;
+                }
             }
 
             if (Input.GetKeyDown("f"))
@@ -127,14 +149,17 @@ public class PlayerController : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.CompareTag("Spikes") || collision.gameObject.CompareTag("Water")) // player runs into spikes or falls into water
+        if(collision.gameObject.CompareTag("Spikes") || collision.gameObject.CompareTag("Water") || collision.gameObject.CompareTag("Lava")) // player runs into spikes or falls into water
         {
+            print("hellooo?");
             Die();
         }
 
         if (collision.gameObject.CompareTag("Ground")) // player is not jumping
         {
+ 
             isGrounded = true;
+            jumps = 0;
         }
     }
 
@@ -169,7 +194,7 @@ public class PlayerController : MonoBehaviour
             isGrounded = true; // the buttons and portal should count as ground too
         }
 
-        if (other.gameObject.CompareTag("Iceball"))
+        if (other.gameObject.CompareTag("Iceball") || (other.gameObject.CompareTag("Fireball")))
         {
             if (isInvincible) return;
 

@@ -18,6 +18,8 @@ TagManager:
   - Ancient  Unlocker
   - Footman_Blue
   - Iceball
+  - Fireball
+  - Lava
   layers:
   - Default
   - TransparentFX
