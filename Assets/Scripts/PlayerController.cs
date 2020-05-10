@@ -256,7 +256,7 @@ public class PlayerController : MonoBehaviour
         playerAnimator.SetBool("Run Forward", false);
 
         playerAnimator.SetTrigger("Die");
-        loseText.text = "You died! Game over.\nPress BACKSPACE replay level\nPress ESC to return home";
+        loseText.text = "You died! Game over.\nPress BACKSPACE replay level\nPress TAB to return home";
 
         foreach (GameObject slime in slimes)
         {

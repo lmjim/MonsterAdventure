@@ -54,7 +54,7 @@ public class LevelTracker : MonoBehaviour
     {
         if(levelOver)
         {
-            if (Input.GetKeyDown(KeyCode.Escape))
+            if (Input.GetKeyDown(KeyCode.Tab))
             {
                 SceneManager.LoadScene("Home", LoadSceneMode.Single);
                 ResetVariables();
