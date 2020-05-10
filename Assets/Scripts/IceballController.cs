@@ -6,9 +6,10 @@ public class IceballController : MonoBehaviour
 {
     void OnCollisionEnter(Collision collision)
     {
-        if (!collision.gameObject.CompareTag("Footman_Blue"))
+        if (!collision.gameObject.CompareTag("Footman_Blue") || (!collision.gameObject.CompareTag("Footman_Red")))
         {
                Destroy(gameObject);
         }
+        
     }
 }

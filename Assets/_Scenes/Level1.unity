@@ -17844,6 +17844,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Red Button
       objectReference: {fileID: 0}
+    - target: {fileID: -783046331775087578, guid: e0908f0fc5da133408dea0044b98062b,
+        type: 3}
+      propertyPath: portal
+      value: 
+      objectReference: {fileID: 2126220767}
     - target: {fileID: 4912010245623262, guid: e0908f0fc5da133408dea0044b98062b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 35
@@ -17888,11 +17893,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -783046331775087578, guid: e0908f0fc5da133408dea0044b98062b,
-        type: 3}
-      propertyPath: portal
-      value: 
-      objectReference: {fileID: 2126220767}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0908f0fc5da133408dea0044b98062b, type: 3}
 --- !u!4 &1158004723 stripped
@@ -27866,6 +27866,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1.1
       objectReference: {fileID: 0}
+    - target: {fileID: 3608771579939650745, guid: 8425575017ffbe645bd7efdc0c80b500,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 80
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8425575017ffbe645bd7efdc0c80b500, type: 3}
 --- !u!1 &1748431678 stripped
@@ -28852,13 +28857,22 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Footman_Green
       objectReference: {fileID: 0}
+    - target: {fileID: 109968, guid: 007d93b430167464989fc12235843989, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7435173253795876166, guid: 007d93b430167464989fc12235843989,
+        type: 3}
+      propertyPath: players
+      value: 
+      objectReference: {fileID: 581813561}
     - target: {fileID: 489874, guid: 007d93b430167464989fc12235843989, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.73
       objectReference: {fileID: 0}
     - target: {fileID: 489874, guid: 007d93b430167464989fc12235843989, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.273
+      value: -2.24
       objectReference: {fileID: 0}
     - target: {fileID: 489874, guid: 007d93b430167464989fc12235843989, type: 3}
       propertyPath: m_LocalPosition.z
@@ -28908,11 +28922,26 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 7435173253795876166, guid: 007d93b430167464989fc12235843989,
+    - target: {fileID: 3317787802414380472, guid: 007d93b430167464989fc12235843989,
         type: 3}
-      propertyPath: players
-      value: 
-      objectReference: {fileID: 581813561}
+      propertyPath: m_Constraints
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 3317787802414380472, guid: 007d93b430167464989fc12235843989,
+        type: 3}
+      propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3317787802414380472, guid: 007d93b430167464989fc12235843989,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1818879733988487788, guid: 007d93b430167464989fc12235843989,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 007d93b430167464989fc12235843989, type: 3}
 --- !u!1001 &1822287127

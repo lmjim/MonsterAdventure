@@ -56,17 +56,23 @@ public class FootmanRed : MonoBehaviour
                 Vector3 lookTowards = playerPosition;
                 lookTowards.y = transform.position.y;
                 transform.LookAt(lookTowards); // have the footman face the player during battle
-
+                
                 // Have the footman shoot the player
                 if (!shooting)
                 {
+                    if (controller.playerDead == true)
+                    {
+                        footmanAnimator.SetBool("Shoot", false);
+                        return;
+
+                    }
                     StartCoroutine(Shoot());
                 }
 
             }
             else
             {
-                footmanAnimator.SetBool("Shoot", false); // if the player is not close enough, the footman will not be ready to attack
+                footmanAnimator.SetBool("Shoot", false); // if the player dead, the footman will not be ready to attack
             }
 
         }
@@ -78,6 +84,7 @@ public class FootmanRed : MonoBehaviour
         if (LevelTracker.levelOver)
         {
             footmanAnimator.SetBool("Shoot", false); // stop shooting
+            
         }
     }
 
@@ -145,13 +152,14 @@ public class FootmanRed : MonoBehaviour
 
     private IEnumerator Shoot()
     {
+        
         shooting = true;
 
         // Shoot the iceball, can adapt fire rate with this wait for seconds
         _Fireball = Instantiate(GameObject.Find("Fireball")) as GameObject;
         _Fireball.transform.position = transform.TransformPoint((Vector3.forward * 1.5f) + (Vector3.up * .65f));
         _Fireball.transform.rotation = transform.rotation;
-        _Fireball.GetComponent<Rigidbody>().velocity = transform.TransformDirection(Vector3.forward * 3);
+        _Fireball.GetComponent<Rigidbody>().velocity = transform.TransformDirection(Vector3.forward * 2);
 
         yield return new WaitForSeconds(1f);
         shooting = false;

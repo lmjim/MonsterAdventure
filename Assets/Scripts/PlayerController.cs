@@ -14,8 +14,8 @@ public class PlayerController : MonoBehaviour
 {   
     public Text healthText;
     public Text loseText;
-    public int health = 5; // leave this public, it could change based on the level
-    public float movementSpeed = 6f; // leave this public, it could change based on the level
+    public int health = 20; // leave this public, it could change based on the level
+    public float movementSpeed = 7f; // leave this public, it could change based on the level
 
     private Animator playerAnimator;
     private Rigidbody playerRB;
@@ -36,6 +36,7 @@ public class PlayerController : MonoBehaviour
     private bool isSprinting = false;
     public bool canDoubleJump = false;
     public bool canWallJump = false;
+    public bool playerDead = false;
 
 
     void Start()
@@ -151,7 +152,6 @@ public class PlayerController : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Spikes") || collision.gameObject.CompareTag("Water") || collision.gameObject.CompareTag("Lava")) // player runs into spikes or falls into water
         {
-            print("hellooo?");
             Die();
         }
 
@@ -201,7 +201,7 @@ public class PlayerController : MonoBehaviour
             playerAnimator.SetBool("Walk Forward", false); // switch back to idle state to be able to go to damage state
             playerAnimator.SetBool("Run Forward", false);
             playerAnimator.SetTrigger("Take Damage"); // very short animation, could also transform position backwards a little bit
-            health -= 3; // Iceballs do more damage that the sword
+            health -= 2; // Iceballs do more damage that the sword
             SetHealthText();
 
             // If no more health left, die
@@ -257,6 +257,7 @@ public class PlayerController : MonoBehaviour
 
         playerAnimator.SetTrigger("Die");
         loseText.text = "You died! Game over.\nPress BACKSPACE replay level\nPress TAB to return home";
+        playerDead = true;
 
         foreach (GameObject slime in slimes)
         {

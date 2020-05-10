@@ -60,6 +60,13 @@ public class FootmanBlue : MonoBehaviour
                 // Have the footman shoot the player
                 if (!shooting)
                 {
+                    /* Stefan - Kiana added this to your script to stop the shooting if the player is dead */
+                    if (controller.playerDead == true)
+                    {
+                        footmanAnimator.SetBool("Shoot", false);
+                        return;
+
+                    }
                     StartCoroutine(Shoot());
                 }
 
