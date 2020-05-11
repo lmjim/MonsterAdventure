@@ -12,7 +12,6 @@ public class FootmanRed : MonoBehaviour
 {
     public GameObject players;
     private GameObject player;
-    private PlayerController controller;
     private Animator playerAnimation;
 
     private Rigidbody footmanRigidbody;
@@ -39,14 +38,12 @@ public class FootmanRed : MonoBehaviour
         playerAnimation = player.GetComponent<Animator>();
 
         footmanAnimator.SetBool("Battle", true);
-
-        controller = player.GetComponent<PlayerController>();
     }
 
     void Update()
     {
         // Rotate footman to look at boximon during battle when not dead
-        if (!dead && controller.health > 0)
+        if (!dead)
         {
             Vector3 playerPosition = player.transform.position;
             float dist = Vector3.Distance(transform.position, playerPosition);
@@ -60,13 +57,15 @@ public class FootmanRed : MonoBehaviour
                 // Have the footman shoot the player
                 if (!shooting)
                 {
-                    if (controller.playerDead == true)
+                    if (LevelTracker.levelOver) // Kiana - Lily changed this to check if level is over instead of player dead
                     {
                         footmanAnimator.SetBool("Shoot", false);
                         return;
-
                     }
-                    StartCoroutine(Shoot());
+                    else
+                    {
+                        StartCoroutine(Shoot());
+                    }
                 }
 
             }
