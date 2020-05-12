@@ -13,7 +13,8 @@ public class CameraController : MonoBehaviour
     void Start()
     {
         player = PlayerSwitch.DefinePlayer(players);
-        offset = transform.position - player.transform.position;
+        offset = new Vector3 (0, 5, -5); // defined vector so the camera is always the same between levels
+        transform.position = player.transform.position + offset;
     }
 
     // LateUpdate is called once per frame, but can be a bit late

@@ -35,6 +35,10 @@ public class LevelTracker : MonoBehaviour
     public static int starsCollected = 0;
     public static int enemiesDefeated = 0;
 
+    public static bool learnedSprint = false;
+    public static bool learnedDoubleJump = false;
+    public static bool learnedWallJump = false;
+
     private static bool success = false;
 
     void Awake ()   
@@ -111,16 +115,19 @@ public class LevelTracker : MonoBehaviour
                     level1Passed = alive;
                     level1Stars = Math.Max(level1Stars, starsCollected);
                     level1Enemies = Math.Max(level1Enemies, enemiesDefeated);
+                    learnedSprint = true;
                     break;
                 case "Level2":
                     level2Passed = alive;
                     level2Stars = Math.Max(level2Stars, starsCollected);
                     level2Enemies = Math.Max(level2Enemies, enemiesDefeated);
+                    learnedDoubleJump = true;
                     break;
                 case "Level3":
                     level3Passed = alive;
                     level3Stars = Math.Max(level3Stars, starsCollected);
                     level3Enemies = Math.Max(level3Enemies, enemiesDefeated);
+                    learnedWallJump = true;
                     break;
                 case "BossLevel":
                     bossPassed = alive;

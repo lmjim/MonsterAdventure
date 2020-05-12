@@ -46,11 +46,13 @@ public class Slime : MonoBehaviour
 
     public void FinishLevel()
     {
+        StopTalking();
         slimeAnimator.SetTrigger("Dance");
     }
 
     public void PlayerDied()
     {
+        StopTalking();
         slimeAnimator.SetTrigger("SenseSomething");
     }
 }

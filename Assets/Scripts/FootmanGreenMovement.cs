@@ -95,7 +95,7 @@ public class FootmanGreenMovement : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player") && !dead)
         {
             footmanAnimator.SetBool("Attack", true); // swing sword
         }
@@ -103,7 +103,7 @@ public class FootmanGreenMovement : MonoBehaviour
 
     void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player") && !dead)
         {
             footmanAnimator.SetBool("Attack", false); // stop swinging sword
         }
@@ -111,7 +111,7 @@ public class FootmanGreenMovement : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("Stage Cliff"))
+        if(other.gameObject.CompareTag("Stage Cliff") && !dead)
         {
             footmanAnimator.SetBool("Attack", false);
             footmanAnimator.SetTrigger("Die");
@@ -122,7 +122,7 @@ public class FootmanGreenMovement : MonoBehaviour
             LevelTracker.enemiesDefeated++;
         }
 
-        if(other.gameObject.CompareTag("Water"))
+        if(other.gameObject.CompareTag("Water") && !dead)
         {
             footmanAnimator.SetBool("Attack", false);
             footmanAnimator.SetTrigger("Die");
@@ -137,7 +137,7 @@ public class FootmanGreenMovement : MonoBehaviour
     void OnTriggerStay(Collider other)
     {
 
-        if (other.gameObject.CompareTag("Boximon Bite") && playerAnimation.GetCurrentAnimatorStateInfo(0).IsName("Attack 02")) // footman is in the vicinity of boximon and boximon attacking
+        if (other.gameObject.CompareTag("Boximon Bite") && playerAnimation.GetCurrentAnimatorStateInfo(0).IsName("Attack 02") && !dead) // footman is in the vicinity of boximon and boximon attacking
         {
             footmanAnimator.SetBool("Attack", false); // stop attacking so damage can be taken
             footmanAnimator.SetTrigger("Take Damage"); // play the "knock back" animation

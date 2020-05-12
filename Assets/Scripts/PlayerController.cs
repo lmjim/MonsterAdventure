@@ -30,14 +30,11 @@ public class PlayerController : MonoBehaviour
     private float invincibilityDurationSeconds = 0.5f;
     private int maxJumps = 2;
     private int jumps = 0;
-    //float jumpforce = 5f;
-
-    public bool canSprint = false;
     private bool isSprinting = false;
-    public bool canDoubleJump = false;
-    public bool canWallJump = false;
-    public bool playerDead = false;
 
+    public static bool canSprint = false;
+    public static bool canDoubleJump = false;
+    public static bool canWallJump = false;
 
     void Start()
     {
@@ -49,6 +46,20 @@ public class PlayerController : MonoBehaviour
         SetHealthText();
 
         loseText.text = "";
+
+        // check global tracker for previously learned abilities
+        if (LevelTracker.learnedSprint)
+        {
+            canSprint = true;
+        }
+        if (LevelTracker.learnedDoubleJump)
+        {
+            canDoubleJump = true;
+        }
+        if (LevelTracker.learnedWallJump)
+        {
+            canWallJump = true; 
+        }
     }
 
     void Update()
@@ -257,7 +268,6 @@ public class PlayerController : MonoBehaviour
 
         playerAnimator.SetTrigger("Die");
         loseText.text = "You died! Game over.\nPress BACKSPACE replay level\nPress TAB to return home";
-        playerDead = true;
 
         foreach (GameObject slime in slimes)
         {

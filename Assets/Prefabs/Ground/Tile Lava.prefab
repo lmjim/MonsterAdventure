@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 2125799819423637074}
   - component: {fileID: 2662268162289639349}
   m_Layer: 0
-  m_Name: Tile Brick
-  m_TagString: Ground
+  m_Name: Tile Lava
+  m_TagString: Lava
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -20,7 +20,7 @@ public class FootmanRed : MonoBehaviour
     private Vector3 newPosition;
 
     private float movementDistance = 30.0f;
-    private float shootDistance = 10f;
+    private float shootDistance = 8f;
     private float attackDistance = 4f;
     private bool dead = false;
 
@@ -38,8 +38,6 @@ public class FootmanRed : MonoBehaviour
         newPosition = transform.position;
 
         playerAnimation = player.GetComponent<Animator>();
-
-        footmanAnimator.SetBool("Battle", true);
     }
 
     void Update()
@@ -52,11 +50,14 @@ public class FootmanRed : MonoBehaviour
 
             if (dist < attackDistance)
             {
-                footmanAnimator.SetBool("Shoot", false);
-                footmanAnimator.SetBool("Attack", true); // swing sword
+                footmanAnimator.SetBool("Shoot", false); // stop shooting and return to battle stance
+                Vector3 lookTowards = playerPosition;
+                lookTowards.y = transform.position.y;
+                transform.LookAt(lookTowards); // have the footman face the player during battle
             }
             else if (dist < shootDistance)
             {
+                footmanAnimator.SetBool("Battle", true);
                 footmanAnimator.SetBool("Attack", false);
                 footmanAnimator.SetBool("Shoot", true);
                 Vector3 lookTowards = playerPosition;
@@ -79,8 +80,10 @@ public class FootmanRed : MonoBehaviour
             }
             else
             {
-                footmanAnimator.SetBool("Shoot", false); // if the player dead, the footman will not be ready to attack
+                // if the player is not close enough, the footman will not be ready to attack
+                footmanAnimator.SetBool("Shoot", false);
                 footmanAnimator.SetBool("Attack", false);
+                footmanAnimator.SetBool("Battle", false);
             }
 
         }
@@ -92,7 +95,7 @@ public class FootmanRed : MonoBehaviour
         if (LevelTracker.levelOver)
         {
             footmanAnimator.SetBool("Shoot", false); // stop shooting
-            
+            footmanAnimator.SetBool("Attack", false);
         }
     }
 
@@ -104,30 +107,28 @@ public class FootmanRed : MonoBehaviour
         }
     }
 
-    /*
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player") && !dead)
         {
-            print("Should swing");
-            footmanAnimator.SetBool("Shoot", true); // swing sword
+            footmanAnimator.SetBool("Attack", true); // swing sword
         }
     }
 
     void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player") && !dead)
         {
-            footmanAnimator.SetBool("Shoot", false); // stop swinging sword
+            footmanAnimator.SetBool("Attack", false); // stop swinging sword
         }
     }
-    */
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Stage Cliff"))
+        if (other.gameObject.CompareTag("Stage Cliff") && !dead)
         {
             footmanAnimator.SetBool("Shoot", false);
+            footmanAnimator.SetBool("Attack", false);
             footmanAnimator.SetTrigger("Die");
             footmanRigidbody.drag = 5; // decrease falling speed
             dead = true;
@@ -135,9 +136,10 @@ public class FootmanRed : MonoBehaviour
             LevelTracker.enemiesDefeated++;
         }
 
-        if (other.gameObject.CompareTag("Water"))
+        if ((other.gameObject.CompareTag("Water") || other.gameObject.CompareTag("Lava")) && !dead)
         {
             footmanAnimator.SetBool("Shoot", false);
+            footmanAnimator.SetBool("Attack", false);
             footmanAnimator.SetTrigger("Die");
             footmanRigidbody.drag = 10; // decrease drowning speed
             dead = true;
@@ -149,9 +151,9 @@ public class FootmanRed : MonoBehaviour
     void OnTriggerStay(Collider other)
     {
 
-        if (other.gameObject.CompareTag("Boximon Bite") && playerAnimation.GetCurrentAnimatorStateInfo(0).IsName("Attack 02")) // footman is in the vicinity of boximon and boximon attacking
+        if (other.gameObject.CompareTag("Boximon Bite") && playerAnimation.GetCurrentAnimatorStateInfo(0).IsName("Attack 02") && !dead) // footman is in the vicinity of boximon and boximon attacking
         {
-            footmanAnimator.SetBool("Shoot", false); // stop attacking so damage can be taken
+            footmanAnimator.SetBool("Attack", false); // stop attacking so damage can be taken
             footmanAnimator.SetTrigger("Take Damage"); // play the "knock back" animation
 
             newPosition = transform.position - transform.forward * movementDistance * Time.deltaTime; // this sets the spot the footman should be knocked back to

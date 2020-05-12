@@ -6785,6 +6785,26 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7727057504035930988, guid: c8b969c0c1b00b2489a4052a944483c1,
+        type: 3}
+      propertyPath: healthText
+      value: 
+      objectReference: {fileID: 710599368}
+    - target: {fileID: 7727057504035930988, guid: c8b969c0c1b00b2489a4052a944483c1,
+        type: 3}
+      propertyPath: loseText
+      value: 
+      objectReference: {fileID: 462728628}
+    - target: {fileID: 7727057504035930988, guid: c8b969c0c1b00b2489a4052a944483c1,
+        type: 3}
+      propertyPath: health
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7727057504035930988, guid: c8b969c0c1b00b2489a4052a944483c1,
+        type: 3}
+      propertyPath: movementSpeed
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 4274285055804658, guid: c8b969c0c1b00b2489a4052a944483c1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.704955
@@ -6828,26 +6848,6 @@ PrefabInstance:
     - target: {fileID: 4274285055804658, guid: c8b969c0c1b00b2489a4052a944483c1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7727057504035930988, guid: c8b969c0c1b00b2489a4052a944483c1,
-        type: 3}
-      propertyPath: healthText
-      value: 
-      objectReference: {fileID: 710599368}
-    - target: {fileID: 7727057504035930988, guid: c8b969c0c1b00b2489a4052a944483c1,
-        type: 3}
-      propertyPath: loseText
-      value: 
-      objectReference: {fileID: 462728628}
-    - target: {fileID: 7727057504035930988, guid: c8b969c0c1b00b2489a4052a944483c1,
-        type: 3}
-      propertyPath: health
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 7727057504035930988, guid: c8b969c0c1b00b2489a4052a944483c1,
-        type: 3}
-      propertyPath: movementSpeed
-      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c8b969c0c1b00b2489a4052a944483c1, type: 3}
@@ -7953,6 +7953,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Spikes High (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4722110552181839606, guid: fb3ccda59bffefa49b4c5aafff1bb7da,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6324382014114005035, guid: fb3ccda59bffefa49b4c5aafff1bb7da,
         type: 3}
@@ -11772,6 +11777,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spikes High (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 4722110552181839606, guid: fb3ccda59bffefa49b4c5aafff1bb7da,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6324382014114005035, guid: fb3ccda59bffefa49b4c5aafff1bb7da,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -12848,8 +12858,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b709d85c6cad494a81fbedad1a5a3cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  players: {fileID: 512440652}
-  unlocksSprinting: 1
+  unlocksSprinting: 0
   unlocksDoubleJumping: 1
   unlocksWallJumping: 0
 --- !u!4 &730340045 stripped
@@ -16642,7 +16651,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 13, y: 5, z: 1}
+  m_Size: {x: 15, y: 5, z: 1}
   m_Center: {x: 2, y: 2, z: -2}
 --- !u!1001 &989966389
 PrefabInstance:
@@ -17369,6 +17378,16 @@ PrefabInstance:
     - target: {fileID: 137232, guid: 06490fc688aff434496294747099a875, type: 3}
       propertyPath: m_TagString
       value: Damage
+      objectReference: {fileID: 0}
+    - target: {fileID: -5115042004547662013, guid: 06490fc688aff434496294747099a875,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -5115042004547662013, guid: 06490fc688aff434496294747099a875,
+        type: 3}
+      propertyPath: m_Height
+      value: 2.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 06490fc688aff434496294747099a875, type: 3}
@@ -19540,7 +19559,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1194786770}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.5803869, y: 0.37048733, z: -4.592664}
+  m_LocalPosition: {x: -1, y: 0.37048733, z: -4.592664}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 479423691}
@@ -19557,7 +19576,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 5, z: 9}
+  m_Size: {x: 1, y: 5, z: 10}
   m_Center: {x: 9, y: 2, z: 3}
 --- !u!1001 &1198307151
 PrefabInstance:
@@ -20637,7 +20656,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 13, y: 5, z: 1}
+  m_Size: {x: 15, y: 5, z: 1}
   m_Center: {x: 2, y: 2, z: 8}
 --- !u!1001 &1254832031
 PrefabInstance:
@@ -24337,6 +24356,10 @@ PrefabInstance:
       propertyPath: m_IsKinematic
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 137232, guid: 06490fc688aff434496294747099a875, type: 3}
+      propertyPath: m_TagString
+      value: Damage
+      objectReference: {fileID: 0}
     - target: {fileID: -5115042004547662013, guid: 06490fc688aff434496294747099a875,
         type: 3}
       propertyPath: m_Enabled
@@ -24353,10 +24376,6 @@ PrefabInstance:
     - target: {fileID: 490180, guid: 06490fc688aff434496294747099a875, type: 3}
       propertyPath: m_LocalPosition.y
       value: 2.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 137232, guid: 06490fc688aff434496294747099a875, type: 3}
-      propertyPath: m_TagString
-      value: Damage
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 06490fc688aff434496294747099a875, type: 3}
@@ -29664,6 +29683,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Spikes High (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4722110552181839606, guid: fb3ccda59bffefa49b4c5aafff1bb7da,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6324382014114005035, guid: fb3ccda59bffefa49b4c5aafff1bb7da,
         type: 3}
