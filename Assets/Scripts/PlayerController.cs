@@ -203,6 +203,7 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("Platform"))
         {
             isGrounded = true; // the buttons and portal should count as ground too
+            jumps = 0;
         }
 
         if (other.gameObject.CompareTag("Iceball") || (other.gameObject.CompareTag("Fireball")))
