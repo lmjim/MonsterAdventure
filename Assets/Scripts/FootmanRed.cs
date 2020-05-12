@@ -20,11 +20,13 @@ public class FootmanRed : MonoBehaviour
     private Vector3 newPosition;
 
     private float movementDistance = 30.0f;
-    private float attackDistance = 10f;
+    private float shootDistance = 10f;
+    private float attackDistance = 4f;
     private bool dead = false;
 
     public GameObject _Fireball;
     private bool shooting = false;
+
 
     void Start()
     {
@@ -47,8 +49,15 @@ public class FootmanRed : MonoBehaviour
         {
             Vector3 playerPosition = player.transform.position;
             float dist = Vector3.Distance(transform.position, playerPosition);
+
             if (dist < attackDistance)
             {
+                footmanAnimator.SetBool("Shoot", false);
+                footmanAnimator.SetBool("Attack", true); // swing sword
+            }
+            else if (dist < shootDistance)
+            {
+                footmanAnimator.SetBool("Attack", false);
                 footmanAnimator.SetBool("Shoot", true);
                 Vector3 lookTowards = playerPosition;
                 lookTowards.y = transform.position.y;
@@ -57,7 +66,7 @@ public class FootmanRed : MonoBehaviour
                 // Have the footman shoot the player
                 if (!shooting)
                 {
-                    if (LevelTracker.levelOver) // Kiana - Lily changed this to check if level is over instead of player dead
+                    if (LevelTracker.levelOver)
                     {
                         footmanAnimator.SetBool("Shoot", false);
                         return;
@@ -67,11 +76,11 @@ public class FootmanRed : MonoBehaviour
                         StartCoroutine(Shoot());
                     }
                 }
-
             }
             else
             {
                 footmanAnimator.SetBool("Shoot", false); // if the player dead, the footman will not be ready to attack
+                footmanAnimator.SetBool("Attack", false);
             }
 
         }
