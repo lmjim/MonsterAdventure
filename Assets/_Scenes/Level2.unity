@@ -3832,11 +3832,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Button Platform Red High
       objectReference: {fileID: 0}
-    - target: {fileID: -783046331775087578, guid: e0908f0fc5da133408dea0044b98062b,
-        type: 3}
-      propertyPath: portal
-      value: 
-      objectReference: {fileID: 1332591661}
     - target: {fileID: 4912010245623262, guid: e0908f0fc5da133408dea0044b98062b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 53.54
@@ -3881,6 +3876,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -783046331775087578, guid: e0908f0fc5da133408dea0044b98062b,
+        type: 3}
+      propertyPath: portal
+      value: 
+      objectReference: {fileID: 1332591661}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0908f0fc5da133408dea0044b98062b, type: 3}
 --- !u!4 &184342394 stripped
@@ -12858,6 +12858,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b709d85c6cad494a81fbedad1a5a3cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  players: {fileID: 512440652}
   unlocksSprinting: 0
   unlocksDoubleJumping: 1
   unlocksWallJumping: 0

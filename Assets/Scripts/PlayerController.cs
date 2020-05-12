@@ -32,9 +32,9 @@ public class PlayerController : MonoBehaviour
     private int jumps = 0;
     private bool isSprinting = false;
 
-    public static bool canSprint = false;
-    public static bool canDoubleJump = false;
-    public static bool canWallJump = false;
+    public bool canSprint = false;
+    public bool canDoubleJump = false;
+    public bool canWallJump = false;
 
     void Start()
     {

@@ -17844,11 +17844,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Red Button
       objectReference: {fileID: 0}
-    - target: {fileID: -783046331775087578, guid: e0908f0fc5da133408dea0044b98062b,
-        type: 3}
-      propertyPath: portal
-      value: 
-      objectReference: {fileID: 2126220767}
     - target: {fileID: 4912010245623262, guid: e0908f0fc5da133408dea0044b98062b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 35
@@ -17893,6 +17888,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -783046331775087578, guid: e0908f0fc5da133408dea0044b98062b,
+        type: 3}
+      propertyPath: portal
+      value: 
+      objectReference: {fileID: 2126220767}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0908f0fc5da133408dea0044b98062b, type: 3}
 --- !u!4 &1158004723 stripped
@@ -25813,6 +25813,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b709d85c6cad494a81fbedad1a5a3cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  players: {fileID: 581813561}
   unlocksSprinting: 1
   unlocksDoubleJumping: 0
   unlocksWallJumping: 0
@@ -28896,11 +28897,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 7435173253795876166, guid: 007d93b430167464989fc12235843989,
-        type: 3}
-      propertyPath: players
-      value: 
-      objectReference: {fileID: 581813561}
     - target: {fileID: 489874, guid: 007d93b430167464989fc12235843989, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.73
@@ -28957,6 +28953,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 7435173253795876166, guid: 007d93b430167464989fc12235843989,
+        type: 3}
+      propertyPath: players
+      value: 
+      objectReference: {fileID: 581813561}
     - target: {fileID: 3317787802414380472, guid: 007d93b430167464989fc12235843989,
         type: 3}
       propertyPath: m_Constraints

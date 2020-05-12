@@ -4,10 +4,20 @@ using UnityEngine;
 
 public class Unlocker : MonoBehaviour
 {
+    public GameObject players;
+    private GameObject player;
+    private PlayerController controller;
+    
     // the same script can be attached to slimes that unlock different abilities
     public bool unlocksSprinting;
     public bool unlocksDoubleJumping;
     public bool unlocksWallJumping;
+
+    void Start()
+    {
+        player = PlayerSwitch.DefinePlayer(players);
+        controller = player.GetComponent<PlayerController>();
+    }
 
     void OnTriggerEnter(Collider other)
     {
@@ -15,15 +25,15 @@ public class Unlocker : MonoBehaviour
         {
             if (unlocksSprinting)
             {
-                PlayerController.canSprint = true;
+                controller.canSprint = true;
             }
             if (unlocksDoubleJumping)
             {
-                PlayerController.canDoubleJump = true;
+                controller.canDoubleJump = true;
             }
             if (unlocksWallJumping)
             {
-                PlayerController.canWallJump = true;
+                controller.canWallJump = true;
             }
         }
     }
