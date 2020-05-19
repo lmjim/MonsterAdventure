@@ -55,6 +55,7 @@ public class BoximonFieryMovement : MonoBehaviour
                 playerAnimator.SetBool("Walk Forward", false); // switch back to idle state to be able to go to attack state
                 playerAnimator.SetTrigger("Attack 02"); // Bite
             }
+
         }
     }
 
@@ -98,6 +99,13 @@ public class BoximonFieryMovement : MonoBehaviour
         {
             isGrounded = true;
         }
+
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            print("Hello???") // this never prints????
+        }
+        
+       
     }
 
     void OnTriggerEnter(Collider other)
@@ -169,4 +177,12 @@ public class BoximonFieryMovement : MonoBehaviour
 
         LevelTracker.EndLevel(false);
     }
+
+    void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        Debug.DrawRay(hit.point, hit.normal, Color.red, 1.25f);
+        print("Hi?");
+    }
+
+   
 }
