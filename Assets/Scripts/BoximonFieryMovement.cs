@@ -102,7 +102,7 @@ public class BoximonFieryMovement : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Wall"))
         {
-            print("Hello???") // this never prints????
+            print("Hello???"); // this never prints????
         }
         
        
