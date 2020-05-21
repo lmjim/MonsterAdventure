@@ -102,10 +102,8 @@ public class BoximonFieryMovement : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Wall"))
         {
-            print("Hello???"); // this never prints????
+            print("hi");
         }
-        
-       
     }
 
     void OnTriggerEnter(Collider other)
@@ -137,6 +135,12 @@ public class BoximonFieryMovement : MonoBehaviour
         {
             isGrounded = true; // the buttons and portal should count as ground too
         }
+
+        if (other.gameObject.CompareTag("Wall"))
+        {
+            print("hi");
+        }
+      
     }
 
     // Makes boximon invinsible for a little so it doesn't lose hella health
@@ -178,11 +182,11 @@ public class BoximonFieryMovement : MonoBehaviour
         LevelTracker.EndLevel(false);
     }
 
-    void OnControllerColliderHit(ControllerColliderHit hit)
-    {
-        Debug.DrawRay(hit.point, hit.normal, Color.red, 1.25f);
-        print("Hi?");
-    }
+    //void OnControllerColliderHit(ControllerColliderHit hit)
+    //{
+    //    Debug.DrawRay(hit.point, hit.normal, Color.red, 1.25f);
+    //    print("Hi?");
+    //}
 
    
 }
