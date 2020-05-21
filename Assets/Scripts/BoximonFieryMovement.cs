@@ -99,11 +99,6 @@ public class BoximonFieryMovement : MonoBehaviour
         {
             isGrounded = true;
         }
-
-        if (collision.gameObject.CompareTag("Wall"))
-        {
-            print("hi");
-        }
     }
 
     void OnTriggerEnter(Collider other)

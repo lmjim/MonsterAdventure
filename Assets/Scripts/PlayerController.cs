@@ -25,16 +25,22 @@ public class PlayerController : MonoBehaviour
     private GameObject[] slimes;
     private float turnSpeed = 20f;
     private float jumpForce = 4.0f;
+    private float smallJumpForce = 1.5f;
     private bool isGrounded = true;
     private bool isInvincible = false;
     private float invincibilityDurationSeconds = 0.5f;
     private int maxJumps = 2;
     private int jumps = 0;
     private bool isSprinting = false;
+    private bool onWall = false;
+    private Vector3 moveDirection = Vector3.zero;
 
     public bool canSprint = false;
     public bool canDoubleJump = false;
     public bool canWallJump = false;
+   
+    
+    
 
     void Start()
     {
@@ -60,17 +66,30 @@ public class PlayerController : MonoBehaviour
         {
             canWallJump = true; 
         }
+
+        canWallJump = true; // delete this
     }
 
     void Update()
     {
         if(!LevelTracker.levelOver)
         {
-            //if (Input.GetKeyDown("space") && isGrounded)
-            //{ 
-            //    playerRB.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-            //    isGrounded = false;
-            //}
+
+            // Idk...
+            moveDirection = new Vector3(Input.GetAxis("Horizontal"), moveDirection.y, Input.GetAxis("Vertical"));
+            moveDirection = transform.TransformDirection(moveDirection);
+
+            if (canWallJump)
+            {
+                if (Input.GetKeyDown("space") && onWall && (!isGrounded))
+                {
+
+                    //jumps = 0;
+                    playerRB.AddForce(Vector3.up * smallJumpForce, ForceMode.Impulse);
+                    moveDirection.y = smallJumpForce;
+                    //playerRB.AddForce(Vector3. * smallJumpForce, ForceMode.Impulse);
+                }
+            }
 
             if (!canDoubleJump)
             {
@@ -84,10 +103,21 @@ public class PlayerController : MonoBehaviour
             {
                 if (Input.GetKeyDown("space") && (isGrounded || maxJumps > jumps))
                 {
+                    if (onWall)
+                    {
+                        
+                        jumps = 0;
+                        playerRB.AddForce(Vector3.up * smallJumpForce, ForceMode.Impulse);
+                        moveDirection.y = smallJumpForce;
+                        //playerRB.AddForce(Vector3. * smallJumpForce, ForceMode.Impulse);
+                    }
+
                     playerRB.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
                     isGrounded = false;
                     jumps++;
+
                 }
+               
             }
 
             if (Input.GetKeyDown("f"))
@@ -96,6 +126,8 @@ public class PlayerController : MonoBehaviour
                 playerAnimator.SetBool("Run Forward", false);
                 playerAnimator.SetTrigger("Attack 02"); // Bite
             }
+      
+
 
             if (Input.GetKeyDown("left shift")) // toggle sprint
             {
@@ -104,6 +136,7 @@ public class PlayerController : MonoBehaviour
                     isSprinting = !isSprinting;
                 }
             }
+
         }
     }
 
@@ -172,6 +205,27 @@ public class PlayerController : MonoBehaviour
             isGrounded = true;
             jumps = 0;
         }
+
+        //if (collision.gameObject.CompareTag("Wall"))
+        //{
+        //    onWall = true;
+        //}
+    }
+
+    void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            onWall = true;
+            //isGrounded = true;
+            //print(onWall);
+        }
+    }
+
+    void OnCollisionExit(Collision collision)
+    {
+        onWall = false;
+        
     }
 
     void OnTriggerEnter(Collider other)
