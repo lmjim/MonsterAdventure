@@ -25,14 +25,14 @@ public class PlayerController : MonoBehaviour
     private GameObject[] slimes;
     private float turnSpeed = 20f;
     private float jumpForce = 4.0f;
-    private float smallJumpForce = 1.5f;
+    //private float smallJumpForce = 1.5f;
     private bool isGrounded = true;
     private bool isInvincible = false;
     private float invincibilityDurationSeconds = 0.5f;
     private int maxJumps = 2;
     private int jumps = 0;
     private bool isSprinting = false;
-    private bool onWall = false;
+    //private bool onWall = false;
     private Vector3 moveDirection = Vector3.zero;
 
     public bool canSprint = false;
@@ -66,8 +66,6 @@ public class PlayerController : MonoBehaviour
         {
             canWallJump = true; 
         }
-
-        canWallJump = true; // delete this
     }
 
     void Update()
@@ -75,7 +73,7 @@ public class PlayerController : MonoBehaviour
         if(!LevelTracker.levelOver)
         {
 
-            // Idk...
+            /* Idk...
             moveDirection = new Vector3(Input.GetAxis("Horizontal"), moveDirection.y, Input.GetAxis("Vertical"));
             moveDirection = transform.TransformDirection(moveDirection);
 
@@ -89,9 +87,22 @@ public class PlayerController : MonoBehaviour
                     moveDirection.y = smallJumpForce;
                     //playerRB.AddForce(Vector3. * smallJumpForce, ForceMode.Impulse);
                 }
+            }*/
+
+            if (Input.GetKeyDown("space"))
+            {
+                if (canDoubleJump && (isGrounded || maxJumps > jumps))
+                {
+                    Vector3 v = playerRB.velocity;
+                    v.y = 0.0f;
+                    playerRB.velocity = v;
+                    playerRB.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+                    isGrounded = false;
+                    jumps++;
+                }
             }
 
-            if (!canDoubleJump)
+            /*if (!canDoubleJump)
             {
                 if (Input.GetKeyDown("space") && isGrounded)
                 {
@@ -118,7 +129,7 @@ public class PlayerController : MonoBehaviour
 
                 }
                
-            }
+            }*/
 
             if (Input.GetKeyDown("f"))
             {
@@ -212,7 +223,7 @@ public class PlayerController : MonoBehaviour
         //}
     }
 
-    void OnCollisionStay(Collision collision)
+    /*void OnCollisionStay(Collision collision)
     {
         if (collision.gameObject.CompareTag("Wall"))
         {
@@ -226,7 +237,7 @@ public class PlayerController : MonoBehaviour
     {
         onWall = false;
         
-    }
+    }*/
 
     void OnTriggerEnter(Collider other)
     {
