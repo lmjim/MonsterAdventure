@@ -25,14 +25,16 @@ public class PlayerController : MonoBehaviour
     private GameObject[] slimes;
     private float turnSpeed = 20f;
     private float jumpForce = 4.0f;
-    //private float smallJumpForce = 1.5f;
+    private float wallJumpForce = 2.0f;
     private bool isGrounded = true;
     private bool isInvincible = false;
     private float invincibilityDurationSeconds = 0.5f;
+    private float wallJumpTime = 0.5f;
     private int maxJumps = 2;
     private int jumps = 0;
-    private bool isSprinting = false;
     private bool onWall = false;
+    private bool isSprinting = false;
+    private bool isWallJumping = false;
     private Vector3 moveDirection = Vector3.zero;
 
     public bool canSprint = false;
@@ -72,72 +74,35 @@ public class PlayerController : MonoBehaviour
     {
         if(!LevelTracker.levelOver)
         {
-
-            /* Idk...
-            moveDirection = new Vector3(Input.GetAxis("Horizontal"), moveDirection.y, Input.GetAxis("Vertical"));
-            moveDirection = transform.TransformDirection(moveDirection);
-
-            if (canWallJump)
-            {
-                if (Input.GetKeyDown("space") && onWall && (!isGrounded))
-                {
-
-                    //jumps = 0;
-                    playerRB.AddForce(Vector3.up * smallJumpForce, ForceMode.Impulse);
-                    moveDirection.y = smallJumpForce;
-                    //playerRB.AddForce(Vector3. * smallJumpForce, ForceMode.Impulse);
-                }
-            }*/
-
             if (Input.GetKeyDown("space"))
             {
-                if (canDoubleJump && (isGrounded || maxJumps > jumps))
+                if (canWallJump && onWall && !isWallJumping) // we don't care about the # of jumps, player should always be able to wall jump (when unlocked)
                 {
-                    Vector3 v = playerRB.velocity;
-                    v.y = 0.0f;
-                    playerRB.velocity = v;
-                    playerRB.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-                    isGrounded = false;
-                    jumps++;
+                    Vector3 desiredForward = Vector3.RotateTowards(-transform.forward /*reverse direction*/, playerMovement, turnSpeed * Time.deltaTime, 0f);
+                    playerRotation = Quaternion.LookRotation(desiredForward);
+
+                    playerRB.AddForce(-transform.forward * wallJumpForce, ForceMode.Impulse); // push player in opposite direction
+                    StartCoroutine(setIsWallJumping()); // momentarily stop arrow keys from moving player, so the walll kick can be seen/take effect
+
+                    playerJump(); // this will increment jumps, but that's okay because you shouldn't "double jump" after a wall kick
                 }
                 else
                 {
-                    if (isGrounded)
+                    if (canDoubleJump && (isGrounded || maxJumps > jumps))
                     {
-                        playerRB.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-                        isGrounded = false;
+                        playerJump(); // this sets y-velocity to zero, so second jump will get a full jump force
+                    }
+                    else
+                    {
+                        // either player is out of jumps or double jump is not unlocked
+                        // if grounded, then player can still jump once
+                        if (isGrounded)
+                        {
+                            playerJump();
+                        }
                     }
                 }
             }
-
-            /*if (!canDoubleJump)
-            {
-                if (Input.GetKeyDown("space") && isGrounded)
-                {
-                    playerRB.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-                    isGrounded = false;
-                }
-            }
-            else
-            {
-                if (Input.GetKeyDown("space") && (isGrounded || maxJumps > jumps))
-                {
-                    if (onWall)
-                    {
-                        
-                        jumps = 0;
-                        playerRB.AddForce(Vector3.up * smallJumpForce, ForceMode.Impulse);
-                        moveDirection.y = smallJumpForce;
-                        //playerRB.AddForce(Vector3. * smallJumpForce, ForceMode.Impulse);
-                    }
-
-                    playerRB.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-                    isGrounded = false;
-                    jumps++;
-
-                }
-               
-            }*/
 
             if (Input.GetKeyDown("f"))
             {
@@ -145,8 +110,6 @@ public class PlayerController : MonoBehaviour
                 playerAnimator.SetBool("Run Forward", false);
                 playerAnimator.SetTrigger("Attack 02"); // Bite
             }
-      
-
 
             if (Input.GetKeyDown("left shift")) // toggle sprint
             {
@@ -155,13 +118,12 @@ public class PlayerController : MonoBehaviour
                     isSprinting = !isSprinting;
                 }
             }
-
         }
     }
 
     void FixedUpdate()
     {
-        if(!LevelTracker.levelOver)
+        if(!LevelTracker.levelOver && !isWallJumping)
         {
             // Walking Functionality
             float horizontal = Input.GetAxis("Horizontal");
@@ -195,7 +157,7 @@ public class PlayerController : MonoBehaviour
 
     void OnAnimatorMove()
     {
-        if(!onWall) // this allows the player to have upward momentum when against a wall
+        if(!onWall && !isWallJumping) // this allows the player to have upward momentum when against a wall
         {
             // This is really hacky but something about our movement sort of combining with animations made running way too fast, this helps that for now at least
             // We could adjust the speed with this in the future if we can fix the bug where when sprinting you can end your sprint to get a sudden huge burst before the animation changes
@@ -296,7 +258,6 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("Wall"))
         {
             onWall = true;
-            //print("hit wall"); // debug
         }
     }
 
@@ -305,7 +266,6 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("Wall"))
         {
             onWall = false;
-            //print("left wall"); // debug
         }
         
     }
@@ -318,9 +278,27 @@ public class PlayerController : MonoBehaviour
         isInvincible = false; // No longer invinsible
     }
 
+    private IEnumerator setIsWallJumping()
+    {
+        // immediately after kicking off of a wall, we want to pause certain actions
+        isWallJumping = true;
+        yield return new WaitForSeconds(wallJumpTime);
+        isWallJumping = false;
+    }
+
     void SetHealthText()
     {
         healthText.text = "Boximon Health: " + health.ToString();
+    }
+
+    void playerJump()
+    {
+        Vector3 v = playerRB.velocity;
+        v.y = 0.0f;
+        playerRB.velocity = v;
+        playerRB.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        isGrounded = false;
+        jumps++;
     }
 
     public void FinishLevel() // this is called by the portal
