@@ -114,12 +114,9 @@ public class PlayerController : MonoBehaviour
                 playerAnimator.SetTrigger("Attack 02"); // Bite
             }
 
-            if (Input.GetKeyDown("left shift")) // toggle sprint
+            if ((Input.GetKeyDown("left shift") || Input.GetKeyDown("right shift")) && canSprint) // toggle sprint
             {
-                if (canSprint)
-                {
-                    isSprinting = !isSprinting;
-                }
+                isSprinting = !isSprinting;
             }
         }
     }
