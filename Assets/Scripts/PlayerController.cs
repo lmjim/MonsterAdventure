@@ -76,7 +76,10 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetKeyDown("space"))
             {
-                if (canWallJump && onWall && !isWallJumping) // we don't care about the # of jumps, player should always be able to wall jump (when unlocked)
+                if (canWallJump && onWall && !isWallJumping && !isGrounded)
+                // we don't care about the # of jumps, player should always be able to wall jump (when unlocked)
+                // when the player is on the ground (against a pillar/wall), they shouldn't kick off the wall
+                // only kick off of the wall when already in the air (i.e. not grounded)
                 {
                     Vector3 desiredForward = Vector3.RotateTowards(-transform.forward /*reverse direction*/, playerMovement, turnSpeed * Time.deltaTime, 0f);
                     playerRotation = Quaternion.LookRotation(desiredForward);
