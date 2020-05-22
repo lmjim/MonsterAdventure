@@ -186,9 +186,9 @@ public class PlayerController : MonoBehaviour
             Die();
         }
 
-        if (collision.gameObject.CompareTag("Ground")) // player is not jumping
+        if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Slime"))
         {
- 
+            // once the player has contacted the ground or the physical body of a slime, they can jump again
             isGrounded = true;
             jumps = 0;
         }
