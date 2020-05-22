@@ -28,9 +28,6 @@ public class LevelTracker : MonoBehaviour
     public static int  level3Stars = 0;
     public static int  level3Enemies = 0;
 
-    public static bool bossPassed = false;
-    public static int  bossMinions = 0;
-
     public static bool levelOver = false;
     public static int starsCollected = 0;
     public static int enemiesDefeated = 0;
@@ -86,9 +83,6 @@ public class LevelTracker : MonoBehaviour
                             SceneManager.LoadScene("Level3", LoadSceneMode.Single);
                             break;
                         case "Level3":
-                            SceneManager.LoadScene("BossLevel", LoadSceneMode.Single);
-                            break;
-                        case "BossLevel":
                             SceneManager.LoadScene("Home", LoadSceneMode.Single);
                             break;
                     }
@@ -128,10 +122,6 @@ public class LevelTracker : MonoBehaviour
                     level3Stars = Math.Max(level3Stars, starsCollected);
                     level3Enemies = Math.Max(level3Enemies, enemiesDefeated);
                     learnedWallJump = true;
-                    break;
-                case "BossLevel":
-                    bossPassed = alive;
-                    bossMinions = Math.Max(bossMinions, enemiesDefeated);
                     break;
             }
         }

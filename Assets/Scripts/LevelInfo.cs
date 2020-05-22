@@ -28,16 +28,6 @@ public class LevelInfo : MonoBehaviour
             case 3: // level 3
                 info.text = "Stars Collected:\n" + LevelTracker.level3Stars.ToString() + "/" + totalStars.ToString() + "\nEnemies Defeated:\n" + LevelTracker.level3Enemies.ToString() + "/" + totalEnemies.ToString();
                 break;
-            case 4: // boss level
-                if(LevelTracker.bossPassed)
-                {
-                    info.text = "Boss Defeated:\nYes\nMinions Defeated:\n" + LevelTracker.bossMinions.ToString() + "/" + totalEnemies.ToString();
-                }
-                else
-                {
-                    info.text = "Boss Defeated:\nNo\nMinions Defeated:\n" + LevelTracker.bossMinions.ToString() + "/" + totalEnemies.ToString();
-                }
-                break;
         }
     }
 }
