@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
     private int maxJumps = 2;
     private int jumps = 0;
     private bool isSprinting = false;
-    //private bool onWall = false;
+    private bool onWall = false;
     private Vector3 moveDirection = Vector3.zero;
 
     public bool canSprint = false;
@@ -99,6 +99,14 @@ public class PlayerController : MonoBehaviour
                     playerRB.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
                     isGrounded = false;
                     jumps++;
+                }
+                else
+                {
+                    if (isGrounded)
+                    {
+                        playerRB.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+                        isGrounded = false;
+                    }
                 }
             }
 
@@ -187,17 +195,20 @@ public class PlayerController : MonoBehaviour
 
     void OnAnimatorMove()
     {
-        // This is really hacky but something about our movement sort of combining with animations made running way too fast, this helps that for now at least
-        // We could adjust the speed with this in the future if we can fix the bug where when sprinting you can end your sprint to get a sudden huge burst before the animation changes
-        if (isSprinting)
+        if(!onWall) // this allows the player to have upward momentum when against a wall
         {
-            playerAnimator.SetBool("Walk Forward", false);
-            playerRB.MovePosition(playerRB.position + playerMovement * playerAnimator.deltaPosition.magnitude * (movementSpeed * .25f));
-        }
-        else
-        {
-            playerAnimator.SetBool("Run Forward", false);
-            playerRB.MovePosition(playerRB.position + playerMovement * playerAnimator.deltaPosition.magnitude * movementSpeed);
+            // This is really hacky but something about our movement sort of combining with animations made running way too fast, this helps that for now at least
+            // We could adjust the speed with this in the future if we can fix the bug where when sprinting you can end your sprint to get a sudden huge burst before the animation changes
+            if (isSprinting)
+            {
+                playerAnimator.SetBool("Walk Forward", false);
+                playerRB.MovePosition(playerRB.position + playerMovement * playerAnimator.deltaPosition.magnitude * (movementSpeed * .25f));
+            }
+            else
+            {
+                playerAnimator.SetBool("Run Forward", false);
+                playerRB.MovePosition(playerRB.position + playerMovement * playerAnimator.deltaPosition.magnitude * movementSpeed);
+            }
         }
 
         playerRB.MoveRotation(playerRotation);
@@ -216,28 +227,7 @@ public class PlayerController : MonoBehaviour
             isGrounded = true;
             jumps = 0;
         }
-
-        //if (collision.gameObject.CompareTag("Wall"))
-        //{
-        //    onWall = true;
-        //}
     }
-
-    /*void OnCollisionStay(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Wall"))
-        {
-            onWall = true;
-            //isGrounded = true;
-            //print(onWall);
-        }
-    }
-
-    void OnCollisionExit(Collision collision)
-    {
-        onWall = false;
-        
-    }*/
 
     void OnTriggerEnter(Collider other)
     {
@@ -299,6 +289,25 @@ public class PlayerController : MonoBehaviour
             // TODO: Add an icy particle the player when hit!
         }
 
+    }
+
+    void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.CompareTag("Wall"))
+        {
+            onWall = true;
+            //print("hit wall"); // debug
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Wall"))
+        {
+            onWall = false;
+            //print("left wall"); // debug
+        }
+        
     }
 
     // Makes boximon invinsible for a little so it doesn't lose hella health
