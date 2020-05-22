@@ -13891,22 +13891,22 @@ PrefabInstance:
     - target: {fileID: 1378027733602245850, guid: 81eedd9144242bf499836f661267142b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 16.68
+      value: 17.630001
       objectReference: {fileID: 0}
     - target: {fileID: 1378027733602245850, guid: 81eedd9144242bf499836f661267142b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.43
+      value: -2.2928185
       objectReference: {fileID: 0}
     - target: {fileID: 1378027733602245850, guid: 81eedd9144242bf499836f661267142b,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5.57
+      value: 5.5195355
       objectReference: {fileID: 0}
     - target: {fileID: 1378027733602245850, guid: 81eedd9144242bf499836f661267142b,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1378027733602245850, guid: 81eedd9144242bf499836f661267142b,
         type: 3}
@@ -13916,7 +13916,7 @@ PrefabInstance:
     - target: {fileID: 1378027733602245850, guid: 81eedd9144242bf499836f661267142b,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1378027733602245850, guid: 81eedd9144242bf499836f661267142b,
         type: 3}
@@ -13953,6 +13953,21 @@ PrefabInstance:
       propertyPath: message
       value: Hello adventurer! Up ahead is the first enemy you will see that shoots,
         be careful and dodge his attacks!
+      objectReference: {fileID: 0}
+    - target: {fileID: 2577068244658989893, guid: 81eedd9144242bf499836f661267142b,
+        type: 3}
+      propertyPath: m_Radius
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2577068244658989893, guid: 81eedd9144242bf499836f661267142b,
+        type: 3}
+      propertyPath: m_Center.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2577068244658989893, guid: 81eedd9144242bf499836f661267142b,
+        type: 3}
+      propertyPath: m_Center.z
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 81eedd9144242bf499836f661267142b, type: 3}
@@ -19075,36 +19090,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7727057504035930988, guid: c8b969c0c1b00b2489a4052a944483c1,
-        type: 3}
-      propertyPath: health
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 7727057504035930988, guid: c8b969c0c1b00b2489a4052a944483c1,
-        type: 3}
-      propertyPath: movementSpeed
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 7727057504035930988, guid: c8b969c0c1b00b2489a4052a944483c1,
-        type: 3}
-      propertyPath: loseText
-      value: 
-      objectReference: {fileID: 822561953}
-    - target: {fileID: 7727057504035930988, guid: c8b969c0c1b00b2489a4052a944483c1,
-        type: 3}
-      propertyPath: healthText
-      value: 
-      objectReference: {fileID: 2125863894}
-    - target: {fileID: 7727057504035930988, guid: c8b969c0c1b00b2489a4052a944483c1,
-        type: 3}
-      propertyPath: canSprint
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7727057504035930988, guid: c8b969c0c1b00b2489a4052a944483c1,
-        type: 3}
-      propertyPath: canDoubleJump
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4274285055804658, guid: c8b969c0c1b00b2489a4052a944483c1, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.96
@@ -19147,6 +19132,41 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4274285055804658, guid: c8b969c0c1b00b2489a4052a944483c1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7727057504035930988, guid: c8b969c0c1b00b2489a4052a944483c1,
+        type: 3}
+      propertyPath: health
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7727057504035930988, guid: c8b969c0c1b00b2489a4052a944483c1,
+        type: 3}
+      propertyPath: movementSpeed
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7727057504035930988, guid: c8b969c0c1b00b2489a4052a944483c1,
+        type: 3}
+      propertyPath: loseText
+      value: 
+      objectReference: {fileID: 822561953}
+    - target: {fileID: 7727057504035930988, guid: c8b969c0c1b00b2489a4052a944483c1,
+        type: 3}
+      propertyPath: healthText
+      value: 
+      objectReference: {fileID: 2125863894}
+    - target: {fileID: 7727057504035930988, guid: c8b969c0c1b00b2489a4052a944483c1,
+        type: 3}
+      propertyPath: canSprint
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7727057504035930988, guid: c8b969c0c1b00b2489a4052a944483c1,
+        type: 3}
+      propertyPath: canDoubleJump
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7727057504035930988, guid: c8b969c0c1b00b2489a4052a944483c1,
+        type: 3}
+      propertyPath: canWallJump
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
