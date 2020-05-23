@@ -15,6 +15,7 @@ public class LevelTracker : MonoBehaviour
 
     public static int  tutorialStars = 0;
     public static int  tutorialEnemies = 0;
+    public static bool tutorialPassed = false;
     
     public static bool level1Passed = false;
     public static int  level1Stars = 0;
@@ -102,6 +103,7 @@ public class LevelTracker : MonoBehaviour
             switch (level)
             {
                 case "TutorialLevel":
+                    tutorialPassed = alive;
                     tutorialStars = Math.Max(tutorialStars, starsCollected);
                     tutorialEnemies = Math.Max(tutorialEnemies, enemiesDefeated);
                     break;

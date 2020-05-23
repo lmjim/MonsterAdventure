@@ -21,6 +21,7 @@ TagManager:
   - Lava
   - Wall
   - Test
+  - Music
   layers:
   - Default
   - TransparentFX

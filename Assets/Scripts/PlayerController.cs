@@ -11,7 +11,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
-{   
+{
     public Text healthText;
     public Text loseText;
     public int health = 20; // leave this public, it could change based on the level
@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody playerRB;
     private Vector3 playerMovement;
     private Quaternion playerRotation = Quaternion.identity;
+    AudioSource playerAudio;
 
     private GameObject[] slimes;
     private float turnSpeed = 20f;
@@ -40,14 +41,15 @@ public class PlayerController : MonoBehaviour
     public bool canSprint = false;
     public bool canDoubleJump = false;
     public bool canWallJump = false;
-   
-    
+
+
     
 
     void Start()
     {
         playerAnimator = GetComponent<Animator>();
         playerRB = GetComponent<Rigidbody>();
+        playerAudio = GetComponent<AudioSource>();
 
         slimes = GameObject.FindGameObjectsWithTag("Slime");
 
@@ -112,6 +114,7 @@ public class PlayerController : MonoBehaviour
                 playerAnimator.SetBool("Walk Forward", false); // switch back to idle state to be able to go to attack state
                 playerAnimator.SetBool("Run Forward", false);
                 playerAnimator.SetTrigger("Attack 02"); // Bite
+                
             }
 
             if ((Input.GetKeyDown("left shift") || Input.GetKeyDown("right shift")) && canSprint) // toggle sprint
@@ -134,6 +137,21 @@ public class PlayerController : MonoBehaviour
             bool hasVerticalInput = !Mathf.Approximately(vertical, 0f);
             bool hasInput = hasHorizontalInput || hasVerticalInput;
 
+            if (hasInput)
+            {
+                if (!playerAudio.isPlaying)
+                {
+                    playerAudio.Play();
+                }
+           
+            }
+            else
+            {
+                playerAudio.Stop();
+            }
+
+            
+
             if (isSprinting)
             {
                 playerAnimator.SetBool("Walk Forward", false);
@@ -144,6 +162,8 @@ public class PlayerController : MonoBehaviour
                 playerAnimator.SetBool("Run Forward", false);
                 playerAnimator.SetBool("Walk Forward", hasInput);
             }
+
+         
             
             Vector3 desiredForward = Vector3.RotateTowards(transform.forward, playerMovement, turnSpeed * Time.deltaTime, 0f);
             playerRotation = Quaternion.LookRotation(desiredForward);
