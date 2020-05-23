@@ -25,11 +25,11 @@ public class PlayerController : MonoBehaviour
     private GameObject[] slimes;
     private float turnSpeed = 20f;
     private float jumpForce = 4.0f;
-    private float wallJumpForce = 2.0f;
+    private float wallJumpForce = 2.0f; //was 2.0f
     private bool isGrounded = true;
     private bool isInvincible = false;
     private float invincibilityDurationSeconds = 0.5f;
-    private float wallJumpTime = 0.5f;
+    private float wallJumpTime = 0.15f; //was 0.5f
     private int maxJumps = 2;
     private int jumps = 0;
     private bool onWall = false;
