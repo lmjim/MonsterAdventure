@@ -30893,8 +30893,8 @@ PrefabInstance:
     - target: {fileID: 9079452338933950326, guid: eeede22ead192a440bda2328281c5fa8,
         type: 3}
       propertyPath: message
-      value: Hey dude! This is a challenge portion of the level, you need to complete
-        future levels and then come back to it! (Also it isn't implemented yet)
+      value: Hey dude! This is a challenge portion of the level, come back after level
+        3 when you can wall jump to get the star around here!
       objectReference: {fileID: 0}
     - target: {fileID: -8461379372470206767, guid: eeede22ead192a440bda2328281c5fa8,
         type: 3}
