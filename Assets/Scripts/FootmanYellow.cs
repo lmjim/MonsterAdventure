@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class FootmanRed : MonoBehaviour
+public class FootmanYellow : MonoBehaviour
 {
     public GameObject players;
     private GameObject player;
@@ -21,10 +21,10 @@ public class FootmanRed : MonoBehaviour
 
     private float movementDistance = 30.0f;
     private float shootDistance = 8f;
-    private float attackDistance = 4f;
+    private float attackDistance = 4f; // Stefan - Kiana added this
     private bool dead = false;
 
-    public GameObject _Fireball;
+    public GameObject _Lightning;
     private bool shooting = false;
 
     void Start()
@@ -47,6 +47,7 @@ public class FootmanRed : MonoBehaviour
             Vector3 playerPosition = player.transform.position;
             float dist = Vector3.Distance(transform.position, playerPosition);
 
+            // Stefan - Kiana Added this
             if (dist < attackDistance)
             {
                 footmanAnimator.SetBool("Shoot", false); // stop shooting and return to battle stance
@@ -62,7 +63,7 @@ public class FootmanRed : MonoBehaviour
                 Vector3 lookTowards = playerPosition;
                 lookTowards.y = transform.position.y;
                 transform.LookAt(lookTowards); // have the footman face the player during battle
-                
+
                 // Have the footman shoot the player
                 if (!shooting)
                 {
@@ -84,7 +85,6 @@ public class FootmanRed : MonoBehaviour
                 footmanAnimator.SetBool("Attack", false);
                 footmanAnimator.SetBool("Battle", false);
             }
-
         }
         else // if the footman has died, he has fallen off the stage
         {
@@ -135,7 +135,7 @@ public class FootmanRed : MonoBehaviour
             LevelTracker.enemiesDefeated++;
         }
 
-        if ((other.gameObject.CompareTag("Water") || other.gameObject.CompareTag("Lava")) && !dead)
+        if (other.gameObject.CompareTag("Water") && !dead)
         {
             footmanAnimator.SetBool("Shoot", false);
             footmanAnimator.SetBool("Attack", false);
@@ -163,10 +163,10 @@ public class FootmanRed : MonoBehaviour
         shooting = true;
 
         // Shoot the iceball, can adapt fire rate with this wait for seconds
-        _Fireball = Instantiate(GameObject.Find("Fireball")) as GameObject;
-        _Fireball.transform.position = transform.TransformPoint((Vector3.forward * 1.5f) + (Vector3.up * .65f));
-        _Fireball.transform.rotation = transform.rotation;
-        _Fireball.GetComponent<Rigidbody>().velocity = transform.TransformDirection(Vector3.forward * 2);
+        _Lightning = Instantiate(GameObject.Find("Lightning")) as GameObject;
+        _Lightning.transform.position = transform.TransformPoint( (Vector3.forward * 1.5f) + (Vector3.up * .65f) );
+        _Lightning.transform.rotation = transform.rotation;
+        _Lightning.GetComponent<Rigidbody>().velocity = transform.TransformDirection(Vector3.forward * 3);
 
         yield return new WaitForSeconds(1f);
         shooting = false;

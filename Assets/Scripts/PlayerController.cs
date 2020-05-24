@@ -243,7 +243,7 @@ public class PlayerController : MonoBehaviour
             jumps = 0;
         }
 
-        if (other.gameObject.CompareTag("Iceball") || (other.gameObject.CompareTag("Fireball")))
+        if (other.gameObject.CompareTag("Iceball") || other.gameObject.CompareTag("Fireball") || other.gameObject.CompareTag("Lightning") )
         {
             if (isInvincible) return;
 

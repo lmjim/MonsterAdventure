@@ -22,6 +22,7 @@ TagManager:
   - Wall
   - Test
   - Music
+  - Lightning
   layers:
   - Default
   - TransparentFX
