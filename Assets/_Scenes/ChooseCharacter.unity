@@ -7048,11 +7048,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boximon_Fiery
       objectReference: {fileID: 0}
-    - target: {fileID: 5139463808777939581, guid: d21a04d7970c925479d8ce4b73e71901,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4744222756475520, guid: d21a04d7970c925479d8ce4b73e71901, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.993024
@@ -7097,15 +7092,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2034923012128762230, guid: d21a04d7970c925479d8ce4b73e71901,
+    - target: {fileID: 5139463808777939581, guid: d21a04d7970c925479d8ce4b73e71901,
         type: 3}
-      propertyPath: m_Constraints
-      value: 80
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8989639793415061850, guid: d21a04d7970c925479d8ce4b73e71901,
         type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2034923012128762230, guid: d21a04d7970c925479d8ce4b73e71901,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 80
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d21a04d7970c925479d8ce4b73e71901, type: 3}
@@ -9639,7 +9639,8 @@ PrefabInstance:
       propertyPath: m_Constraints
       value: 80
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9150762988087219335, guid: c8b969c0c1b00b2489a4052a944483c1, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c8b969c0c1b00b2489a4052a944483c1, type: 3}
 --- !u!1001 &1940675203
 PrefabInstance:

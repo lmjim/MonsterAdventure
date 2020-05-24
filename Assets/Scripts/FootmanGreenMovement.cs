@@ -25,10 +25,14 @@ public class FootmanGreenMovement : MonoBehaviour
     //private float footmanViewAngle = 80.0f;
     private bool dead = false;
 
+    //AudioSource audioSource;
+    //public AudioClip attack;
+
     void Start()
     {
         player = PlayerSwitch.DefinePlayer(players);
-        
+        //audioSource = GetComponent<AudioSource>();
+
         footmanRigidbody = GetComponent<Rigidbody>();
         footmanAnimator = GetComponent<Animator>();
         footmanCollider = GetComponent<CapsuleCollider>();
@@ -98,6 +102,9 @@ public class FootmanGreenMovement : MonoBehaviour
         if (collision.gameObject.CompareTag("Player") && !dead)
         {
             footmanAnimator.SetBool("Attack", true); // swing sword
+            //audioSource.PlayOneShot(attack); // TODO: This is currently only played once
+
+
         }
     }
 

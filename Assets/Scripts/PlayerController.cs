@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody playerRB;
     private Vector3 playerMovement;
     private Quaternion playerRotation = Quaternion.identity;
-    AudioSource playerAudio;
+    
 
     private GameObject[] slimes;
     private float turnSpeed = 20f;
@@ -42,14 +42,23 @@ public class PlayerController : MonoBehaviour
     public bool canDoubleJump = false;
     public bool canWallJump = false;
 
-
+    AudioSource audioSource;
+    AudioSource audioSource2;
+    public AudioClip bite;
+    public AudioClip walk;
+    public AudioClip jump;
+    public AudioClip die;
     
-
     void Start()
     {
         playerAnimator = GetComponent<Animator>();
         playerRB = GetComponent<Rigidbody>();
-        playerAudio = GetComponent<AudioSource>();
+        //audioSource = GetComponent<AudioSource>();
+        AudioSource[] audios = GetComponents<AudioSource>();
+        // Will make better names later
+        audioSource = audios[0]; // the walking audio source
+        audioSource2 = audios[1]; // other sound effect audio source
+
 
         slimes = GameObject.FindGameObjectsWithTag("Slime");
 
@@ -90,12 +99,14 @@ public class PlayerController : MonoBehaviour
                     StartCoroutine(setIsWallJumping()); // momentarily stop arrow keys from moving player, so the walll kick can be seen/take effect
 
                     playerJump(); // this will increment jumps, but that's okay because you shouldn't "double jump" after a wall kick
+                    
                 }
                 else
                 {
                     if (canDoubleJump && (isGrounded || maxJumps > jumps))
                     {
                         playerJump(); // this sets y-velocity to zero, so second jump will get a full jump force
+                        
                     }
                     else
                     {
@@ -104,6 +115,7 @@ public class PlayerController : MonoBehaviour
                         if (isGrounded)
                         {
                             playerJump();
+                            
                         }
                     }
                 }
@@ -115,6 +127,8 @@ public class PlayerController : MonoBehaviour
                 playerAnimator.SetBool("Run Forward", false);
                 playerAnimator.SetTrigger("Attack 02"); // Bite
                 
+                PlayBiteSound();
+                
             }
 
             if ((Input.GetKeyDown("left shift") || Input.GetKeyDown("right shift")) && canSprint) // toggle sprint
@@ -122,6 +136,24 @@ public class PlayerController : MonoBehaviour
                 isSprinting = !isSprinting;
             }
         }
+    }
+    // Will move audio stuff lower in file later
+    public void PlayBiteSound()
+    { 
+        audioSource2.volume = 0.2f;
+        audioSource2.PlayOneShot(bite);
+    }
+
+    public void PlayJumpSound()
+    {
+        audioSource2.volume = 0.3f;
+        audioSource2.PlayOneShot(jump);
+    }
+
+    public void PlayDieSound()
+    {
+        audioSource2.volume = 0.4f;
+        audioSource2.PlayOneShot(die); // Sounds horrible if fall off 
     }
 
     void FixedUpdate()
@@ -139,28 +171,34 @@ public class PlayerController : MonoBehaviour
 
             if (hasInput)
             {
-                if (!playerAudio.isPlaying)
+                if (!audioSource.isPlaying)
                 {
-                    playerAudio.Play();
+                    audioSource.clip = walk;
+                    audioSource.Play();
                 }
-           
+
+                if(audioSource2.isPlaying || LevelTracker.levelOver) // NOT WORKING
+                {
+                    audioSource.Stop();
+                }
             }
             else
             {
-                playerAudio.Stop();
+               
+                audioSource.Stop();
             }
-
-            
 
             if (isSprinting)
             {
                 playerAnimator.SetBool("Walk Forward", false);
                 playerAnimator.SetBool("Run Forward", true && hasInput);
+               
             }
             else
             {
                 playerAnimator.SetBool("Run Forward", false);
                 playerAnimator.SetBool("Walk Forward", hasInput);
+                
             }
 
          
@@ -201,6 +239,7 @@ public class PlayerController : MonoBehaviour
         if(collision.gameObject.CompareTag("Spikes") || collision.gameObject.CompareTag("Water") || collision.gameObject.CompareTag("Lava")) // player runs into spikes or falls into water
         {
             Die();
+            
         }
 
         if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Slime"))
@@ -227,6 +266,7 @@ public class PlayerController : MonoBehaviour
             if (health < 1)
             {
                 Die();
+                
 
                 // Getting rid of negative numbers
                 health = 0;
@@ -257,6 +297,7 @@ public class PlayerController : MonoBehaviour
             if (health < 1)
             {
                 Die();
+               
 
                 // Getting rid of negative numbers
                 health = 0;
@@ -319,6 +360,7 @@ public class PlayerController : MonoBehaviour
         playerRB.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         isGrounded = false;
         jumps++;
+        PlayJumpSound();
     }
 
     public void FinishLevel() // this is called by the portal
@@ -340,6 +382,7 @@ public class PlayerController : MonoBehaviour
         playerAnimator.SetBool("Run Forward", false);
 
         playerAnimator.SetTrigger("Die");
+        PlayDieSound();
         loseText.text = "You died! Game over.\nPress BACKSPACE replay level\nPress TAB to return home";
 
         foreach (GameObject slime in slimes)

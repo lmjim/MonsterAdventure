@@ -1242,6 +1242,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 910396027542841034, guid: bd37bf8bc9c996b4cb79d9948915b0f8,
+        type: 3}
+      propertyPath: m_Radius
+      value: 3.5
+      objectReference: {fileID: 0}
     - target: {fileID: -317921997948733483, guid: bd37bf8bc9c996b4cb79d9948915b0f8,
         type: 3}
       propertyPath: slimeText
@@ -1253,11 +1258,6 @@ PrefabInstance:
       value: What's crackalackin!?! Follow the cloud path to visit the ancient cloud
         slime to learn how to wall jump and then try to get the stars and leave the
         level as always!
-      objectReference: {fileID: 0}
-    - target: {fileID: 910396027542841034, guid: bd37bf8bc9c996b4cb79d9948915b0f8,
-        type: 3}
-      propertyPath: m_Radius
-      value: 3.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bd37bf8bc9c996b4cb79d9948915b0f8, type: 3}
@@ -8350,17 +8350,17 @@ PrefabInstance:
     - target: {fileID: 5139463808777939581, guid: d21a04d7970c925479d8ce4b73e71901,
         type: 3}
       propertyPath: canSprint
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5139463808777939581, guid: d21a04d7970c925479d8ce4b73e71901,
         type: 3}
       propertyPath: canDoubleJump
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5139463808777939581, guid: d21a04d7970c925479d8ce4b73e71901,
         type: 3}
       propertyPath: canWallJump
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8989639793415061850, guid: d21a04d7970c925479d8ce4b73e71901,
         type: 3}

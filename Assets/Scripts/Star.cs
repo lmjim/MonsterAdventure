@@ -12,9 +12,14 @@ public class Star : MonoBehaviour
     private ParticleSystem ps;
     private bool collected = false;
 
+    AudioSource audioSource;
+    public AudioClip star;
+
     void Start()
     {
         ps = transform.GetChild(0).GetComponent<ParticleSystem>();
+        audioSource = GetComponent<AudioSource>();
+
     }
 
     void OnTriggerEnter(Collider other)
@@ -23,6 +28,7 @@ public class Star : MonoBehaviour
         {
             if(!collected & ps.isEmitting) // if the star hasn't already been collected and is visible
             {
+                audioSource.PlayOneShot(star);
                 ps.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear); // collect the star
                 LevelTracker.starsCollected++; // keep track of the number of stars collected
                 collected = true; // can't collect it again

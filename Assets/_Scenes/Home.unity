@@ -3634,16 +3634,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7727057504035930988, guid: c8b969c0c1b00b2489a4052a944483c1,
         type: 3}
-      propertyPath: movementSpeed
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 7727057504035930988, guid: c8b969c0c1b00b2489a4052a944483c1,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7727057504035930988, guid: c8b969c0c1b00b2489a4052a944483c1,
-        type: 3}
       propertyPath: MonsterBite
       value: 
       objectReference: {fileID: 8300000, guid: ac6034ade498bb94b87620cdf6eac48b, type: 3}
@@ -3657,6 +3647,16 @@ PrefabInstance:
       propertyPath: loseText
       value: 
       objectReference: {fileID: 256634274}
+    - target: {fileID: 7727057504035930988, guid: c8b969c0c1b00b2489a4052a944483c1,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7727057504035930988, guid: c8b969c0c1b00b2489a4052a944483c1,
+        type: 3}
+      propertyPath: jump
+      value: 
+      objectReference: {fileID: 8300000, guid: 2a72af8dbe7f99a4585543bc6829bfb2, type: 3}
     - target: {fileID: 6839978930791059544, guid: c8b969c0c1b00b2489a4052a944483c1,
         type: 3}
       propertyPath: m_Constraints
@@ -3667,7 +3667,8 @@ PrefabInstance:
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9150762988087219335, guid: c8b969c0c1b00b2489a4052a944483c1, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c8b969c0c1b00b2489a4052a944483c1, type: 3}
 --- !u!4 &647276281 stripped
 Transform:
@@ -8047,26 +8048,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 5139463808777939581, guid: d21a04d7970c925479d8ce4b73e71901,
-        type: 3}
-      propertyPath: movementSpeed
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5139463808777939581, guid: d21a04d7970c925479d8ce4b73e71901,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5139463808777939581, guid: d21a04d7970c925479d8ce4b73e71901,
-        type: 3}
-      propertyPath: healthText
-      value: 
-      objectReference: {fileID: 256634274}
-    - target: {fileID: 5139463808777939581, guid: d21a04d7970c925479d8ce4b73e71901,
-        type: 3}
-      propertyPath: loseText
-      value: 
-      objectReference: {fileID: 256634274}
     - target: {fileID: 4744222756475520, guid: d21a04d7970c925479d8ce4b73e71901, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6
@@ -8111,6 +8092,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5139463808777939581, guid: d21a04d7970c925479d8ce4b73e71901,
+        type: 3}
+      propertyPath: healthText
+      value: 
+      objectReference: {fileID: 256634274}
+    - target: {fileID: 5139463808777939581, guid: d21a04d7970c925479d8ce4b73e71901,
+        type: 3}
+      propertyPath: loseText
+      value: 
+      objectReference: {fileID: 256634274}
+    - target: {fileID: 5139463808777939581, guid: d21a04d7970c925479d8ce4b73e71901,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5139463808777939581, guid: d21a04d7970c925479d8ce4b73e71901,
+        type: 3}
+      propertyPath: jump
+      value: 
+      objectReference: {fileID: 8300000, guid: 2a72af8dbe7f99a4585543bc6829bfb2, type: 3}
+    - target: {fileID: 8989639793415061850, guid: d21a04d7970c925479d8ce4b73e71901,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2034923012128762230, guid: d21a04d7970c925479d8ce4b73e71901,
         type: 3}
       propertyPath: m_Constraints
@@ -8121,12 +8127,8 @@ PrefabInstance:
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8989639793415061850, guid: d21a04d7970c925479d8ce4b73e71901,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1195067069991214699, guid: d21a04d7970c925479d8ce4b73e71901, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d21a04d7970c925479d8ce4b73e71901, type: 3}
 --- !u!4 &1497641113 stripped
 Transform:

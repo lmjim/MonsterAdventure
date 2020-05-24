@@ -6136,27 +6136,8 @@ PrefabInstance:
       propertyPath: loseText
       value: 
       objectReference: {fileID: 462728628}
-    - target: {fileID: 5139463808777939581, guid: d21a04d7970c925479d8ce4b73e71901,
-        type: 3}
-      propertyPath: movementSpeed
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 5139463808777939581, guid: d21a04d7970c925479d8ce4b73e71901,
-        type: 3}
-      propertyPath: health
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 5139463808777939581, guid: d21a04d7970c925479d8ce4b73e71901,
-        type: 3}
-      propertyPath: canDoubleJump
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5139463808777939581, guid: d21a04d7970c925479d8ce4b73e71901,
-        type: 3}
-      propertyPath: canWallJump
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1195067069991214699, guid: d21a04d7970c925479d8ce4b73e71901, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d21a04d7970c925479d8ce4b73e71901, type: 3}
 --- !u!4 &223619324 stripped
 Transform:
@@ -10320,30 +10301,11 @@ PrefabInstance:
       objectReference: {fileID: 462728628}
     - target: {fileID: 7727057504035930988, guid: c8b969c0c1b00b2489a4052a944483c1,
         type: 3}
-      propertyPath: health
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 7727057504035930988, guid: c8b969c0c1b00b2489a4052a944483c1,
-        type: 3}
-      propertyPath: movementSpeed
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 7727057504035930988, guid: c8b969c0c1b00b2489a4052a944483c1,
-        type: 3}
-      propertyPath: canDoubleJump
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7727057504035930988, guid: c8b969c0c1b00b2489a4052a944483c1,
-        type: 3}
-      propertyPath: canWallJump
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7727057504035930988, guid: c8b969c0c1b00b2489a4052a944483c1,
-        type: 3}
-      propertyPath: canSprint
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
+      propertyPath: jump
+      value: 
+      objectReference: {fileID: 8300000, guid: 2a72af8dbe7f99a4585543bc6829bfb2, type: 3}
+    m_RemovedComponents:
+    - {fileID: 9150762988087219335, guid: c8b969c0c1b00b2489a4052a944483c1, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c8b969c0c1b00b2489a4052a944483c1, type: 3}
 --- !u!1001 &375192848
 PrefabInstance:
@@ -13216,6 +13178,14 @@ PrefabInstance:
       propertyPath: m_Radius
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4127066169186206, guid: 6334a3662e4cb52429ebe16abf7d7005, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4127066169186206, guid: 6334a3662e4cb52429ebe16abf7d7005, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.79
+      objectReference: {fileID: 0}
     - target: {fileID: 9079452338933950326, guid: 6334a3662e4cb52429ebe16abf7d7005,
         type: 3}
       propertyPath: slimeText
@@ -13225,14 +13195,6 @@ PrefabInstance:
         type: 3}
       propertyPath: message
       value: Avoid the lava and red footman by double jumping!!
-      objectReference: {fileID: 0}
-    - target: {fileID: 4127066169186206, guid: 6334a3662e4cb52429ebe16abf7d7005, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 2.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4127066169186206, guid: 6334a3662e4cb52429ebe16abf7d7005, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -3.79
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6334a3662e4cb52429ebe16abf7d7005, type: 3}

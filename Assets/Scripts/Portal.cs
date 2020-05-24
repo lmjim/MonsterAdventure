@@ -15,10 +15,15 @@ public class Portal : MonoBehaviour
     public Text winText;
     
     private GameObject player;
-    private ParticleSystem ps;   
+    private ParticleSystem ps;
+
+    AudioSource audioSource;
+    public AudioClip win;
+    public static bool onButton = false; // Might remove later
 
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         player = PlayerSwitch.DefinePlayer(players);
 
         ps = transform.GetChild(0).gameObject.transform.GetChild(0).GetComponent<ParticleSystem>();
@@ -39,15 +44,23 @@ public class Portal : MonoBehaviour
                                     "\nLevel Complete!\nStars collected: " + LevelTracker.starsCollected.ToString() + 
                                     "\nEnemies Defeated: " + LevelTracker.enemiesDefeated.ToString() + 
                                     "\nPress ENTER to continue\nPress BACKSPACE replay level\nPress TAB to return home";
+                    PlayWinSound();
                 }
                 else
                 {
                     winText.text = "Level Complete!\nStars collected: " + LevelTracker.starsCollected.ToString() + 
                                     "\nEnemies Defeated: " + LevelTracker.enemiesDefeated.ToString() + 
                                     "\nPress ENTER to continue\nPress BACKSPACE replay level\nPress TAB to return home";
+                    PlayWinSound();
                 }
                 player.GetComponent<PlayerController>().FinishLevel();
             }
         }
+    }
+
+    public void PlayWinSound()
+    {
+        audioSource.PlayOneShot(win);
+        onButton = true;
     }
 }
