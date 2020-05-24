@@ -6421,17 +6421,17 @@ PrefabInstance:
     - target: {fileID: 7727057504035930988, guid: c8b969c0c1b00b2489a4052a944483c1,
         type: 3}
       propertyPath: canSprint
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7727057504035930988, guid: c8b969c0c1b00b2489a4052a944483c1,
         type: 3}
       propertyPath: canDoubleJump
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7727057504035930988, guid: c8b969c0c1b00b2489a4052a944483c1,
         type: 3}
       propertyPath: canWallJump
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c8b969c0c1b00b2489a4052a944483c1, type: 3}
@@ -8661,17 +8661,17 @@ PrefabInstance:
     - target: {fileID: 5139463808777939581, guid: d21a04d7970c925479d8ce4b73e71901,
         type: 3}
       propertyPath: canSprint
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5139463808777939581, guid: d21a04d7970c925479d8ce4b73e71901,
         type: 3}
       propertyPath: canDoubleJump
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5139463808777939581, guid: d21a04d7970c925479d8ce4b73e71901,
         type: 3}
       propertyPath: canWallJump
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8989639793415061850, guid: d21a04d7970c925479d8ce4b73e71901,
         type: 3}
