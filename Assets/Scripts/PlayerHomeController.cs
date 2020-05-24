@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerHomeController : MonoBehaviour
 {
@@ -18,6 +19,29 @@ public class PlayerHomeController : MonoBehaviour
         playerAnimator = GetComponent<Animator>();
         playerRB = GetComponent<Rigidbody>();
         playerAudio = GetComponent<AudioSource>();
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1))
+        {
+            LevelTracker.level1Passed = true;
+            LevelTracker.learnedSprint = true;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2))
+        {
+            LevelTracker.level2Passed = true;
+            LevelTracker.learnedDoubleJump = true;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Keypad3))
+        {
+            LevelTracker.level3Passed = true;
+            LevelTracker.learnedWallJump = true;
+        }
+        if (Input.GetKeyDown("r"))
+        {
+            SceneManager.LoadScene("Home", LoadSceneMode.Single); // reload home screen so level buttons update
+        }
     }
 
     void FixedUpdate()
