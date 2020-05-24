@@ -6188,17 +6188,17 @@ PrefabInstance:
     - target: {fileID: 7727057504035930988, guid: c8b969c0c1b00b2489a4052a944483c1,
         type: 3}
       propertyPath: canSprint
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7727057504035930988, guid: c8b969c0c1b00b2489a4052a944483c1,
         type: 3}
       propertyPath: canDoubleJump
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7727057504035930988, guid: c8b969c0c1b00b2489a4052a944483c1,
         type: 3}
       propertyPath: canWallJump
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c8b969c0c1b00b2489a4052a944483c1, type: 3}

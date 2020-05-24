@@ -10,13 +10,15 @@ public class LevelButton : MonoBehaviour
     public GameObject levelLabel;
     public GameObject levelInfo;
     public int level;
-
+    
     private GameObject button;
     private bool onButton = false;
 
+    public static bool onLevel1 = false;
     void Start()
     {
         button = transform.GetChild(0).gameObject;
+       
     }
 
     void Update()
@@ -32,6 +34,7 @@ public class LevelButton : MonoBehaviour
                         break;
                     case 1: // level 1
                         SceneManager.LoadScene("Level1", LoadSceneMode.Single);
+                        onLevel1 = true;
                         break;
                     case 2: // level 2
                         if(LevelTracker.level1Passed)

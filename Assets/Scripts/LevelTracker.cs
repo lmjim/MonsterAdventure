@@ -39,6 +39,8 @@ public class LevelTracker : MonoBehaviour
 
     private static bool success = false;
 
+    public static bool onLevel1 = false;
+
     void Awake ()   
     {
         if (Instance == null)
@@ -76,6 +78,7 @@ public class LevelTracker : MonoBehaviour
                     {
                         case "TutorialLevel":
                             SceneManager.LoadScene("Level1", LoadSceneMode.Single);
+                            onLevel1 = true;
                             break;
                         case "Level1":
                             SceneManager.LoadScene("Level2", LoadSceneMode.Single);

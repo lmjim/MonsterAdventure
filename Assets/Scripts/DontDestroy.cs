@@ -24,9 +24,11 @@ public class DontDestroy : MonoBehaviour
 
     void Update()
     {
-        if(LevelTracker.tutorialPassed)
+        // If on level 1, stop playing character selection/home/tutorial music
+        if (LevelTracker.onLevel1 || LevelButton.onLevel1)
         {
             Destroy(this.gameObject);
+            
         }
     }
 }
