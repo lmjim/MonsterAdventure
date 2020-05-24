@@ -7,6 +7,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Portal : MonoBehaviour
 {
@@ -30,9 +31,21 @@ public class Portal : MonoBehaviour
         {
             if(ps.isEmitting)
             {
-                winText.text = "Level Complete!\nStars collected: " + LevelTracker.starsCollected.ToString() + 
-                                "\nEnemies Defeated: " + LevelTracker.enemiesDefeated.ToString() + 
-                                "\nPress ENTER to continue\nPress BACKSPACE replay level\nPress TAB to return home";
+                if ((SceneManager.GetActiveScene().name != "TutorialLevel") && (player.GetComponent<PlayerController>().health == 20))
+                {
+                    // warning: this assumes perfect health is 20!!!
+                    LevelTracker.starsCollected++;
+                    winText.text =  "*** Perfect Health - Bonus Star Earned ***" +
+                                    "\nLevel Complete!\nStars collected: " + LevelTracker.starsCollected.ToString() + 
+                                    "\nEnemies Defeated: " + LevelTracker.enemiesDefeated.ToString() + 
+                                    "\nPress ENTER to continue\nPress BACKSPACE replay level\nPress TAB to return home";
+                }
+                else
+                {
+                    winText.text = "Level Complete!\nStars collected: " + LevelTracker.starsCollected.ToString() + 
+                                    "\nEnemies Defeated: " + LevelTracker.enemiesDefeated.ToString() + 
+                                    "\nPress ENTER to continue\nPress BACKSPACE replay level\nPress TAB to return home";
+                }
                 player.GetComponent<PlayerController>().FinishLevel();
             }
         }
