@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerHomeController : MonoBehaviour
 {
+    AudioSource playerAudio;
+
     private Animator playerAnimator;
     private Rigidbody playerRB;
     private Vector3 playerMovement;
@@ -15,6 +17,7 @@ public class PlayerHomeController : MonoBehaviour
     {
         playerAnimator = GetComponent<Animator>();
         playerRB = GetComponent<Rigidbody>();
+        playerAudio = GetComponent<AudioSource>();
     }
 
     void FixedUpdate()
@@ -30,6 +33,19 @@ public class PlayerHomeController : MonoBehaviour
         playerAnimator.SetBool("Walk Forward", walkForward);
         Vector3 desiredForward = Vector3.RotateTowards(transform.forward, playerMovement, turnSpeed * Time.deltaTime, 0f);
         playerRotation = Quaternion.LookRotation(desiredForward);
+
+        if (walkForward)
+        {
+            if (!playerAudio.isPlaying)
+            {
+                playerAudio.Play();
+            }
+        
+        }
+        else
+        {
+            playerAudio.Stop();
+        }
     }
 
     void OnAnimatorMove()
