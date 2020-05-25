@@ -28,7 +28,7 @@ public class Star : MonoBehaviour
         {
             if(!collected & ps.isEmitting) // if the star hasn't already been collected and is visible
             {
-                audioSource.PlayOneShot(star);
+                audioSource.PlayOneShot(star); // Sound fx when collecting star
                 ps.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear); // collect the star
                 LevelTracker.starsCollected++; // keep track of the number of stars collected
                 collected = true; // can't collect it again

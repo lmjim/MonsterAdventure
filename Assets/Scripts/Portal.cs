@@ -17,7 +17,7 @@ public class Portal : MonoBehaviour
     private GameObject player;
     private ParticleSystem ps;
 
-    AudioSource audioSource;
+    private AudioSource audioSource;
     public AudioClip win;
     public static bool onButton = false; // Might remove later
 
@@ -58,7 +58,7 @@ public class Portal : MonoBehaviour
         }
     }
 
-    public void PlayWinSound()
+    public void PlayWinSound() // Sound fx when reach portal
     {
         audioSource.PlayOneShot(win);
         onButton = true;

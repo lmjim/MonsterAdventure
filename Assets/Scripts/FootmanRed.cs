@@ -102,6 +102,7 @@ public class FootmanRed : MonoBehaviour
         {
             footmanAnimator.SetBool("Shoot", false); // stop shooting
             footmanAnimator.SetBool("Attack", false);
+            keepAttacking = false;
         }
     }
 
@@ -179,13 +180,12 @@ public class FootmanRed : MonoBehaviour
         _Fireball.transform.position = transform.TransformPoint((Vector3.forward * 1.5f) + (Vector3.up * .65f));
         _Fireball.transform.rotation = transform.rotation;
         _Fireball.GetComponent<Rigidbody>().velocity = transform.TransformDirection(Vector3.forward * 2);
-        //audioSource.volume = 0.8f;
-        audioSource.PlayOneShot(shot);
+        audioSource.PlayOneShot(shot); // Shooting sound fx
         yield return new WaitForSeconds(1f);
         shooting = false;
     }
 
-    IEnumerator PlayAttackSound()
+    IEnumerator PlayAttackSound() // Coroutine to play attacking sound fx every second
     {
         while (keepAttacking)
         {

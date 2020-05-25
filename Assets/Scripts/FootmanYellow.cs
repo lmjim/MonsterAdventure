@@ -27,7 +27,7 @@ public class FootmanYellow : MonoBehaviour
     public GameObject _Lightning;
     private bool shooting = false;
 
-    AudioSource audioSource;
+    private AudioSource audioSource;
     public AudioClip attack;
     public AudioClip shot;
     private bool keepAttacking = false;
@@ -102,6 +102,7 @@ public class FootmanYellow : MonoBehaviour
         {
             footmanAnimator.SetBool("Shoot", false); // stop shooting
             footmanAnimator.SetBool("Attack", false);
+            keepAttacking = false;
         }
     }
 
@@ -179,14 +180,13 @@ public class FootmanYellow : MonoBehaviour
         _Lightning.transform.position = transform.TransformPoint( (Vector3.forward * 1.5f) + (Vector3.up * .65f) );
         _Lightning.transform.rotation = transform.rotation;
         _Lightning.GetComponent<Rigidbody>().velocity = transform.TransformDirection(Vector3.forward * 3);
-        audioSource.PlayOneShot(shot);
-
+        audioSource.PlayOneShot(shot); // Shooting sound fx
         yield return new WaitForSeconds(1f);
         shooting = false;
     }
 
 
-    IEnumerator PlayAttackSound()
+    IEnumerator PlayAttackSound() // Coroutine to play attacking sound fx every second
     {
         while (keepAttacking)
         {

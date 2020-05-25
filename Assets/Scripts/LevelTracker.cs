@@ -42,6 +42,11 @@ public class LevelTracker : MonoBehaviour
     public static bool onHome = false;
     public static bool onLevel1 = false;
 
+    // This is the background music that gets played on home scene
+    // if you don't go consecutively (like playing a level and presisng
+    // tab to return home)
+    AudioSource audioSource; 
+
     void Awake ()   
     {
         if (Instance == null)
@@ -53,19 +58,35 @@ public class LevelTracker : MonoBehaviour
         {
             Destroy (gameObject);
         }
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
     {
-        if(levelOver)
+        // If the active scene is anything other than home,
+        // stop playing the background music
+        if (!(SceneManager.GetActiveScene().name == "Home"))
+        {
+            audioSource.Stop();  
+        }
+
+        if (levelOver)
         {
             if (Input.GetKeyDown(KeyCode.Tab))
             {
                 SceneManager.LoadScene("Home", LoadSceneMode.Single);
-                
-                print(onHome);
+
+                // Unless current scene is tutorial, begin playing the background music
+                if (!(SceneManager.GetActiveScene().name == "TutorialLevel") || !(SceneManager.GetActiveScene().name == "TutorialLevel"))
+                {
+                    audioSource.Play();
+                }
+
                 ResetVariables();
             }
+            
+           
             if (Input.GetKeyDown(KeyCode.Backspace))
             {
                 string level = SceneManager.GetActiveScene().name;
@@ -76,12 +97,16 @@ public class LevelTracker : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.Return))
                 {
+                    // Not sure if this is actually doing anything
+                    // but keep for now
+                    //audioSource.Stop();
+
                     string level = SceneManager.GetActiveScene().name;
                     switch (level)
                     {
                         case "TutorialLevel":
                             SceneManager.LoadScene("Level1", LoadSceneMode.Single);
-                            onLevel1 = true;
+                            onLevel1 = true; // For BackgroundMusic script
                             break;
                         case "Level1":
                             SceneManager.LoadScene("Level2", LoadSceneMode.Single);
@@ -96,6 +121,8 @@ public class LevelTracker : MonoBehaviour
                     ResetVariables();
                 }
             }
+
+            
         }
     }
 

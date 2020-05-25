@@ -21,16 +21,16 @@ public class FootmanBlue : MonoBehaviour
 
     private float movementDistance = 30.0f;
     private float shootDistance = 8f;
-    private float attackDistance = 4f; // Stefan - Kiana added this
+    private float attackDistance = 4f;
     private bool dead = false;
 
     public GameObject _Iceball;
     private bool shooting = false;
 
-    AudioSource audioSource;
+    private AudioSource audioSource;
     public AudioClip attack;
     public AudioClip shot;
-    private bool keepAttacking = false;
+    private bool keepAttacking = false; 
 
 
     void Start()
@@ -54,7 +54,6 @@ public class FootmanBlue : MonoBehaviour
             Vector3 playerPosition = player.transform.position;
             float dist = Vector3.Distance(transform.position, playerPosition);
 
-            // Stefan - Kiana Added this
             if (dist < attackDistance)
             {
                 footmanAnimator.SetBool("Shoot", false); // stop shooting and return to battle stance
@@ -104,6 +103,7 @@ public class FootmanBlue : MonoBehaviour
         {
             footmanAnimator.SetBool("Shoot", false); // stop shooting
             footmanAnimator.SetBool("Attack", false);
+            keepAttacking = false;
         }
     }
 
@@ -120,6 +120,7 @@ public class FootmanBlue : MonoBehaviour
         if (collision.gameObject.CompareTag("Player") && !dead)
         {
             footmanAnimator.SetBool("Attack", true); // swing sword
+
             // Play attacking sounds every 1 second
             keepAttacking = true;
             StartCoroutine(PlayAttackSound());
@@ -182,11 +183,12 @@ public class FootmanBlue : MonoBehaviour
         _Iceball.transform.position = transform.TransformPoint( (Vector3.forward * 1.5f) + (Vector3.up * .65f) );
         _Iceball.transform.rotation = transform.rotation;
         _Iceball.GetComponent<Rigidbody>().velocity = transform.TransformDirection(Vector3.forward * 3);
-        audioSource.PlayOneShot(shot);
+        audioSource.PlayOneShot(shot); // Shooting sound fx
         yield return new WaitForSeconds(1f);
         shooting = false;
     }
-    IEnumerator PlayAttackSound()
+
+    IEnumerator PlayAttackSound() // Coroutine to play attacking sound fx every second
     {
         while (keepAttacking)
         {

@@ -37,10 +37,8 @@ public class ButtonRed : MonoBehaviour
             if(!pressed) // if the button hasn't already been pressed before
             {
                 buttonRender.material.DisableKeyword("_EMISSION"); // turn off button light
+                audioSource.PlayOneShot(button_sound); // click sound fx 
                 pressed = true; // can't press it again
-                audioSource.PlayOneShot(button_sound);
-
-
                 ps.Play(); // turn on the portal
             }
         }

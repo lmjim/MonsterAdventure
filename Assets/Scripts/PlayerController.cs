@@ -42,24 +42,26 @@ public class PlayerController : MonoBehaviour
     public bool canDoubleJump = false;
     public bool canWallJump = false;
 
-    AudioSource audioSource;
-    AudioSource audioSource2;
+    private AudioSource audioSource;
+    private AudioSource audioSource2;
     public AudioClip bite;
     public AudioClip walk;
     public AudioClip jump;
     public AudioClip die;
     public AudioClip hurt;
+
     public SimpleHealthBar healthBar;
     
     void Start()
     {
         playerAnimator = GetComponent<Animator>();
         playerRB = GetComponent<Rigidbody>();
-        //audioSource = GetComponent<AudioSource>();
+
+        // There are two audio sources, one for audio sources using Play()
+        // and one for audio sources using PlayOneShot()
         AudioSource[] audios = GetComponents<AudioSource>();
-        // Will make better names later
-        audioSource = audios[0]; // the walking audio source
-        audioSource2 = audios[1]; // other sound effect audio source
+        audioSource = audios[0]; // Walking (Play())
+        audioSource2 = audios[1]; // Other sound fx (PlayOneShot())
 
 
         slimes = GameObject.FindGameObjectsWithTag("Slime");
@@ -128,9 +130,7 @@ public class PlayerController : MonoBehaviour
                 playerAnimator.SetBool("Walk Forward", false); // switch back to idle state to be able to go to attack state
                 playerAnimator.SetBool("Run Forward", false);
                 playerAnimator.SetTrigger("Attack 02"); // Bite
-                
                 PlayBiteSound();
-                
             }
 
             if ((Input.GetKeyDown("left shift") || Input.GetKeyDown("right shift")) && canSprint) // toggle sprint
@@ -138,30 +138,6 @@ public class PlayerController : MonoBehaviour
                 isSprinting = !isSprinting;
             }
         }
-    }
-    // Will move audio stuff lower in file later
-    public void PlayBiteSound()
-    { 
-        audioSource2.volume = 0.08f;
-        audioSource2.PlayOneShot(bite);
-    }
-
-    public void PlayJumpSound()
-    {
-        audioSource2.volume = 0.5f;
-        audioSource2.PlayOneShot(jump);
-    }
-
-    public void PlayDieSound()
-    {
-        audioSource2.volume = 0.8f;
-        audioSource2.PlayOneShot(die); // Sounds horrible if fall off 
-    }
-
-    public void PlayHurtSound()
-    {
-        audioSource2.volume = 0.08f;
-        audioSource2.PlayOneShot(hurt);
     }
 
     void FixedUpdate()
@@ -177,7 +153,9 @@ public class PlayerController : MonoBehaviour
             bool hasVerticalInput = !Mathf.Approximately(vertical, 0f);
             bool hasInput = hasHorizontalInput || hasVerticalInput;
 
-            if (hasInput)
+            // If has vertical/horizontal input and player grounded,
+            // play walking audio
+            if (hasInput) 
             {
                 if (!audioSource.isPlaying && isGrounded)
                 {
@@ -186,7 +164,8 @@ public class PlayerController : MonoBehaviour
                     audioSource.Play();
                 }
 
-                if(audioSource2.isPlaying) // NOT WORKING
+                // If any other sound fx playing, stop walking audio
+                if (audioSource2.isPlaying)
                 {
                     audioSource.Stop();
                 }
@@ -196,7 +175,6 @@ public class PlayerController : MonoBehaviour
                 audioSource.Stop();
             }
 
-            
 
             if (isSprinting)
             {
@@ -211,14 +189,13 @@ public class PlayerController : MonoBehaviour
                 
             }
 
-         
-            
             Vector3 desiredForward = Vector3.RotateTowards(transform.forward, playerMovement, turnSpeed * Time.deltaTime, 0f);
             playerRotation = Quaternion.LookRotation(desiredForward);
         }
 
         if (transform.position.y < -1) // player fell off stage
         {
+            // TODO: fix dying sounds when player falls off stage
             Die();
         }
     }
@@ -269,7 +246,7 @@ public class PlayerController : MonoBehaviour
             playerAnimator.SetBool("Walk Forward", false); // switch back to idle state to be able to go to damage state
             playerAnimator.SetBool("Run Forward", false);
             playerAnimator.SetTrigger("Take Damage"); // very short animation, could also transform position backwards a little bit
-            PlayHurtSound();
+            PlayHurtSound(); // A bit laggy
             
             health--;
             SetHealthText();
@@ -308,7 +285,7 @@ public class PlayerController : MonoBehaviour
             playerAnimator.SetBool("Walk Forward", false); // switch back to idle state to be able to go to damage state
             playerAnimator.SetBool("Run Forward", false);
             playerAnimator.SetTrigger("Take Damage"); // very short animation, could also transform position backwards a little bit
-            PlayHurtSound();
+            PlayHurtSound(); // A bit laggy
             health -= 2; // Iceballs do more damage that the sword
             SetHealthText();
 
@@ -401,7 +378,7 @@ public class PlayerController : MonoBehaviour
 
         playerAnimator.SetTrigger("Die");
         PlayDieSound();
-        audioSource.Stop();
+        audioSource.Stop(); // Stop the walking audio
         loseText.text = "You died! Game over.\nPress BACKSPACE replay level\nPress TAB to return home";
 
         foreach (GameObject slime in slimes)
@@ -410,5 +387,29 @@ public class PlayerController : MonoBehaviour
         }
 
         LevelTracker.EndLevel(false);
+    }
+
+    public void PlayBiteSound() // Biting audio
+    {
+        audioSource2.volume = 0.08f;
+        audioSource2.PlayOneShot(bite);
+    }
+
+    public void PlayJumpSound() // Jumping audio
+    {
+        audioSource2.volume = 0.5f;
+        audioSource2.PlayOneShot(jump);
+    }
+     
+    public void PlayDieSound() // Dying audio
+    {
+        audioSource2.volume = 0.7f;
+        audioSource2.PlayOneShot(die); // Sounds horrible if fall off 
+    }
+
+    public void PlayHurtSound() // Take damage audio
+    {
+        audioSource2.volume = 0.08f;
+        audioSource2.PlayOneShot(hurt);
     }
 }

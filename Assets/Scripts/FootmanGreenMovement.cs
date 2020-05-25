@@ -88,6 +88,7 @@ public class FootmanGreenMovement : MonoBehaviour
         if (LevelTracker.levelOver)
         {
             footmanAnimator.SetBool("Attack", false); // stop swinging sword
+            keepAttacking = false;
         }
     }
 
@@ -159,7 +160,7 @@ public class FootmanGreenMovement : MonoBehaviour
         }
     }
 
-    IEnumerator PlayAttackSound()
+    IEnumerator PlayAttackSound() // Coroutine to play attacking sound fx every second
     {
         while (keepAttacking)
         {
