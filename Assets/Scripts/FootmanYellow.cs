@@ -27,9 +27,15 @@ public class FootmanYellow : MonoBehaviour
     public GameObject _Lightning;
     private bool shooting = false;
 
+    AudioSource audioSource;
+    public AudioClip attack;
+    private bool keepAttacking = false;
+
     void Start()
     {
         player = PlayerSwitch.DefinePlayer(players);
+        audioSource = GetComponent<AudioSource>();
+
 
         footmanRigidbody = GetComponent<Rigidbody>();
         footmanAnimator = GetComponent<Animator>();
@@ -111,6 +117,8 @@ public class FootmanYellow : MonoBehaviour
         if (collision.gameObject.CompareTag("Player") && !dead)
         {
             footmanAnimator.SetBool("Attack", true); // swing sword
+            keepAttacking = true;
+            StartCoroutine(PlayAttackSound());
         }
     }
 
@@ -119,6 +127,7 @@ public class FootmanYellow : MonoBehaviour
         if (collision.gameObject.CompareTag("Player") && !dead)
         {
             footmanAnimator.SetBool("Attack", false); // stop swinging sword
+            keepAttacking = false;
         }
     }
 
@@ -170,5 +179,16 @@ public class FootmanYellow : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
         shooting = false;
+    }
+
+
+    IEnumerator PlayAttackSound()
+    {
+        while (keepAttacking)
+        {
+            audioSource.volume = 0.5f;
+            audioSource.PlayOneShot(attack);
+            yield return new WaitForSeconds(1.0f);
+        }
     }
 }

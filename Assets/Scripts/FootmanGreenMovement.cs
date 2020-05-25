@@ -25,13 +25,14 @@ public class FootmanGreenMovement : MonoBehaviour
     //private float footmanViewAngle = 80.0f;
     private bool dead = false;
 
-    //AudioSource audioSource;
-    //public AudioClip attack;
+    AudioSource audioSource;
+    public AudioClip attack;
+    private bool keepAttacking = false;
 
     void Start()
     {
         player = PlayerSwitch.DefinePlayer(players);
-        //audioSource = GetComponent<AudioSource>();
+        audioSource = GetComponent<AudioSource>();
 
         footmanRigidbody = GetComponent<Rigidbody>();
         footmanAnimator = GetComponent<Animator>();
@@ -40,6 +41,7 @@ public class FootmanGreenMovement : MonoBehaviour
         newPosition = transform.position;
 
         playerAnimation = player.GetComponent<Animator>();
+        
     }
 
     void Update()
@@ -102,9 +104,10 @@ public class FootmanGreenMovement : MonoBehaviour
         if (collision.gameObject.CompareTag("Player") && !dead)
         {
             footmanAnimator.SetBool("Attack", true); // swing sword
-            //audioSource.PlayOneShot(attack); // TODO: This is currently only played once
 
-
+            // Play attacking sounds every 1 second
+            keepAttacking = true;
+            StartCoroutine(PlayAttackSound());
         }
     }
 
@@ -113,6 +116,7 @@ public class FootmanGreenMovement : MonoBehaviour
         if (collision.gameObject.CompareTag("Player") && !dead)
         {
             footmanAnimator.SetBool("Attack", false); // stop swinging sword
+            keepAttacking = false;
         }
     }
 
@@ -150,6 +154,16 @@ public class FootmanGreenMovement : MonoBehaviour
             footmanAnimator.SetTrigger("Take Damage"); // play the "knock back" animation
 
             newPosition = transform.position - transform.forward * movementDistance * Time.deltaTime; // this sets the spot the footman should be knocked back to
+        }
+    }
+
+    IEnumerator PlayAttackSound()
+    {
+        while (keepAttacking)
+        {
+            audioSource.volume = 0.5f;
+            audioSource.PlayOneShot(attack);
+            yield return new WaitForSeconds(1.0f);
         }
     }
 }

@@ -23,6 +23,7 @@ TagManager:
   - Test
   - Music
   - Lightning
+  - Portal
   layers:
   - Default
   - TransparentFX

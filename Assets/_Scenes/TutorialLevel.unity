@@ -131,6 +131,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Portal
       objectReference: {fileID: 0}
+    - target: {fileID: 1620071135427400, guid: aec6e2a41e5420345870a682e58e8977, type: 3}
+      propertyPath: m_TagString
+      value: Portal
+      objectReference: {fileID: 0}
     - target: {fileID: 4579623904907906, guid: aec6e2a41e5420345870a682e58e8977, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3
@@ -381,11 +385,6 @@ PrefabInstance:
       propertyPath: players
       value: 
       objectReference: {fileID: 369991688}
-    - target: {fileID: 7435173253795876166, guid: 007d93b430167464989fc12235843989,
-        type: 3}
-      propertyPath: attack
-      value: 
-      objectReference: {fileID: 8300000, guid: 2adb857f469be6542b88433c6cb895b6, type: 3}
     - target: {fileID: 467292, guid: 007d93b430167464989fc12235843989, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0.32817245
@@ -4072,6 +4071,21 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.9000001
       objectReference: {fileID: 0}
+    - target: {fileID: 6721489183653975999, guid: 93fb8e8a7f46ca34caa77b500502c2f5,
+        type: 3}
+      propertyPath: m_Radius
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6721489183653975999, guid: 93fb8e8a7f46ca34caa77b500502c2f5,
+        type: 3}
+      propertyPath: m_Center.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6721489183653975999, guid: 93fb8e8a7f46ca34caa77b500502c2f5,
+        type: 3}
+      propertyPath: m_Center.x
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 3081277720127655528, guid: 93fb8e8a7f46ca34caa77b500502c2f5,
         type: 3}
       propertyPath: slimeText
@@ -4087,21 +4101,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6721489183653975999, guid: 93fb8e8a7f46ca34caa77b500502c2f5,
-        type: 3}
-      propertyPath: m_Radius
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6721489183653975999, guid: 93fb8e8a7f46ca34caa77b500502c2f5,
-        type: 3}
-      propertyPath: m_Center.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6721489183653975999, guid: 93fb8e8a7f46ca34caa77b500502c2f5,
-        type: 3}
-      propertyPath: m_Center.x
-      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93fb8e8a7f46ca34caa77b500502c2f5, type: 3}
@@ -5093,7 +5092,7 @@ GameObject:
   - component: {fileID: 786268594}
   m_Layer: 0
   m_Name: Stage Cliff
-  m_TagString: Untagged
+  m_TagString: Stage Cliff
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

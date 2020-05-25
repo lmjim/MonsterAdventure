@@ -10304,6 +10304,16 @@ PrefabInstance:
       propertyPath: jump
       value: 
       objectReference: {fileID: 8300000, guid: 2a72af8dbe7f99a4585543bc6829bfb2, type: 3}
+    - target: {fileID: 4495045736205500469, guid: c8b969c0c1b00b2489a4052a944483c1,
+        type: 3}
+      propertyPath: DopplerLevel
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 552174346560744345, guid: c8b969c0c1b00b2489a4052a944483c1,
+        type: 3}
+      propertyPath: DopplerLevel
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 9150762988087219335, guid: c8b969c0c1b00b2489a4052a944483c1, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c8b969c0c1b00b2489a4052a944483c1, type: 3}
@@ -13071,7 +13081,7 @@ GameObject:
   - component: {fileID: 479423691}
   m_Layer: 0
   m_Name: Stage Cliff - End Footman
-  m_TagString: Untagged
+  m_TagString: Stage Cliff
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13178,14 +13188,6 @@ PrefabInstance:
       propertyPath: m_Radius
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 4127066169186206, guid: 6334a3662e4cb52429ebe16abf7d7005, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 2.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4127066169186206, guid: 6334a3662e4cb52429ebe16abf7d7005, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -3.79
-      objectReference: {fileID: 0}
     - target: {fileID: 9079452338933950326, guid: 6334a3662e4cb52429ebe16abf7d7005,
         type: 3}
       propertyPath: slimeText
@@ -13195,6 +13197,14 @@ PrefabInstance:
         type: 3}
       propertyPath: message
       value: Avoid the lava and red footman by double jumping!!
+      objectReference: {fileID: 0}
+    - target: {fileID: 4127066169186206, guid: 6334a3662e4cb52429ebe16abf7d7005, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4127066169186206, guid: 6334a3662e4cb52429ebe16abf7d7005, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.79
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6334a3662e4cb52429ebe16abf7d7005, type: 3}
@@ -21942,26 +21952,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f932e1c393eef644bfd6dd8ba21635b, type: 3}
---- !u!1 &841133971 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 106764, guid: 06490fc688aff434496294747099a875,
-    type: 3}
-  m_PrefabInstance: {fileID: 1446854358}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &841133972
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 841133971}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c4eb114adc78428bbe42982f37c1dfb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  players: {fileID: 512440652}
-  _Fireball: {fileID: 756799130}
 --- !u!1001 &841680265
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33333,6 +33323,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Portal High
       objectReference: {fileID: 0}
+    - target: {fileID: 1620071135427400, guid: aec6e2a41e5420345870a682e58e8977, type: 3}
+      propertyPath: m_TagString
+      value: Portal
+      objectReference: {fileID: 0}
     - target: {fileID: 4579623904907906, guid: aec6e2a41e5420345870a682e58e8977, type: 3}
       propertyPath: m_LocalPosition.x
       value: 47.54
@@ -38179,6 +38173,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   players: {fileID: 512440652}
   _Fireball: {fileID: 0}
+  attack: {fileID: 0}
 --- !u!4 &1428729907 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6935642399601693244, guid: 7f932e1c393eef644bfd6dd8ba21635b,
@@ -38728,6 +38723,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1844063789}
     m_Modifications:
+    - target: {fileID: 8544177347911235763, guid: 06490fc688aff434496294747099a875,
+        type: 3}
+      propertyPath: players
+      value: 
+      objectReference: {fileID: 512440652}
+    - target: {fileID: 8544177347911235763, guid: 06490fc688aff434496294747099a875,
+        type: 3}
+      propertyPath: _Fireball
+      value: 
+      objectReference: {fileID: 756799130}
     - target: {fileID: 106764, guid: 06490fc688aff434496294747099a875, type: 3}
       propertyPath: m_Name
       value: Footman_Red

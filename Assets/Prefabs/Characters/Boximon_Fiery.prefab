@@ -1177,7 +1177,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthText: {fileID: 0}
   loseText: {fileID: 0}
-  health: 10
+  health: 20
   movementSpeed: 7
   canSprint: 0
   canDoubleJump: 0

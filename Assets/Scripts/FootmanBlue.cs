@@ -27,9 +27,16 @@ public class FootmanBlue : MonoBehaviour
     public GameObject _Iceball;
     private bool shooting = false;
 
+    AudioSource audioSource;
+    public AudioClip attack;
+    public AudioClip shot;
+    private bool keepAttacking = false;
+
+
     void Start()
     {
         player = PlayerSwitch.DefinePlayer(players);
+        audioSource = GetComponent<AudioSource>();
 
         footmanRigidbody = GetComponent<Rigidbody>();
         footmanAnimator = GetComponent<Animator>();
@@ -60,6 +67,8 @@ public class FootmanBlue : MonoBehaviour
                 footmanAnimator.SetBool("Battle", true);
                 footmanAnimator.SetBool("Attack", false);
                 footmanAnimator.SetBool("Shoot", true);
+
+
                 Vector3 lookTowards = playerPosition;
                 lookTowards.y = transform.position.y;
                 transform.LookAt(lookTowards); // have the footman face the player during battle
@@ -111,6 +120,9 @@ public class FootmanBlue : MonoBehaviour
         if (collision.gameObject.CompareTag("Player") && !dead)
         {
             footmanAnimator.SetBool("Attack", true); // swing sword
+            // Play attacking sounds every 1 second
+            keepAttacking = true;
+            StartCoroutine(PlayAttackSound());
         }
     }
 
@@ -119,6 +131,7 @@ public class FootmanBlue : MonoBehaviour
         if (collision.gameObject.CompareTag("Player") && !dead)
         {
             footmanAnimator.SetBool("Attack", false); // stop swinging sword
+            keepAttacking = false;
         }
     }
 
@@ -167,8 +180,19 @@ public class FootmanBlue : MonoBehaviour
         _Iceball.transform.position = transform.TransformPoint( (Vector3.forward * 1.5f) + (Vector3.up * .65f) );
         _Iceball.transform.rotation = transform.rotation;
         _Iceball.GetComponent<Rigidbody>().velocity = transform.TransformDirection(Vector3.forward * 3);
-
+        audioSource.PlayOneShot(shot);
         yield return new WaitForSeconds(1f);
         shooting = false;
     }
+    IEnumerator PlayAttackSound()
+    {
+        while (keepAttacking)
+        {
+            audioSource.volume = 0.5f;
+            audioSource.PlayOneShot(attack);
+            yield return new WaitForSeconds(1.0f);
+        }
+    }
+
+  
 }

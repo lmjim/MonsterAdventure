@@ -140,7 +140,7 @@ public class PlayerController : MonoBehaviour
     // Will move audio stuff lower in file later
     public void PlayBiteSound()
     { 
-        audioSource2.volume = 0.2f;
+        audioSource2.volume = 0.1f;
         audioSource2.PlayOneShot(bite);
     }
 
@@ -171,22 +171,23 @@ public class PlayerController : MonoBehaviour
 
             if (hasInput)
             {
-                if (!audioSource.isPlaying)
+                if (!audioSource.isPlaying && isGrounded)
                 {
                     audioSource.clip = walk;
                     audioSource.Play();
                 }
 
-                if(audioSource2.isPlaying || LevelTracker.levelOver) // NOT WORKING
+                if(audioSource2.isPlaying) // NOT WORKING
                 {
                     audioSource.Stop();
                 }
             }
             else
             {
-               
                 audioSource.Stop();
             }
+
+            
 
             if (isSprinting)
             {
@@ -266,7 +267,7 @@ public class PlayerController : MonoBehaviour
             if (health < 1)
             {
                 Die();
-                
+
 
                 // Getting rid of negative numbers
                 health = 0;
@@ -277,10 +278,16 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(BecomeTemporarilyInvincible());
         }
 
-        if (other.gameObject.CompareTag("Platform"))
+        if (other.gameObject.CompareTag("Platform") || other.gameObject.CompareTag("Portal"))
         {
             isGrounded = true; // the buttons and portal should count as ground too
             jumps = 0;
+           
+        }
+
+        if (other.gameObject.CompareTag("Portal"))
+        {
+            audioSource.Stop(); // Stop walking sounds when reaching the portal 
         }
 
         if (other.gameObject.CompareTag("Iceball") || other.gameObject.CompareTag("Fireball") || other.gameObject.CompareTag("Lightning") )
@@ -298,7 +305,6 @@ public class PlayerController : MonoBehaviour
             {
                 Die();
                
-
                 // Getting rid of negative numbers
                 health = 0;
                 SetHealthText();
@@ -328,7 +334,6 @@ public class PlayerController : MonoBehaviour
         {
             onWall = false;
         }
-        
     }
 
     // Makes boximon invinsible for a little so it doesn't lose hella health
