@@ -15,12 +15,17 @@ public class ButtonRed : MonoBehaviour
     private GameObject button;
     private Renderer buttonRender;
     private bool pressed = false;
-    
+
+    AudioSource audioSource;
+    public AudioClip button_sound;
+
     void Start()
     {
         ps = portal.transform.GetChild(0).gameObject.transform.GetChild(0).GetComponent<ParticleSystem>();
         button = transform.GetChild(0).gameObject;
         buttonRender = button.GetComponent<Renderer>();
+        audioSource = GetComponent<AudioSource>();
+
     }
 
     void OnTriggerEnter(Collider other)
@@ -33,6 +38,8 @@ public class ButtonRed : MonoBehaviour
             {
                 buttonRender.material.DisableKeyword("_EMISSION"); // turn off button light
                 pressed = true; // can't press it again
+                audioSource.PlayOneShot(button_sound);
+
 
                 ps.Play(); // turn on the portal
             }

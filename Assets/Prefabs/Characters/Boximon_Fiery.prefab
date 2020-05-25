@@ -1186,6 +1186,7 @@ MonoBehaviour:
   walk: {fileID: 8300000, guid: a3e270d3a40da90458c342f9eb6d13da, type: 3}
   jump: {fileID: 8300000, guid: 2a72af8dbe7f99a4585543bc6829bfb2, type: 3}
   die: {fileID: 8300000, guid: a2f0e021c2c371445a1b65f484f047c7, type: 3}
+  hurt: {fileID: 8300000, guid: a37f44cbf8c2a7443a3c361efa2f233a, type: 3}
 --- !u!82 &7976149389382834055
 AudioSource:
   m_ObjectHideFlags: 0

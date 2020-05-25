@@ -30,5 +30,10 @@ public class DontDestroy : MonoBehaviour
             Destroy(this.gameObject);
             
         }
+
+        if (LevelTracker.onHome)
+        {
+            print("on home");
+        }
     }
 }

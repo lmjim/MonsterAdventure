@@ -130,6 +130,7 @@ public class FootmanGreenMovement : MonoBehaviour
             dead = true;
             footmanCollider.enabled = false; // allow to fall easily
             swordCollider.enabled = false; // make sure sword can't do damage as he falls
+            keepAttacking = false;
             LevelTracker.enemiesDefeated++;
         }
 
@@ -141,6 +142,7 @@ public class FootmanGreenMovement : MonoBehaviour
             dead = true;
             footmanCollider.enabled = false; // allow to drown
             swordCollider.enabled = false; // make sure sword can't do damage as he dies
+            keepAttacking = false;
             LevelTracker.enemiesDefeated++;
         }
     }
@@ -161,7 +163,7 @@ public class FootmanGreenMovement : MonoBehaviour
     {
         while (keepAttacking)
         {
-            audioSource.volume = 0.5f;
+            audioSource.volume = 0.7f;
             audioSource.PlayOneShot(attack);
             yield return new WaitForSeconds(1.0f);
         }

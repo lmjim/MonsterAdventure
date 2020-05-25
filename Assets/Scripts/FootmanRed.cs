@@ -141,6 +141,7 @@ public class FootmanRed : MonoBehaviour
             footmanAnimator.SetTrigger("Die");
             footmanRigidbody.drag = 5; // decrease falling speed
             dead = true;
+            keepAttacking = false;
             footmanCollider.enabled = false; // allow to fall easily
             LevelTracker.enemiesDefeated++;
         }
@@ -152,6 +153,7 @@ public class FootmanRed : MonoBehaviour
             footmanAnimator.SetTrigger("Die");
             footmanRigidbody.drag = 10; // decrease drowning speed
             dead = true;
+            keepAttacking = false;
             footmanCollider.enabled = false; // allow to drown
             LevelTracker.enemiesDefeated++;
         }
@@ -177,6 +179,7 @@ public class FootmanRed : MonoBehaviour
         _Fireball.transform.position = transform.TransformPoint((Vector3.forward * 1.5f) + (Vector3.up * .65f));
         _Fireball.transform.rotation = transform.rotation;
         _Fireball.GetComponent<Rigidbody>().velocity = transform.TransformDirection(Vector3.forward * 2);
+        //audioSource.volume = 0.8f;
         audioSource.PlayOneShot(shot);
         yield return new WaitForSeconds(1f);
         shooting = false;
@@ -186,7 +189,7 @@ public class FootmanRed : MonoBehaviour
     {
         while (keepAttacking)
         {
-            audioSource.volume = 0.5f;
+            audioSource.volume = 0.7f;
             audioSource.PlayOneShot(attack);
             yield return new WaitForSeconds(1.0f);
         }

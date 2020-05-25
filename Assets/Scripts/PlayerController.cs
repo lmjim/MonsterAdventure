@@ -48,6 +48,8 @@ public class PlayerController : MonoBehaviour
     public AudioClip walk;
     public AudioClip jump;
     public AudioClip die;
+    public AudioClip hurt;
+    public SimpleHealthBar healthBar;
     
     void Start()
     {
@@ -140,20 +142,26 @@ public class PlayerController : MonoBehaviour
     // Will move audio stuff lower in file later
     public void PlayBiteSound()
     { 
-        audioSource2.volume = 0.1f;
+        audioSource2.volume = 0.08f;
         audioSource2.PlayOneShot(bite);
     }
 
     public void PlayJumpSound()
     {
-        audioSource2.volume = 0.3f;
+        audioSource2.volume = 0.5f;
         audioSource2.PlayOneShot(jump);
     }
 
     public void PlayDieSound()
     {
-        audioSource2.volume = 0.4f;
+        audioSource2.volume = 0.8f;
         audioSource2.PlayOneShot(die); // Sounds horrible if fall off 
+    }
+
+    public void PlayHurtSound()
+    {
+        audioSource2.volume = 0.08f;
+        audioSource2.PlayOneShot(hurt);
     }
 
     void FixedUpdate()
@@ -174,6 +182,7 @@ public class PlayerController : MonoBehaviour
                 if (!audioSource.isPlaying && isGrounded)
                 {
                     audioSource.clip = walk;
+                    audioSource.volume = 0.7f;
                     audioSource.Play();
                 }
 
@@ -260,6 +269,8 @@ public class PlayerController : MonoBehaviour
             playerAnimator.SetBool("Walk Forward", false); // switch back to idle state to be able to go to damage state
             playerAnimator.SetBool("Run Forward", false);
             playerAnimator.SetTrigger("Take Damage"); // very short animation, could also transform position backwards a little bit
+            PlayHurtSound();
+            
             health--;
             SetHealthText();
 
@@ -297,6 +308,7 @@ public class PlayerController : MonoBehaviour
             playerAnimator.SetBool("Walk Forward", false); // switch back to idle state to be able to go to damage state
             playerAnimator.SetBool("Run Forward", false);
             playerAnimator.SetTrigger("Take Damage"); // very short animation, could also transform position backwards a little bit
+            PlayHurtSound();
             health -= 2; // Iceballs do more damage that the sword
             SetHealthText();
 
@@ -355,6 +367,7 @@ public class PlayerController : MonoBehaviour
     void SetHealthText()
     {
         healthText.text = "Boximon Health: " + health.ToString();
+        healthBar.UpdateBar(health, 20);
     }
 
     void playerJump()

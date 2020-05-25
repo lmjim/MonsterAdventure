@@ -39,6 +39,7 @@ public class LevelTracker : MonoBehaviour
 
     private static bool success = false;
 
+    public static bool onHome = false;
     public static bool onLevel1 = false;
 
     void Awake ()   
@@ -61,6 +62,8 @@ public class LevelTracker : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Tab))
             {
                 SceneManager.LoadScene("Home", LoadSceneMode.Single);
+                
+                print(onHome);
                 ResetVariables();
             }
             if (Input.GetKeyDown(KeyCode.Backspace))

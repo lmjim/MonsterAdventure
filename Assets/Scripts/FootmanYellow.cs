@@ -141,6 +141,7 @@ public class FootmanYellow : MonoBehaviour
             footmanAnimator.SetTrigger("Die");
             footmanRigidbody.drag = 5; // decrease falling speed
             dead = true;
+            keepAttacking = false;
             footmanCollider.enabled = false; // allow to fall easily
             LevelTracker.enemiesDefeated++;
         }
@@ -152,6 +153,7 @@ public class FootmanYellow : MonoBehaviour
             footmanAnimator.SetTrigger("Die");
             footmanRigidbody.drag = 10; // decrease drowning speed
             dead = true;
+            keepAttacking = false;
             footmanCollider.enabled = false; // allow to drown
             LevelTracker.enemiesDefeated++;
         }
@@ -188,7 +190,7 @@ public class FootmanYellow : MonoBehaviour
     {
         while (keepAttacking)
         {
-            audioSource.volume = 0.5f;
+            audioSource.volume = 0.7f;
             audioSource.PlayOneShot(attack);
             yield return new WaitForSeconds(1.0f);
         }
