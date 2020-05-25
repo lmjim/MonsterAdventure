@@ -3275,17 +3275,6 @@ PrefabInstance:
       propertyPath: players
       value: 
       objectReference: {fileID: 774545486}
-    - target: {fileID: 6798030570463818578, guid: 61c5f05db3afb7e4ea05d8b140cddef4,
-        type: 3}
-      propertyPath: _Lightning
-      value: 
-      objectReference: {fileID: 4357749205524698951, guid: 9714bf73cd95bc34c8e72aa59c88b5a9,
-        type: 3}
-    - target: {fileID: 6798030570463818578, guid: 61c5f05db3afb7e4ea05d8b140cddef4,
-        type: 3}
-      propertyPath: attack
-      value: 
-      objectReference: {fileID: 8300000, guid: 2adb857f469be6542b88433c6cb895b6, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 61c5f05db3afb7e4ea05d8b140cddef4, type: 3}
 --- !u!4 &413241689 stripped
@@ -5889,6 +5878,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1168969450}
     m_Modifications:
+    - target: {fileID: 4287725228394297800, guid: 8425575017ffbe645bd7efdc0c80b500,
+        type: 3}
+      propertyPath: players
+      value: 
+      objectReference: {fileID: 774545486}
     - target: {fileID: 185934, guid: 8425575017ffbe645bd7efdc0c80b500, type: 3}
       propertyPath: m_Name
       value: Footman_Blue
@@ -11939,12 +11933,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4469dad5692dddd4eb29c6707c223600, type: 3}
---- !u!1 &1574690485 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4505239406628185140, guid: b9ff0685e9747574bbd3b3ebb3e8b423,
-    type: 3}
-  m_PrefabInstance: {fileID: 62993166}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1578433736
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12364,33 +12352,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1374439114}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1643303812 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 185934, guid: 8425575017ffbe645bd7efdc0c80b500,
-    type: 3}
-  m_PrefabInstance: {fileID: 768678487}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1643303813 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 472902, guid: 8425575017ffbe645bd7efdc0c80b500,
     type: 3}
   m_PrefabInstance: {fileID: 768678487}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1643303814
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1643303812}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c1a3f42d38eeef48b0cafed9b0459dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  players: {fileID: 774545486}
-  _Iceball: {fileID: 1574690485}
-  attack: {fileID: 0}
 --- !u!4 &1645809359 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6935642399601693244, guid: 4469dad5692dddd4eb29c6707c223600,

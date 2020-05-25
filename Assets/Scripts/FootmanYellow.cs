@@ -29,6 +29,7 @@ public class FootmanYellow : MonoBehaviour
 
     AudioSource audioSource;
     public AudioClip attack;
+    public AudioClip shot;
     private bool keepAttacking = false;
 
     void Start()
@@ -176,6 +177,7 @@ public class FootmanYellow : MonoBehaviour
         _Lightning.transform.position = transform.TransformPoint( (Vector3.forward * 1.5f) + (Vector3.up * .65f) );
         _Lightning.transform.rotation = transform.rotation;
         _Lightning.GetComponent<Rigidbody>().velocity = transform.TransformDirection(Vector3.forward * 3);
+        audioSource.PlayOneShot(shot);
 
         yield return new WaitForSeconds(1f);
         shooting = false;

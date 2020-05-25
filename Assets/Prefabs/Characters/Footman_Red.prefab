@@ -326,6 +326,7 @@ MonoBehaviour:
   players: {fileID: 0}
   _Fireball: {fileID: 0}
   attack: {fileID: 8300000, guid: 2adb857f469be6542b88433c6cb895b6, type: 3}
+  shot: {fileID: 8300000, guid: 48e387272fb1e724d92e57c1c9330251, type: 3}
 --- !u!1 &108794
 GameObject:
   m_ObjectHideFlags: 0

@@ -27629,6 +27629,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 118679700}
     m_Modifications:
+    - target: {fileID: 8544177347911235763, guid: 06490fc688aff434496294747099a875,
+        type: 3}
+      propertyPath: players
+      value: 
+      objectReference: {fileID: 512440652}
+    - target: {fileID: 8544177347911235763, guid: 06490fc688aff434496294747099a875,
+        type: 3}
+      propertyPath: _Fireball
+      value: 
+      objectReference: {fileID: 756799130}
     - target: {fileID: 106764, guid: 06490fc688aff434496294747099a875, type: 3}
       propertyPath: m_Name
       value: Footman_Red
@@ -38147,33 +38157,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1425900081}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1427508452 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 106764, guid: 06490fc688aff434496294747099a875,
-    type: 3}
-  m_PrefabInstance: {fileID: 1035831574}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1427508453 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 486212, guid: 06490fc688aff434496294747099a875,
     type: 3}
   m_PrefabInstance: {fileID: 1035831574}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1427508454
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1427508452}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c4eb114adc78428bbe42982f37c1dfb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  players: {fileID: 512440652}
-  _Fireball: {fileID: 0}
-  attack: {fileID: 0}
 --- !u!4 &1428729907 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6935642399601693244, guid: 7f932e1c393eef644bfd6dd8ba21635b,

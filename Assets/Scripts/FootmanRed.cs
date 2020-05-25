@@ -29,6 +29,7 @@ public class FootmanRed : MonoBehaviour
 
     AudioSource audioSource;
     public AudioClip attack;
+    public AudioClip shot;
     private bool keepAttacking = false;
 
     void Start()
@@ -176,7 +177,7 @@ public class FootmanRed : MonoBehaviour
         _Fireball.transform.position = transform.TransformPoint((Vector3.forward * 1.5f) + (Vector3.up * .65f));
         _Fireball.transform.rotation = transform.rotation;
         _Fireball.GetComponent<Rigidbody>().velocity = transform.TransformDirection(Vector3.forward * 2);
-
+        audioSource.PlayOneShot(shot);
         yield return new WaitForSeconds(1f);
         shooting = false;
     }

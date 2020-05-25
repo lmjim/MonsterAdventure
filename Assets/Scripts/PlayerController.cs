@@ -388,6 +388,7 @@ public class PlayerController : MonoBehaviour
 
         playerAnimator.SetTrigger("Die");
         PlayDieSound();
+        audioSource.Stop();
         loseText.text = "You died! Game over.\nPress BACKSPACE replay level\nPress TAB to return home";
 
         foreach (GameObject slime in slimes)

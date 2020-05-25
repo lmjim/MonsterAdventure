@@ -438,7 +438,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   players: {fileID: 0}
-  _Lightning: {fileID: 0}
+  _Lightning: {fileID: 4357749205524698951, guid: 9714bf73cd95bc34c8e72aa59c88b5a9,
+    type: 3}
+  attack: {fileID: 8300000, guid: 2adb857f469be6542b88433c6cb895b6, type: 3}
+  shot: {fileID: 8300000, guid: 48e387272fb1e724d92e57c1c9330251, type: 3}
 --- !u!1 &135080
 GameObject:
   m_ObjectHideFlags: 0
