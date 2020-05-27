@@ -355,7 +355,7 @@ public class PlayerController : MonoBehaviour
         playerRB.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         isGrounded = false;
         jumps++;
-        PlayJumpSound();
+        //PlayJumpSound();
     }
 
     public void FinishLevel() // this is called by the portal
