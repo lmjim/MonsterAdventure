@@ -193,10 +193,11 @@ public class PlayerController : MonoBehaviour
             playerRotation = Quaternion.LookRotation(desiredForward);
         }
 
-        if (transform.position.y < -1) // player fell off stage
+        if (transform.position.y < 0) // player fell off stage
         {
             // TODO: fix dying sounds when player falls off stage
-            Die();
+            // Die();
+            StartCoroutine(PlayAndStop());
         }
     }
 
@@ -355,7 +356,7 @@ public class PlayerController : MonoBehaviour
         playerRB.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         isGrounded = false;
         jumps++;
-        //PlayJumpSound();
+        PlayJumpSound();
     }
 
     public void FinishLevel() // this is called by the portal
@@ -407,9 +408,17 @@ public class PlayerController : MonoBehaviour
         audioSource2.PlayOneShot(die); // Sounds horrible if fall off 
     }
 
-    public void PlayHurtSound() // Take damage audio
+    public void PlayHurtSound()
     {
         audioSource2.volume = 0.08f;
         audioSource2.PlayOneShot(hurt);
     }
+
+    IEnumerator PlayAndStop() // Kinda just stops that horrible sound when the player falls off the stage
+    {
+        Die();
+        yield return new WaitForSeconds(0.4f);
+        audioSource2.Stop();
+    }
+    
 }

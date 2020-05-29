@@ -13,16 +13,22 @@ public class Unlocker : MonoBehaviour
     public bool unlocksDoubleJumping;
     public bool unlocksWallJumping;
 
+    private AudioSource audioSource;
+    public AudioClip unlocker;
+
     void Start()
     {
         player = PlayerSwitch.DefinePlayer(players);
         controller = player.GetComponent<PlayerController>();
+        audioSource = GetComponent<AudioSource>();
+
     }
 
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            audioSource.PlayOneShot(unlocker);
             if (unlocksSprinting)
             {
                 controller.canSprint = true;

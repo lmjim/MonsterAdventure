@@ -120,7 +120,7 @@ public class FootmanRed : MonoBehaviour
         {
             footmanAnimator.SetBool("Attack", true); // swing sword
             keepAttacking = true;
-            StartCoroutine(PlayAttackSound());
+            //StartCoroutine(PlayAttackSound());
         }
     }
 

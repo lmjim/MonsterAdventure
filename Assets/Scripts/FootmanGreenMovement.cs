@@ -108,7 +108,7 @@ public class FootmanGreenMovement : MonoBehaviour
 
             // Play attacking sounds every 1 second
             keepAttacking = true;
-            StartCoroutine(PlayAttackSound());
+            // StartCoroutine(PlayAttackSound());
         }
     }
 

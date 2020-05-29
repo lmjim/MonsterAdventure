@@ -241,9 +241,10 @@ MonoBehaviour:
   canWallJump: 0
   bite: {fileID: 8300000, guid: ac6034ade498bb94b87620cdf6eac48b, type: 3}
   walk: {fileID: 8300000, guid: a3e270d3a40da90458c342f9eb6d13da, type: 3}
-  jump: {fileID: 8300000, guid: 2a72af8dbe7f99a4585543bc6829bfb2, type: 3}
+  jump: {fileID: 8300000, guid: 2c1a133b6de5e864c88802585207591b, type: 3}
   die: {fileID: 8300000, guid: a2f0e021c2c371445a1b65f484f047c7, type: 3}
   hurt: {fileID: 8300000, guid: a37f44cbf8c2a7443a3c361efa2f233a, type: 3}
+  healthBar: {fileID: 0}
 --- !u!82 &9150762988087219335
 AudioSource:
   m_ObjectHideFlags: 0
