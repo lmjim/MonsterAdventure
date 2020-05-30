@@ -24,6 +24,7 @@ TagManager:
   - Music
   - Lightning
   - Portal
+  - Panel
   layers:
   - Default
   - TransparentFX
@@ -34,7 +35,7 @@ TagManager:
   - 
   - 
   - Background
-  - 
+  - Player
   - 
   - 
   - 
@@ -60,4 +61,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Player
+    uniqueID: 4178689995
+    locked: 0
+  - name: New Layer
+    uniqueID: 1311474785
     locked: 0

@@ -3447,6 +3447,9 @@ MonoBehaviour:
   unlocksDoubleJumping: 0
   unlocksWallJumping: 1
   unlocker: {fileID: 8300000, guid: 1b69365a47cf02c4dace1d726d6340d0, type: 3}
+  hasPlayed1: 0
+  hasPlayed2: 0
+  hasPlayed3: 0
 --- !u!82 &431738267
 AudioSource:
   m_ObjectHideFlags: 0
@@ -6719,6 +6722,11 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 1455429220}
+    - target: {fileID: 7727057504035930988, guid: c8b969c0c1b00b2489a4052a944483c1,
+        type: 3}
+      propertyPath: levelUp
+      value: 
+      objectReference: {fileID: 804059325}
     - target: {fileID: 9150762988087219335, guid: c8b969c0c1b00b2489a4052a944483c1,
         type: 3}
       propertyPath: BypassEffects
@@ -6729,6 +6737,12 @@ PrefabInstance:
 --- !u!4 &804059324 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4274285055804658, guid: c8b969c0c1b00b2489a4052a944483c1,
+    type: 3}
+  m_PrefabInstance: {fileID: 804059323}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &804059325 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 6892784868370751856, guid: c8b969c0c1b00b2489a4052a944483c1,
     type: 3}
   m_PrefabInstance: {fileID: 804059323}
   m_PrefabAsset: {fileID: 0}
@@ -8953,6 +8967,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 774545488}
     m_Modifications:
+    - target: {fileID: 1981703999380505227, guid: d21a04d7970c925479d8ce4b73e71901,
+        type: 3}
+      propertyPath: m_Name
+      value: Charge
+      objectReference: {fileID: 0}
     - target: {fileID: 1975194375736644, guid: d21a04d7970c925479d8ce4b73e71901, type: 3}
       propertyPath: m_Name
       value: Boximon_Fiery
@@ -9045,6 +9064,11 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 1455429220}
+    - target: {fileID: 5139463808777939581, guid: d21a04d7970c925479d8ce4b73e71901,
+        type: 3}
+      propertyPath: levelUp
+      value: 
+      objectReference: {fileID: 1093382002}
     - target: {fileID: 8989639793415061850, guid: d21a04d7970c925479d8ce4b73e71901,
         type: 3}
       propertyPath: healthText
@@ -9065,6 +9089,12 @@ PrefabInstance:
 --- !u!4 &1093382001 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4744222756475520, guid: d21a04d7970c925479d8ce4b73e71901,
+    type: 3}
+  m_PrefabInstance: {fileID: 1093382000}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &1093382002 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 1981703999365340139, guid: d21a04d7970c925479d8ce4b73e71901,
     type: 3}
   m_PrefabInstance: {fileID: 1093382000}
   m_PrefabAsset: {fileID: 0}

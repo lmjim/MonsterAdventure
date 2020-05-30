@@ -6074,6 +6074,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 512440653}
     m_Modifications:
+    - target: {fileID: 1981703999380505227, guid: d21a04d7970c925479d8ce4b73e71901,
+        type: 3}
+      propertyPath: m_Name
+      value: Charge
+      objectReference: {fileID: 0}
     - target: {fileID: 1975194375736644, guid: d21a04d7970c925479d8ce4b73e71901, type: 3}
       propertyPath: m_Name
       value: Boximon_Fiery
@@ -6141,9 +6146,20 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 1248769231}
+    - target: {fileID: 5139463808777939581, guid: d21a04d7970c925479d8ce4b73e71901,
+        type: 3}
+      propertyPath: levelUp
+      value: 
+      objectReference: {fileID: 221688481}
     m_RemovedComponents:
     - {fileID: 1195067069991214699, guid: d21a04d7970c925479d8ce4b73e71901, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d21a04d7970c925479d8ce4b73e71901, type: 3}
+--- !u!198 &221688481 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 1981703999365340139, guid: d21a04d7970c925479d8ce4b73e71901,
+    type: 3}
+  m_PrefabInstance: {fileID: 221688480}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &223619324 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6935642399601693244, guid: 7f932e1c393eef644bfd6dd8ba21635b,
@@ -10309,6 +10325,11 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 1248769231}
+    - target: {fileID: 7727057504035930988, guid: c8b969c0c1b00b2489a4052a944483c1,
+        type: 3}
+      propertyPath: levelUp
+      value: 
+      objectReference: {fileID: 374268066}
     - target: {fileID: 4495045736205500469, guid: c8b969c0c1b00b2489a4052a944483c1,
         type: 3}
       propertyPath: DopplerLevel
@@ -10322,6 +10343,12 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 9150762988087219335, guid: c8b969c0c1b00b2489a4052a944483c1, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c8b969c0c1b00b2489a4052a944483c1, type: 3}
+--- !u!198 &374268066 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 6892784868370751856, guid: c8b969c0c1b00b2489a4052a944483c1,
+    type: 3}
+  m_PrefabInstance: {fileID: 374268065}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &375192848
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19342,6 +19369,9 @@ MonoBehaviour:
   unlocksDoubleJumping: 1
   unlocksWallJumping: 0
   unlocker: {fileID: 8300000, guid: 1b69365a47cf02c4dace1d726d6340d0, type: 3}
+  hasPlayed1: 0
+  hasPlayed2: 0
+  hasPlayed3: 0
 --- !u!82 &719787647
 AudioSource:
   m_ObjectHideFlags: 0

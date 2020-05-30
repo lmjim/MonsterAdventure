@@ -49,6 +49,7 @@ public class PlayerController : MonoBehaviour
     public AudioClip jump;
     public AudioClip die;
     public AudioClip hurt;
+    public ParticleSystem levelUp;
 
     public SimpleHealthBar healthBar;
     
@@ -420,5 +421,14 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(0.4f);
         audioSource2.Stop();
     }
-    
+
+    public void CreateEffect()
+    {
+        levelUp.Play();
+    }
+
+    public void StopEffect()
+    {
+        levelUp.Stop();
+    }
 }
