@@ -194,7 +194,7 @@ public class PlayerController : MonoBehaviour
             playerRotation = Quaternion.LookRotation(desiredForward);
         }
 
-        if (transform.position.y < 0) // player fell off stage
+        if (transform.position.y < -1) // player fell off stage
         {
             // TODO: fix dying sounds when player falls off stage
             // Die();
