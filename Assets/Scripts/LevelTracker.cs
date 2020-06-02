@@ -16,20 +16,41 @@ public class LevelTracker : MonoBehaviour
     public static int  tutorialStars = 0;
     public static int  tutorialEnemies = 0;
     public static bool tutorialPassed = false;
+    public static bool tutorialStar1 = false;
     
     public static bool level1Passed = false;
     public static int  level1Stars = 0;
     public static int  level1Enemies = 0;
+    public static bool level1Star1 = false;
+    public static bool level1Star2 = false;
+    public static bool level1Star3 = false;
+    public static bool level1Star4 = false;
+    public static bool level1Star5 = false;
     
     public static bool level2Passed = false;
     public static int  level2Stars = 0;
     public static int  level2Enemies = 0;
+    public static bool level2Star1 = false;
+    public static bool level2Star2 = false;
+    public static bool level2Star3 = false;
+    public static bool level2Star4 = false;
+    public static bool level2Star5 = false;
     
     public static bool level3Passed = false;
     public static int  level3Stars = 0;
     public static int  level3Enemies = 0;
+    public static bool level3Star1 = false;
+    public static bool level3Star2 = false;
+    public static bool level3Star3 = false;
+    public static bool level3Star4 = false;
+    public static bool level3Star5 = false;
 
     public static bool levelOver = false;
+    public static bool star1 = false;
+    public static bool star2 = false;
+    public static bool star3 = false;
+    public static bool star4 = false;
+    public static bool star5 = false;
     public static int starsCollected = 0;
     public static int enemiesDefeated = 0;
 
@@ -137,24 +158,20 @@ public class LevelTracker : MonoBehaviour
             {
                 case "TutorialLevel":
                     tutorialPassed = alive;
-                    tutorialStars = Math.Max(tutorialStars, starsCollected);
                     tutorialEnemies = Math.Max(tutorialEnemies, enemiesDefeated);
                     break;
                 case "Level1":
                     level1Passed = alive;
-                    level1Stars = Math.Max(level1Stars, starsCollected);
                     level1Enemies = Math.Max(level1Enemies, enemiesDefeated);
                     learnedSprint = true;
                     break;
                 case "Level2":
                     level2Passed = alive;
-                    level2Stars = Math.Max(level2Stars, starsCollected);
                     level2Enemies = Math.Max(level2Enemies, enemiesDefeated);
                     learnedDoubleJump = true;
                     break;
                 case "Level3":
                     level3Passed = alive;
-                    level3Stars = Math.Max(level3Stars, starsCollected);
                     level3Enemies = Math.Max(level3Enemies, enemiesDefeated);
                     learnedWallJump = true;
                     break;
@@ -162,8 +179,115 @@ public class LevelTracker : MonoBehaviour
         }
     }
 
+    public static void countStars()
+    {
+        int count = 0;
+        string level = SceneManager.GetActiveScene().name;
+        switch (level)
+        {
+            case "TutorialLevel":
+                if (star1)
+                {
+                    tutorialStar1 = true; // Tutorial only has 1 star
+                    count++; 
+                }
+                tutorialStars = count;
+                break;
+            case "Level1":
+                if (star1)
+                {
+                    level1Star1 = true;
+                    count++;
+                }
+                if (star2)
+                {
+                    level1Star2 = true;
+                    count++;
+                }
+                if (star3)
+                {
+                    level1Star3 = true;
+                    count++;
+                }
+                if (star4)
+                {
+                    level1Star4 = true;
+                    count++;
+                }
+                if (star5)
+                {
+                    level1Star5 = true;
+                    count++;
+                }
+                level1Stars = count;
+                break;
+            case "Level2":
+                if (star1)
+                {
+                    level2Star1 = true;
+                    count++;
+                }
+                if (star2)
+                {
+                    level2Star2 = true;
+                    count++;
+                }
+                if (star3)
+                {
+                    level2Star3 = true;
+                    count++;
+                }
+                if (star4)
+                {
+                    level2Star4 = true;
+                    count++;
+                }
+                if (star5)
+                {
+                    level2Star5 = true;
+                    count++;
+                }
+                level2Stars = count;
+                break;
+            case "Level3":
+                if (star1)
+                {
+                    level3Star1 = true;
+                    count++;
+                }
+                if (star2)
+                {
+                    level3Star2 = true;
+                    count++;
+                }
+                if (star3)
+                {
+                    level3Star3 = true;
+                    count++;
+                }
+                if (star4)
+                {
+                    level3Star4 = true;
+                    count++;
+                }
+                if (star5)
+                {
+                    level3Star5 = true;
+                    count++;
+                }
+                level3Stars = count;
+                break;
+        }
+        starsCollected = count;
+    }
+
     void ResetVariables()
     {
+        star1 = false;
+        star2 = false;
+        star3 = false;
+        star4 = false;
+        star5 = false;
         starsCollected = 0;
         enemiesDefeated = 0;
         levelOver = false;

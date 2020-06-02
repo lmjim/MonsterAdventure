@@ -14,6 +14,7 @@ public class Portal : MonoBehaviour
     public GameObject players;
     public Text winText;
     public GameObject dimmer;
+    public GameObject starUI;
     
     private GameObject player;
     private ParticleSystem ps;
@@ -29,6 +30,8 @@ public class Portal : MonoBehaviour
 
         ps = transform.GetChild(0).gameObject.transform.GetChild(0).GetComponent<ParticleSystem>();
         winText.text = "";
+
+        checkStar(); // if bonus star has been earned before, show it on UI
     }
 
     void OnTriggerEnter(Collider other)
@@ -40,7 +43,9 @@ public class Portal : MonoBehaviour
                 if ((SceneManager.GetActiveScene().name != "TutorialLevel") && (player.GetComponent<PlayerController>().health == 20))
                 {
                     // warning: this assumes perfect health is 20!!!
-                    LevelTracker.starsCollected++;
+                    starUI.SetActive(true);
+                    LevelTracker.star5 = true;
+                    LevelTracker.countStars();
                     dimmer.SetActive(true);
                     winText.text =  "*** Perfect Health - Bonus Star Earned ***" +
                                     "\nLevel Complete!\nStars collected: " + LevelTracker.starsCollected.ToString() + 
@@ -50,6 +55,7 @@ public class Portal : MonoBehaviour
                 }
                 else
                 {
+                    LevelTracker.countStars();
                     dimmer.SetActive(true);
                     winText.text = "Level Complete!\nStars collected: " + LevelTracker.starsCollected.ToString() + 
                                     "\nEnemies Defeated: " + LevelTracker.enemiesDefeated.ToString() + 
@@ -65,5 +71,22 @@ public class Portal : MonoBehaviour
     {
         audioSource.PlayOneShot(win);
         onButton = true;
+    }
+
+    void checkStar()
+    {
+        string level = SceneManager.GetActiveScene().name;
+        switch (level)
+        {
+            case "Level1":
+                if (LevelTracker.level1Star5) {LevelTracker.star5 = true; starUI.SetActive(true);}
+                break;
+            case "Level2":
+                if (LevelTracker.level2Star5) {LevelTracker.star5 = true; starUI.SetActive(true);}
+                break;
+            case "Level3":
+                if (LevelTracker.level3Star5) {LevelTracker.star5 = true; starUI.SetActive(true);}
+                break;
+        }
     }
 }
