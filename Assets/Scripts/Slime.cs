@@ -8,6 +8,7 @@ public class Slime : MonoBehaviour
 
     public string message = "";
     public Text slimeText;
+    public GameObject slimeDimmer;
 
     private Animator slimeAnimator;
 
@@ -20,6 +21,7 @@ public class Slime : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            slimeDimmer.SetActive(true);
             slimeText.text = message;
             StartTalking();
         }
@@ -29,6 +31,7 @@ public class Slime : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            slimeDimmer.SetActive(false);
             slimeText.text = "";
             StopTalking();
         }
