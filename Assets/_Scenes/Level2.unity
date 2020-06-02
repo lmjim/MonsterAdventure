@@ -13545,14 +13545,6 @@ PrefabInstance:
       propertyPath: m_Radius
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 4127066169186206, guid: 6334a3662e4cb52429ebe16abf7d7005, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 2.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4127066169186206, guid: 6334a3662e4cb52429ebe16abf7d7005, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -3.79
-      objectReference: {fileID: 0}
     - target: {fileID: 9079452338933950326, guid: 6334a3662e4cb52429ebe16abf7d7005,
         type: 3}
       propertyPath: slimeText
@@ -13568,6 +13560,14 @@ PrefabInstance:
       propertyPath: slimeDimmer
       value: 
       objectReference: {fileID: 205738449}
+    - target: {fileID: 4127066169186206, guid: 6334a3662e4cb52429ebe16abf7d7005, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4127066169186206, guid: 6334a3662e4cb52429ebe16abf7d7005, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.79
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6334a3662e4cb52429ebe16abf7d7005, type: 3}
 --- !u!4 &487155624 stripped
@@ -18506,7 +18506,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1861970582}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -36649,7 +36649,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 22403254, guid: 60da1df1f7edb3747bea8f735b2768d1, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 22403254, guid: 60da1df1f7edb3747bea8f735b2768d1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -50145,8 +50145,8 @@ RectTransform:
   m_Children:
   - {fileID: 1193924607}
   - {fileID: 205738450}
-  - {fileID: 684727681}
   - {fileID: 1143941806}
+  - {fileID: 684727681}
   - {fileID: 38014680}
   - {fileID: 266446183}
   - {fileID: 1515866991}
