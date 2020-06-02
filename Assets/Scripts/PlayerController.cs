@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
 {
     public Text healthText;
     public Text loseText;
+    public GameObject dimmer;
     public int health = 20; // leave this public, it could change based on the level
     public float movementSpeed = 7f; // leave this public, it could change based on the level
 
@@ -381,6 +382,7 @@ public class PlayerController : MonoBehaviour
         playerAnimator.SetTrigger("Die");
         PlayDieSound();
         audioSource.Stop(); // Stop the walking audio
+        dimmer.SetActive(true);
         loseText.text = "You died! Game over.\nPress BACKSPACE replay level\nPress TAB to return home";
 
         foreach (GameObject slime in slimes)

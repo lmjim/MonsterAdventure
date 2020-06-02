@@ -13,6 +13,7 @@ public class Portal : MonoBehaviour
 {
     public GameObject players;
     public Text winText;
+    public GameObject dimmer;
     
     private GameObject player;
     private ParticleSystem ps;
@@ -40,6 +41,7 @@ public class Portal : MonoBehaviour
                 {
                     // warning: this assumes perfect health is 20!!!
                     LevelTracker.starsCollected++;
+                    dimmer.SetActive(true);
                     winText.text =  "*** Perfect Health - Bonus Star Earned ***" +
                                     "\nLevel Complete!\nStars collected: " + LevelTracker.starsCollected.ToString() + 
                                     "\nEnemies Defeated: " + LevelTracker.enemiesDefeated.ToString() + 
@@ -48,6 +50,7 @@ public class Portal : MonoBehaviour
                 }
                 else
                 {
+                    dimmer.SetActive(true);
                     winText.text = "Level Complete!\nStars collected: " + LevelTracker.starsCollected.ToString() + 
                                     "\nEnemies Defeated: " + LevelTracker.enemiesDefeated.ToString() + 
                                     "\nPress ENTER to continue\nPress BACKSPACE replay level\nPress TAB to return home";
