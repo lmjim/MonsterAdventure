@@ -7666,6 +7666,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Title - Text
       objectReference: {fileID: 0}
+    - target: {fileID: 402892915712950091, guid: 8691ad60eb180c646afaf6f26f081000,
+        type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 402892915712950084, guid: 8691ad60eb180c646afaf6f26f081000,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7779,27 +7784,37 @@ PrefabInstance:
     - target: {fileID: 402892915712950089, guid: 8691ad60eb180c646afaf6f26f081000,
         type: 3}
       propertyPath: m_textInfo.characterCount
-      value: 0
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 402892915712950089, guid: 8691ad60eb180c646afaf6f26f081000,
         type: 3}
       propertyPath: m_textInfo.spaceCount
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 402892915712950089, guid: 8691ad60eb180c646afaf6f26f081000,
         type: 3}
       propertyPath: m_textInfo.wordCount
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 402892915712950089, guid: 8691ad60eb180c646afaf6f26f081000,
         type: 3}
       propertyPath: m_textInfo.lineCount
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 402892915712950089, guid: 8691ad60eb180c646afaf6f26f081000,
         type: 3}
       propertyPath: m_textInfo.pageCount
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 402892915712950089, guid: 8691ad60eb180c646afaf6f26f081000,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 402892915712950086, guid: 8691ad60eb180c646afaf6f26f081000,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8691ad60eb180c646afaf6f26f081000, type: 3}

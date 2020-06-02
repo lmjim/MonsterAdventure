@@ -1762,6 +1762,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Title - Text
       objectReference: {fileID: 0}
+    - target: {fileID: 402892915712950091, guid: 8691ad60eb180c646afaf6f26f081000,
+        type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 402892915712950084, guid: 8691ad60eb180c646afaf6f26f081000,
         type: 3}
       propertyPath: m_LocalPosition.x
