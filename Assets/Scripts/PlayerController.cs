@@ -197,7 +197,7 @@ public class PlayerController : MonoBehaviour
 
         if (transform.position.y < -1) // player fell off stage
         {
-            // TODO: fix dying sounds when player falls off stage
+            // fix dying sounds when player falls off stage
             // Die();
             StartCoroutine(PlayAndStop());
         }
@@ -304,10 +304,6 @@ public class PlayerController : MonoBehaviour
 
             // iFrame to maintain lives
             StartCoroutine(BecomeTemporarilyInvincible());
-
-            // TODO: Slow the player, if we decide to do that!
-
-            // TODO: Add an icy particle the player when hit!
         }
 
     }
